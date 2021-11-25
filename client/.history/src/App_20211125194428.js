@@ -9,7 +9,6 @@ import {
   Forget,
   Payment,
   Checkout,
-  Admin,
 } from "./Imports/LazyRouter";
 function App() {
   return (

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { HeaderNavbar } from "../Styles/StylePages/Navbar";
 import { Link, useLocation } from "react-router-dom";
-import { FaPizzaSlice, FaShoppingCart } from "react-icons/fa";
+import { FaPizzaSlice } from "react-icons/fa";
 const Navbar = () => {
   const [native, setNative] = useState(false);
   const [activeTab, setActiveTab] = useState("Home");
@@ -54,6 +54,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/product"
+              className="a"
               className={` a ${activeTab === "Product" ? " active1" : ""}`}
               onClick={() => setActiveTab("Product")}
             >
@@ -61,6 +62,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/payment"
+              className="a"
               className={` a ${activeTab === "Payment" ? " active1" : ""}`}
               onClick={() => setActiveTab("Payment")}
             >
@@ -68,6 +70,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/feedback"
+              className="a"
               className={` a ${activeTab === "Feedback" ? " active1" : ""}`}
               onClick={() => setActiveTab("Feedback")}
             >
@@ -80,13 +83,7 @@ const Navbar = () => {
             >
               Login
             </Link>
-            <Link to="/payment" className="a">
-              <FaShoppingCart style={{ fontSize: "24px" }} />
-              &nbsp;&nbsp;
-              <span class="badge badge-warning" id="lblCartCount">
-                5
-              </span>
-            </Link>
+            <span className="a">ádasd</span>
           </nav>
         </header>
       </HeaderNavbar>

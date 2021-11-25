@@ -54,6 +54,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/product"
+              className="a"
               className={` a ${activeTab === "Product" ? " active1" : ""}`}
               onClick={() => setActiveTab("Product")}
             >
@@ -61,6 +62,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/payment"
+              className="a"
               className={` a ${activeTab === "Payment" ? " active1" : ""}`}
               onClick={() => setActiveTab("Payment")}
             >
@@ -68,6 +70,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/feedback"
+              className="a"
               className={` a ${activeTab === "Feedback" ? " active1" : ""}`}
               onClick={() => setActiveTab("Feedback")}
             >
@@ -80,13 +83,11 @@ const Navbar = () => {
             >
               Login
             </Link>
-            <Link to="/payment" className="a">
-              <FaShoppingCart style={{ fontSize: "24px" }} />
+            <span className="a">
+              <FaShoppingCart />
               &nbsp;&nbsp;
-              <span class="badge badge-warning" id="lblCartCount">
-                5
-              </span>
-            </Link>
+              <span className="header-option2 basket-count ">0</span>
+            </span>
           </nav>
         </header>
       </HeaderNavbar>

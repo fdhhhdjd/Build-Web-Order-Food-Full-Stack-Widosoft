@@ -28,4 +28,4 @@ export { default as ScrollTop } from "../Components/ScrollTop/ScrollTop";
 export { default as PaymentItem } from "../Components/Payment/PaymentItem";
 export { default as EmptyCart } from "../Components/EmptyCart/EmptyCart";
 export { default as CheckoutItem } from "../Components/Checkout/CheckoutItem";
-export { default as CheckoutItems } from "../Components/Checkout/CheckoutItems";
+export { default as CheckoutItems } from "../Components/HomeComponents/CheckoutItems ";

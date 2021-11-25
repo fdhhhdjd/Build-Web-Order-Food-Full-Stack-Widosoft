@@ -66,7 +66,7 @@ export const HeaderNavbar = styled.div`
     background-color: #c67605;
   }
   #lblCartCount {
-    font-size: 13px;
+    font-size: 12px;
     background: #ff0000;
     color: #fff;
     padding: 0 5px;

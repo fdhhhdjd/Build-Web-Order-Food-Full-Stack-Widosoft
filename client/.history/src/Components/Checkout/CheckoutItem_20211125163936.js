@@ -1,7 +1,7 @@
 import React from "react";
 import { CheckoutStyle } from "../../Styles/StylePages/CheckoutStyle";
 import { DataCheckout } from "../../utils/DataCheckout";
-import { CheckoutItems } from "../../Imports/Index";
+import CheckoutItems from "./CheckoutItems";
 const CheckOutItem = () => {
   return (
     <>

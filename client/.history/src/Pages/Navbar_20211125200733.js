@@ -80,7 +80,11 @@ const Navbar = () => {
             >
               Login
             </Link>
-            <Link to="/payment" className="a">
+            <Link
+              to="/payment"
+              className={` a ${activeTab === "Payment" ? "" : ""}`}
+              onClick={() => setActiveTab("Payment")}
+            >
               <FaShoppingCart style={{ fontSize: "24px" }} />
               &nbsp;&nbsp;
               <span class="badge badge-warning" id="lblCartCount">

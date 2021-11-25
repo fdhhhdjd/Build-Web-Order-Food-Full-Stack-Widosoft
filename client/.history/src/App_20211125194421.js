@@ -9,7 +9,6 @@ import {
   Forget,
   Payment,
   Checkout,
-  Admin,
 } from "./Imports/LazyRouter";
 function App() {
   return (
@@ -23,7 +22,7 @@ function App() {
           <Route path="/product" element={<ProductDetails />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/Admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

@@ -1,0 +1,35 @@
+{
+  "name": "order-food-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cloudinary": "^1.27.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.95.14",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --legacy-watch server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Squirrel1610/Order-Food-Backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Squirrel1610/Order-Food-Backend/issues"
+  },
+  "homepage": "https://github.com/Squirrel1610/Order-Food-Backend#readme"
+}

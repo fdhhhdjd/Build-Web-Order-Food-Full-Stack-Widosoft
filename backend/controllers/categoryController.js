@@ -73,15 +73,11 @@ module.exports = {
       });
   },
 
-  //DELETE (xóa mềm)
+  //xóa danh mục (xóa cứng)
   deleteCategory(req, res) {
     const id = req.params.id;
-    const category = {
-      updatedAt: new Date(),
-      deleted_fg: 1,
-    };
     categoryModel
-      .deleteCategory(category, id)
+      .deleteCategory(id)
       .then((result) => {
         return res.status(200).json({
           status: 200,

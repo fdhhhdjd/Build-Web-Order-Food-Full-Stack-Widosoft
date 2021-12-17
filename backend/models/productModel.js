@@ -39,9 +39,11 @@ module.exports = {
     return result;
   },
 
-  //xóa sản phẩm
-  async deleteProduct(product, id) {
-    let result = await knex("sanpham").update(product).where("id", id);
+  //xóa sản phẩm (xóa cứng)
+  async deleteProduct(id) {
+    let result = await knex("sanpham").del().where({
+      id: id,
+    });
     return result;
   },
 };

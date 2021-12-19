@@ -1,6 +1,12 @@
 const knex = require("../database/knex_db.js");
 
 module.exports = {
+  //xem toàn bộ chi tiết hóa đơn (admin)
+  async getAllBillDetail() {
+    let result = await knex("chitiethoadon").select("*");
+    return result;
+  },
+
   //xem thông tin chi tiết theo hóa đơn
   async getBillDetail(id_hd) {
     let detailBills = await knex("chitiethoadon").select("*").where({

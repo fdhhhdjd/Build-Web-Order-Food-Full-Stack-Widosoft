@@ -88,12 +88,13 @@
    - Lấy ra sản phẩm phân loại theo id danh mục: get --> http://localhost:5000/category/id_dm
 
    Product:
-   - Xem toàn bộ sản phẩm : get --> http://localhost:5000/product -
+   - Xem toàn bộ sản phẩm : get --> http://localhost:5000/product 
    - Xem chi tiết sản phẩm : get --> http://localhost:5000/product/id_sp
 
    App info: 
    - Xem toàn bộ thông tin ứng dụng : get --> http://localhost:5000/appInfo/ 
    - Xem chi tiết thông tin ứng dụng : get --> http://localhost:5000/appInfo/id
 
-   Payment : - xem toàn bộ hình thức thanh toán : get --> http://localhost:5000/payment/
+   Payment :
+   - Xem toàn bộ hình thức thanh toán : get --> http://localhost:5000/payment/
    - Xem chi tiết hình thức thanh toán : get --> http://localhost:5000/payment/id

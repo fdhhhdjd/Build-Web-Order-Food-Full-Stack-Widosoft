@@ -17,7 +17,7 @@ router.patch(
 );
 
 //DELETE
-router.patch(
+router.delete(
   "/delete/:id",
   checkAuth.checkAuthAdmin,
   categoryController.deleteCategory

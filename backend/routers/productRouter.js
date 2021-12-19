@@ -16,8 +16,8 @@ router.post("/", checkAuth.checkAuthAdmin, productController.insertProduct);
 //PATCH
 router.patch("/:id", checkAuth.checkAuthAdmin, productController.updateProduct);
 
-//DELETE (xóa mềm)
-router.patch(
+//DELETE (xóa cứng)
+router.delete(
   "/delete/:id",
   checkAuth.checkAuthAdmin,
   productController.deleteProduct

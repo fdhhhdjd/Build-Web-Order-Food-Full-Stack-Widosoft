@@ -20,9 +20,11 @@ module.exports = {
     return result;
   },
 
-  //xóa danh mục
-  async deleteCategory(category, id) {
-    let result = await knex("danhmuc").update(category).where("id", id);
+  //xóa danh mục (xóa cứng)
+  async deleteCategory(id) {
+    let result = await knex("danhmuc").del().where({
+      id: id,
+    });
     return result;
   },
 

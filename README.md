@@ -36,8 +36,12 @@
    - Xóa hình thức thanh toán : delete --> http://localhost:5000/payment/delete/id
 
    Bill : 
+   - Xem hóa đơn toàn bộ khách hàng : get --> http://localhost:5000/bill/all
    - Chỉnh sửa tình trạng hóa đơn : patch --> http://localhost:5000/bill/update/id_hd 
    - Xóa hóa đơn -> xóa toàn bộ chi tiết hóa đơn theo id hóa đơn : delete --> http://localhost:5000/bill/delete/id_hd
+
+   Bill detail :
+   - Xem toàn bộ chi tiết hóa đơn : get --> http://localhost:5000/billDetail/all
 
    Rating : 
    - Xem toàn bộ đánh giá của khách hàng : get --> http://localhost:5000/rating/all 

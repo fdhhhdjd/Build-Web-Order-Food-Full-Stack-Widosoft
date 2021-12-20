@@ -1,6 +1,12 @@
 const knex = require("../database/knex_db.js");
 
 module.exports = {
+  //xem hóa đơn của tất cả khách hàng (admin)
+  async getAllBill() {
+    let bills = await knex("hoadon").select("*");
+    return bills;
+  },
+
   //xem toàn bộ hóa đơn của khách hàng đang đăng nhập
   async history(idUser) {
     let bills = await knex("hoadon").select("*").where({

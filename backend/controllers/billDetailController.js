@@ -2,6 +2,26 @@ const billDetailModel = require("../models/billDetailModel.js");
 const cartModel = require("../models/cartModel.js");
 
 module.exports = {
+  //xem toàn bộ chi tiết hóa đơn (Admin)
+  getAllBillDetail(req, res) {
+    billDetailModel
+      .getAllBillDetail()
+      .then((result) => {
+        return res.status(200).json({
+          status: 200,
+          message: "Get all bill details successfully",
+          data: result,
+        });
+      })
+      .catch((err) => {
+        return res.status(400).json({
+          status: 400,
+          message: "Failed to get all bill details",
+          data: err,
+        });
+      });
+  },
+
   //xem thông tin chi tiết theo hóa đơn
   getBillDetail(req, res) {
     const id_hd = req.params.id_hd;

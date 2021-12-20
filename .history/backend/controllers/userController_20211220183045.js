@@ -62,12 +62,22 @@ module.exports = {
       "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$"
     ).test(password);
     if (!reg) {
+<<<<<<< HEAD
+      return res.json({
+        status: 400,
+        message:
+          "Bao gồm 8 ký tự ,chữ cái viết hoa, chữ cái viết thường và một số và một ký tự đặc biệt.",
+      });
+    }
+
+=======
       return res.status(400).json({
         status: 400,
         message:
           "Password must contain at least one number and one uppercase and lowercase and special letter, and at least 6 or more characters ",
       });
     }
+>>>>>>> 6a2ca84980aa79cf37eb0cbf13f6ac7f38027280
     const salt = bcrypt.genSaltSync();
     const hashPassword = bcrypt.hashSync(password, salt);
     const user = {

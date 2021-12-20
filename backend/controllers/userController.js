@@ -10,6 +10,16 @@ module.exports = {
         status: 400,
         message: "Password is at least 6 characters long.",
       });
+    let reg = new RegExp(
+      "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$"
+    ).test(password);
+    if (reg) {
+      return res.status(400).json({
+        status: 400,
+        message:
+          "Password must contain at least one number and one uppercase and lowercase and special letter, and at least 6 or more characters ",
+      });
+    }
     const salt = bcrypt.genSaltSync();
     const hashPassword = bcrypt.hashSync(password, salt);
     const user = {

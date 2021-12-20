@@ -5,7 +5,7 @@
 
    Product : - Thêm mới sản phẩm : post --> http://localhost:5000/product - chỉnh sửa sản phẩm : patch --> http://localhost:5000/product/id_sp - xóa sản phẩm : delete --> http://localhost:5000/product/delete/id
 
-   Upload : - upload ảnh về sản phẩm (ảnh được lưu trong thư mục sản phẩm) : post --> http://localhost:5000/cloud/uploadProduct - upload ảnh về hình thức thanh toán (ảnh được lưu trong thư mục payment) : post --> http://localhost:5000/cloud/uploadPayment - xóa ảnh trên cloud (xóa bằng public_id) : post --> http://localhost:5000/cloud/destroy
+   Upload : - upload ảnh về sản phẩm (ảnh được lưu trong thư mục sản phẩm) : post --> http://localhost:5000/cloud/uploadProduct/admin - upload ảnh về hình thức thanh toán (ảnh được lưu trong thư mục payment) : post --> http://localhost:5000/cloud/uploadPayment/admin - xóa ảnh trên cloud (xóa bằng public_id) : post --> http://localhost:5000/cloud/destroy/admin
 
    App info : - thêm thông tin ứng dụng: post --> http://localhost:5000/appInfo/add - chỉnh sửa thông tin ứng dụng : patch --> http://localhost:5000/appInfo/id - xóa thông tin ứng dụng : delete --> http://localhost:5000/appInfo/id
 
@@ -18,6 +18,10 @@
 2. API dành cho khách hàng
    User : - đăng ký tài khoản khách hàng : post --> http://localhost:5000/customer/register - đăng nhập tài khoản khách hàng : post --> http://localhost:5000/customer/login - refresh token khách hàng : get --> http://localhost:5000/customer/refreshToken - đăng xuất tài khoản khách hàng : get --> http://localhost:5000/customer/logout - xem thông tin tài khoản khách hàng đang đăng nhập : get --> http://localhost:5000/customer/profile - chỉnh sửa thông tin tài khoản khách hàng : patch --> http://localhost:5000/customer/updateProfile - đổi mật khẩu tài khoản khách hàng : patch --> http://localhost:5000/customer/changePassword
 
+   Upload :
+
+   - xóa ảnh đại diện người dùng trên cloud --> post --> http://localhost:5000/cloud/destroy/customer
+
    Cart : - Thêm sản phẩm vào giỏ hàng : post --> http://localhost:5000/cart/addCartItem/id_sp - Xem giỏ hàng của tài khoản khách hàng đang đăng nhập : get --> http://localhost:5000/cart - Xem chi tiết giỏ hàng : get --> http://localhost:5000/cart/item/id_cart - chỉnh sửa số lượng sản phẩm trong giỏ hàng : patch --> http://localhost:5000/cart/updateQuantityProduct/id_cart - xóa chi tiết giỏ hàng : delete --> http://localhost:5000/cart/delete/id_cart - xóa toàn bộ chi tiết giỏ hàng : delete --> http://localhost:5000/cart/deleteAll
 
    Address : - lấy ra chi tiết địa chỉ: get --> http://localhost:5000/address/id_diachi - thêm mới địa chỉ: post --> http://localhost:5000/address/add - lấy ra danh sách địa chỉ : get --> http://localhost:5000/address/ - chỉnh sửa địa chỉ : patch --> http://localhost:5000/address/id_diachi - xóa địa chỉ : delete --> http://localhost:5000/address/id_diachi
@@ -29,6 +33,10 @@
    Rating : - đánh giá hóa đơn : post --> http://localhost:5000/rating/add/id_hd - lịch sử đánh giá của tài khoản đang đăng nhập : get --> http://localhost:5000/rating/history - chỉnh sửa đánh giá : patch --> http://localhost:5000/rating/update/id_danhgia
 
 3. API không có phân quyền
+   Upload :
+
+   - upload ảnh đại diện người dùng : post --> http://localhost:5000/cloud/uploadUserImage/
+
    Category : - xem toàn bộ danh mục : get --> http://localhost:5000/category/ - Lấy ra sản phẩm phân loại theo id danh mục: get --> http://localhost:5000/category/id_dm
 
    Product: - Xem toàn bộ sản phẩm : get --> http://localhost:5000/product - xem chi tiết sản phẩm : get --> http://localhost:5000/product/id_sp

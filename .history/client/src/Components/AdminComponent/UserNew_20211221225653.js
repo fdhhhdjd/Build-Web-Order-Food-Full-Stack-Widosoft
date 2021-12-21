@@ -11,7 +11,6 @@ const initialState = {
   gioitinh: "",
   email: "",
   dienthoai: "",
-  password: "",
 };
 
 const UserNew = () => {
@@ -84,7 +83,6 @@ const UserNew = () => {
             <input
               type="email"
               placeholder="john@gmail.com"
-              name="email"
               value={user.email}
               onChange={handleChangeInput}
               disabled
@@ -131,7 +129,6 @@ const UserNew = () => {
                 id="Nam"
                 value="Nam"
                 checked={user.gioitinh === 1 && "Nam"}
-                onChange={handleChangeInput}
               />
               <label htmlFor="male">Nam</label>
               <input
@@ -140,23 +137,13 @@ const UserNew = () => {
                 id="Nữ"
                 value="Nữ"
                 checked={user.gioitinh === 0 && "Nữ"}
-                onChange={handleChangeInput}
               />
               <label htmlFor="female">Nữ</label>
             </div>
           </div>
           <div className="newUserItem">
             <label htmlFor="active">Active</label>
-            <select
-              className="newUserSelect"
-              name="active"
-              id="active"
-              defaultValue={"DEFAULT"}
-              onChange={handleChangeInput}
-            >
-              <option value="DEFAULT" disabled>
-                Choose a salutation ...
-              </option>
+            <select className="newUserSelect" name="active" id="active">
               <option value="1" selected={user.admin === 1}>
                 Admin
               </option>

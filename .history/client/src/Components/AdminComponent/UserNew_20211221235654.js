@@ -147,14 +147,8 @@ const UserNew = () => {
           </div>
           <div className="newUserItem">
             <label htmlFor="active">Active</label>
-            <select
-              className="newUserSelect"
-              name="active"
-              id="active"
-              defaultValue={"DEFAULT"}
-              onChange={handleChangeInput}
-            >
-              <option value="DEFAULT" disabled>
+            <select defaultValue="">
+              <option value="" disabled>
                 Choose a salutation ...
               </option>
               <option value="1" selected={user.admin === 1}>

@@ -11,7 +11,6 @@ const initialState = {
   gioitinh: "",
   email: "",
   dienthoai: "",
-  password: "",
 };
 
 const UserNew = () => {

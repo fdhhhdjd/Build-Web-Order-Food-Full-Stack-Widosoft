@@ -12,7 +12,6 @@ import {
   ManagerAdmins,
   ChangePasswords,
   UserRoute,
-  UserRoutes,
 } from "./Imports/Index";
 import {
   Home,
@@ -36,9 +35,9 @@ function App() {
           <Route
             path="/login"
             element={
-              <UserRoutes>
-                <Authentication />
-              </UserRoutes>
+              // <UserRoute>
+              <Authentication />
+              // </UserRoute>
             }
           />
           <Route path="/forget" element={<Forget />} />

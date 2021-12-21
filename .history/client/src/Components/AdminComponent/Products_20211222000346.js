@@ -31,13 +31,13 @@ const Products = () => {
     },
     { field: "chitiet", headerName: "Stock", width: 550 },
     {
-      field: "size",
+      field: "status",
       headerName: "Size",
       width: 110,
     },
     {
-      field: "gia",
-      headerName: "Price (VND)",
+      field: "price",
+      headerName: "Price",
       width: 160,
     },
     {

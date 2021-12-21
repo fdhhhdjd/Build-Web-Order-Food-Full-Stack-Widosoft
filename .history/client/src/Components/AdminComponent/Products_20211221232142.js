@@ -7,37 +7,36 @@ import { ProductStyle } from "../../Styles/StylePages/ProductsAdminStyle";
 import { useDispatch, useSelector } from "react-redux";
 const Products = () => {
   const [data, setData] = useState(productRows);
-  const { product } = useSelector((state) => state.products);
-  console.log(product, "product");
+
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
   };
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
-    // { field: "category", headerName: "Category", width: 160 },
+    { field: "category", headerName: "Category", width: 160 },
 
     {
       field: "product",
       headerName: "Product",
-      width: 250,
+      width: 200,
       renderCell: (params) => {
         return (
           <div className="productListItem">
-            <img className="productListImg" src={params.row.url} alt="" />
-            {params.row.tensp}
+            <img className="productListImg" src={params.row.img} alt="" />
+            {params.row.name}
           </div>
         );
       },
     },
-    { field: "chitiet", headerName: "Stock", width: 550 },
+    { field: "stock", headerName: "Stock", width: 250 },
     {
-      field: "size",
+      field: "status",
       headerName: "Size",
       width: 110,
     },
     {
-      field: "gia",
-      headerName: "Price (VND)",
+      field: "price",
+      headerName: "Price",
       width: 160,
     },
     {
@@ -64,7 +63,7 @@ const Products = () => {
       <ProductStyle />
       <div className="productList">
         <DataGrid
-          rows={product}
+          rows={data}
           disableSelectionOnClick
           columns={columns}
           pageSize={8}

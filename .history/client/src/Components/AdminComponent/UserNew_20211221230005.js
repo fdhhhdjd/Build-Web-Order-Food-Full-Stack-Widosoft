@@ -11,7 +11,6 @@ const initialState = {
   gioitinh: "",
   email: "",
   dienthoai: "",
-  password: "",
 };
 
 const UserNew = () => {
@@ -84,7 +83,6 @@ const UserNew = () => {
             <input
               type="email"
               placeholder="john@gmail.com"
-              name="email"
               value={user.email}
               onChange={handleChangeInput}
               disabled
@@ -152,11 +150,7 @@ const UserNew = () => {
               name="active"
               id="active"
               defaultValue={"DEFAULT"}
-              onChange={handleChangeInput}
             >
-              <option value="DEFAULT" disabled>
-                Choose a salutation ...
-              </option>
               <option value="1" selected={user.admin === 1}>
                 Admin
               </option>

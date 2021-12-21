@@ -11,6 +11,7 @@ export const GlobalState = createContext();
 export const DataProvider = ({ children }) => {
   const [callback, setCallback] = useState(false);
   const { Admin, token } = useSelector((state) => state.authAdmin);
+  console.log(token.accessToken, "oke");
   const dispatch = useDispatch();
   useEffect(() => {
     const firstLogin = localStorage.getItem("firstLogin");

@@ -36,8 +36,8 @@ const Products = () => {
       width: 110,
     },
     {
-      field: "gia",
-      headerName: "Price (VND)",
+      field: `gia VND`,
+      headerName: "Price",
       width: 160,
     },
     {

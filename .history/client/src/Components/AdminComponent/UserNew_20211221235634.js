@@ -151,10 +151,10 @@ const UserNew = () => {
               className="newUserSelect"
               name="active"
               id="active"
-              defaultValue={"DEFAULT"}
+              defaultValue=""
               onChange={handleChangeInput}
             >
-              <option value="DEFAULT" disabled>
+              <option value="" disabled>
                 Choose a salutation ...
               </option>
               <option value="1" selected={user.admin === 1}>

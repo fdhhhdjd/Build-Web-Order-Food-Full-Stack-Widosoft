@@ -14,12 +14,12 @@ const Products = () => {
   };
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
-    // { field: "category", headerName: "Category", width: 160 },
+    { field: "category", headerName: "Category", width: 160 },
 
     {
       field: "product",
       headerName: "Product",
-      width: 250,
+      width: 200,
       renderCell: (params) => {
         return (
           <div className="productListItem">
@@ -29,15 +29,15 @@ const Products = () => {
         );
       },
     },
-    { field: "chitiet", headerName: "Stock", width: 550 },
+    { field: "stock", headerName: "Stock", width: 250 },
     {
-      field: "size",
+      field: "status",
       headerName: "Size",
       width: 110,
     },
     {
-      field: "gia",
-      headerName: "Price (VND)",
+      field: "price",
+      headerName: "Price",
       width: 160,
     },
     {

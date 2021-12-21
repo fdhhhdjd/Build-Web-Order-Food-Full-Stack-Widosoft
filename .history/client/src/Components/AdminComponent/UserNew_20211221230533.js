@@ -11,10 +11,9 @@ const initialState = {
   gioitinh: "",
   email: "",
   dienthoai: "",
-  password: "",
 };
 
-const UserNew = () => {
+const UserNew = (props) => {
   const [images, setImages] = useState(false);
   const [onEdit, setOnEdit] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -22,6 +21,7 @@ const UserNew = () => {
   const { allUsers } = useSelector((state) => state.authAdmin);
   const navigate = useNavigate();
   const { id } = useParams();
+  let currentValue = props.curentValue || "DEFAULT";
   const handleUpload = () => {};
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
@@ -84,7 +84,6 @@ const UserNew = () => {
             <input
               type="email"
               placeholder="john@gmail.com"
-              name="email"
               value={user.email}
               onChange={handleChangeInput}
               disabled
@@ -147,13 +146,7 @@ const UserNew = () => {
           </div>
           <div className="newUserItem">
             <label htmlFor="active">Active</label>
-            <select
-              className="newUserSelect"
-              name="active"
-              id="active"
-              defaultValue={"DEFAULT"}
-              onChange={handleChangeInput}
-            >
+            <select defaultValue={"DEFAULT"}>
               <option value="DEFAULT" disabled>
                 Choose a salutation ...
               </option>

@@ -6,13 +6,13 @@ import {
   UserLists,
   Rating,
   ProductsAdmin,
+  Users,
   NewUsers,
   ProductIds,
   NewProducts,
   ManagerAdmins,
   ChangePasswords,
   UserRoute,
-  UserRoutes,
 } from "./Imports/Index";
 import {
   Home,
@@ -36,9 +36,9 @@ function App() {
           <Route
             path="/login"
             element={
-              <UserRoutes>
+              <UserRoute>
                 <Authentication />
-              </UserRoutes>
+              </UserRoute>
             }
           />
           <Route path="/forget" element={<Forget />} />

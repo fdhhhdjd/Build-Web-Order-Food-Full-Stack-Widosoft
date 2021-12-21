@@ -223,7 +223,9 @@ module.exports = {
         "ngaysinh",
         "gioitinh",
         "email",
-        "dienthoai"
+        "dienthoai",
+        "public_id",
+        "url"
       )
       .where("id", id);
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2021 at 09:27 AM
+-- Generation Time: Dec 20, 2021 at 04:56 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -69,7 +69,15 @@ INSERT INTO `chitiethoadon` (`id`, `id_hd`, `don_gia`, `soluong`, `tong_gia`, `i
 (14, 77, 189000, 1, 189000, 150, '2021-12-14 12:53:55', '2021-12-14 12:53:55', 0),
 (15, 79, 49000, 1, 49000, 151, '2021-12-14 13:11:56', '2021-12-14 13:11:56', 0),
 (21, 84, 169000, 2, 338000, 147, '2021-12-14 14:08:42', '2021-12-14 14:08:42', 0),
-(22, 86, 70000, 1, 70000, 149, '2021-12-14 14:16:56', '2021-12-14 14:16:56', 0);
+(22, 86, 70000, 1, 70000, 149, '2021-12-14 14:16:56', '2021-12-14 14:16:56', 0),
+(25, 88, 169000, 2, 338000, 147, '2021-12-17 11:55:08', '2021-12-17 11:55:08', 0),
+(26, 88, 129000, 1, 129000, 148, '2021-12-17 11:55:08', '2021-12-17 11:55:08', 0),
+(27, 89, 169000, 1, 169000, 147, '2021-12-17 23:05:12', '2021-12-17 23:05:12', 0),
+(29, 114, 70000, 1, 70000, 149, '2021-12-17 23:37:17', '2021-12-17 23:37:17', 0),
+(30, 115, 189000, 1, 189000, 150, '2021-12-17 23:40:58', '2021-12-17 23:40:58', 0),
+(31, 115, 49000, 1, 49000, 151, '2021-12-17 23:40:58', '2021-12-17 23:40:58', 0),
+(32, 116, 169000, 1, 169000, 147, '2021-12-17 23:45:17', '2021-12-17 23:45:17', 0),
+(33, 117, 70000, 1, 70000, 149, '2021-12-18 18:19:36', '2021-12-18 18:19:36', 0);
 
 -- --------------------------------------------------------
 
@@ -203,7 +211,13 @@ INSERT INTO `hoadon` (`id`, `id_nd`, `id_thanhtoan`, `id_diachi`, `ngaydathang`,
 (77, 14, 1, 7, '2021-12-14 12:53:55', 'Đã nhận hàng', '2021-12-14 12:53:55', '2021-12-16 13:34:27', 0),
 (79, 14, 1, 7, '2021-12-14 13:11:56', 'Đã nhận hàng', '2021-12-14 13:11:56', '2021-12-16 13:34:51', 0),
 (84, 19, 1, 8, '2021-12-14 14:08:42', 'Đã nhận hàng', '2021-12-14 14:08:42', '2021-12-16 13:35:13', 0),
-(86, 19, 1, 8, '2021-12-14 14:16:56', 'Chưa thanh toán', '2021-12-14 14:16:56', '2021-12-16 13:35:53', 0);
+(86, 19, 1, 8, '2021-12-14 14:16:56', 'Chưa thanh toán', '2021-12-14 14:16:56', '2021-12-16 13:35:53', 0),
+(88, 14, 4, 7, '2021-12-17 11:55:08', 'Chưa thanh toán ', '2021-12-17 11:55:08', '2021-12-17 11:55:08', 0),
+(89, 19, 4, 8, '2021-12-17 23:05:12', 'Chưa thanh toán', '2021-12-17 23:05:12', '2021-12-17 23:05:12', 0),
+(114, 19, 1, 8, '2021-12-17 23:37:17', 'Đã thanh toán', '2021-12-17 23:37:17', '2021-12-17 23:37:17', 0),
+(115, 19, 1, 8, '2021-12-17 23:40:58', 'Đã thanh toán', '2021-12-17 23:40:58', '2021-12-17 23:40:58', 0),
+(116, 19, 4, 8, '2021-12-17 23:45:17', 'Chưa thanh toán', '2021-12-17 23:45:17', '2021-12-17 23:45:17', 0),
+(117, 19, 1, 8, '2021-12-18 18:19:36', 'Đã thanh toán', '2021-12-18 18:19:36', '2021-12-18 18:19:36', 0);
 
 -- --------------------------------------------------------
 
@@ -221,6 +235,8 @@ CREATE TABLE `nguoidung` (
   `gioitinh` tinyint(1) NOT NULL,
   `email` varchar(255) NOT NULL,
   `dienthoai` varchar(12) NOT NULL,
+  `public_id` text NOT NULL,
+  `url` text NOT NULL,
   `admin` tinyint(1) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
@@ -231,12 +247,15 @@ CREATE TABLE `nguoidung` (
 -- Dumping data for table `nguoidung`
 --
 
-INSERT INTO `nguoidung` (`id`, `hoten`, `username`, `password`, `refresh_token`, `ngaysinh`, `gioitinh`, `email`, `dienthoai`, `admin`, `createdAt`, `updatedAt`, `deleted_fg`) VALUES
-(14, 'Nguyễn Hoàng Việt', 'viet', '$2b$10$aeFsPyBdMrbH80YVjEYx6.eIgzXoDBX6DFgJn/.h4.pBV7KHrRsWS', '', '2000-06-06', 1, 'viet@gmail.com', '0123456789', 0, '2021-12-07 15:22:20', '2021-12-15 21:46:55', 0),
-(16, 'Nguyễn Duy Thịnh', 'thinh', '$2b$10$ZsuuwnNsNyDG/JZBf8pBoO4l2wnyfcC917yeTapi5/ZeWQvV70ZeS', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsImFkbWluIjoxLCJpYXQiOjE2Mzk2NDMwNDUsImV4cCI6MTYzOTcyOTQ0NX0.mmMI7qJCEqTBur5z4WNv1Kg39N8MFBtFaxW9TxdPMnI', '2000-10-16', 1, 'thinh@gmail.com', '0123456789', 1, '2021-12-07 15:33:10', '2021-12-08 17:09:15', 0),
-(17, 'Nguyễn Tiến Tài', 'tai', '$2b$10$eyhUi.EXtmviKKb6rQ8ADOVUESPjkG9YKCVElaQ3meZo8nrK3uSee', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImFkbWluIjoxLCJpYXQiOjE2Mzg5NTQ5NDgsImV4cCI6MTYzOTA0MTM0OH0.6ML730j9UX1451vEu8JsGKjvkVNDh6pFTZ1TBV76HlM', '2000-10-20', 1, 'tai@gmail.com', '0123456789', 1, '2021-12-07 15:37:27', '2021-12-08 17:09:29', 0),
-(18, 'Thái Văn Nam', 'nam', '$2b$10$yGb6JgSGxAS5zDxRrdp/tujSEHmuu0d0zYEkiNVsP30dZae1HIzi.', '', '2000-12-09', 1, 'nam@gmail.com', '0123456789', 1, '2021-12-08 17:10:14', '2021-12-08 17:10:14', 0),
-(19, 'Lê Nguyễn Hoàng Anh', 'hoanganh', '$2b$10$xCL5Jy6xRcYDxJoyLkOcJODxedHgsPm01kW8GlF/mUuhTQkByE4sO', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImFkbWluIjowLCJpYXQiOjE2Mzk2NDA5NzIsImV4cCI6MTYzOTcyNzM3Mn0.jBmSC0ACcns3VA_tqoqzBFlgDE3hWlT0BilhGGom_3o', '2000-01-01', 0, 'hoanganh@gmail.com', '0123456789', 0, '2021-12-10 15:43:01', '2021-12-10 15:43:01', 0);
+INSERT INTO `nguoidung` (`id`, `hoten`, `username`, `password`, `refresh_token`, `ngaysinh`, `gioitinh`, `email`, `dienthoai`, `public_id`, `url`, `admin`, `createdAt`, `updatedAt`, `deleted_fg`) VALUES
+(14, 'Nguyễn Hoàng Việt', 'viet', '$2b$10$aeFsPyBdMrbH80YVjEYx6.eIgzXoDBX6DFgJn/.h4.pBV7KHrRsWS', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsImFkbWluIjowLCJpYXQiOjE2Mzk3NTcwNjUsImV4cCI6MTYzOTg0MzQ2NX0.85KjIri0rYTC5j9bD4q9J2XTxV_j8ZnqCpwDkjorQx4', '2000-06-06', 1, 'viet@gmail.com', '0123456789', '', '', 0, '2021-12-07 15:22:20', '2021-12-15 21:46:55', 0),
+(16, 'Nguyễn Duy Thịnh', 'thinh', '$2b$10$ZsuuwnNsNyDG/JZBf8pBoO4l2wnyfcC917yeTapi5/ZeWQvV70ZeS', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsImFkbWluIjoxLCJpYXQiOjE2NDAwMTQ0MzcsImV4cCI6MTY0MDEwMDgzN30.idLh-Quq4RoLdK9m3zhW80bBGzl-EYoRUfgqaqbSakI', '2000-10-16', 1, 'thinh@gmail.com', '0123456789', 'users/l0yxyhphzfyw4utjlvj3', 'https://res.cloudinary.com/order-food/image/upload/v1640010340/users/l0yxyhphzfyw4utjlvj3.jpg', 1, '2021-12-07 15:33:10', '2021-12-20 21:27:58', 0),
+(17, 'Nguyễn Tiến Tài', 'tai', '$2b$10$eyhUi.EXtmviKKb6rQ8ADOVUESPjkG9YKCVElaQ3meZo8nrK3uSee', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImFkbWluIjoxLCJpYXQiOjE2Mzg5NTQ5NDgsImV4cCI6MTYzOTA0MTM0OH0.6ML730j9UX1451vEu8JsGKjvkVNDh6pFTZ1TBV76HlM', '2000-10-20', 1, 'tai@gmail.com', '0123456789', '', '', 1, '2021-12-07 15:37:27', '2021-12-08 17:09:29', 0),
+(18, 'Thái Văn Nam', 'nam', '$2b$10$yGb6JgSGxAS5zDxRrdp/tujSEHmuu0d0zYEkiNVsP30dZae1HIzi.', '', '2000-12-09', 1, 'nam@gmail.com', '0123456789', '', '', 1, '2021-12-08 17:10:14', '2021-12-08 17:10:14', 0),
+(19, 'Lê Nguyễn Hoàng Anh', 'hoanganh', '$2b$10$xCL5Jy6xRcYDxJoyLkOcJODxedHgsPm01kW8GlF/mUuhTQkByE4sO', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImFkbWluIjowLCJpYXQiOjE2Mzk5MzI4ODIsImV4cCI6MTY0MDAxOTI4Mn0.46achqpGKnEU69otv-K-aOUIKL5KZX1ImBNEqwz3swE', '2000-01-01', 0, 'hoanganh@gmail.com', '0123456789', 'users/xrucgmehttfidkewd9d4', 'https://res.cloudinary.com/order-food/image/upload/v1640015062/users/xrucgmehttfidkewd9d4.jpg', 0, '2021-12-10 15:43:01', '2021-12-20 22:44:52', 0),
+(30, 'smith rowe', 'esr', '$2b$10$FcK7KwuYsO7ih/sFIC3GreRNXPhpzb6tyha3dZIdu0YHEOabaO7cK', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzAsImFkbWluIjoxLCJpYXQiOjE2NDAwMTQ5MTQsImV4cCI6MTY0MDEwMTMxNH0.Voaikrp_wOs2o1UUx0NgH5Z6KJYh4tvutZd0Z-hATl0', '2000-06-06', 0, 'esr@gmail.com', '0123456789', 'users/atkci7c75monzqdutpnl', 'https://res.cloudinary.com/order-food/image/upload/v1640014812/users/atkci7c75monzqdutpnl.png', 1, '2021-12-20 22:41:15', '2021-12-20 22:41:15', 0),
+(31, 'Nguyễn Bảo Ngọc', 'katie.nguyen', '$2b$10$I0kKW1Nd8yNJQBJLweEg3OF27x01cPlst1RSJGHKogDB9g.xn1NYy', '', '2000-01-01', 0, 'katie@gmail.com', '0123456789', 'users/jauvqlgagdo2ipemcvjg', 'https://res.cloudinary.com/order-food/image/upload/v1640015156/users/jauvqlgagdo2ipemcvjg.jpg', 0, '2021-12-20 22:46:41', '2021-12-20 22:46:41', 0),
+(32, 'Phạm Thị Tuyết Hạnh', 'hanh', '$2b$10$sxF1trJNZ3M1CGelKO0Uq.DmTsTAxBQsTLWNWZlAlbJeOQjHx5VnC', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzIsImFkbWluIjowLCJpYXQiOjE2NDAwMTUzNjksImV4cCI6MTY0MDEwMTc2OX0.JjyU0-JQCfsEBIfaxHkrz7EnDAAVTAy1ITSwKag1S_o', '2000-12-31', 0, 'hanh@gmail.com', '0123456789', 'users/i2chwfnhn5gxzuqd1tke', 'https://res.cloudinary.com/order-food/image/upload/v1640012266/users/i2chwfnhn5gxzuqd1tke.jpg', 0, '2021-12-20 22:48:38', '2021-12-20 22:51:03', 0);
 
 -- --------------------------------------------------------
 
@@ -357,7 +376,7 @@ ALTER TABLE `app_info`
 -- AUTO_INCREMENT for table `chitiethoadon`
 --
 ALTER TABLE `chitiethoadon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `danhgia`
@@ -381,7 +400,7 @@ ALTER TABLE `danhsach_diachi`
 -- AUTO_INCREMENT for table `giohang`
 --
 ALTER TABLE `giohang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `hinhthucthanhtoan`
@@ -393,13 +412,13 @@ ALTER TABLE `hinhthucthanhtoan`
 -- AUTO_INCREMENT for table `hoadon`
 --
 ALTER TABLE `hoadon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `nguoidung`
 --
 ALTER TABLE `nguoidung`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `sanpham`

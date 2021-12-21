@@ -51,17 +51,8 @@ module.exports = {
 
   //đăng ký tài khoản với role customer
   registerAsCustomer(req, res) {
-    const {
-      email,
-      username,
-      hoten,
-      password,
-      ngaysinh,
-      gioitinh,
-      dienthoai,
-      public_id,
-      url,
-    } = req.body;
+    const { email, username, hoten, password, ngaysinh, gioitinh, dienthoai } =
+      req.body;
     if (password.length < 6)
       return res.status(400).json({
         status: 400,
@@ -87,8 +78,6 @@ module.exports = {
       ngaysinh: new Date(ngaysinh),
       gioitinh: gioitinh,
       dienthoai: dienthoai,
-      public_id: public_id,
-      url: url,
       admin: 0,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -284,6 +273,17 @@ module.exports = {
         status: 400,
         message: "Password is at least 6 characters long.",
       });
+
+    let reg = new RegExp(
+      "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$"
+    ).test(password);
+    if (!reg) {
+      return res.json({
+        status: 400,
+        message:
+          "Bao gồm 8 ký tự ,chữ cái viết hoa, chữ cái viết thường và một số và một ký tự đặc biệt.",
+      });
+    }
 
     if (confirmPassword !== password) {
       return res.status(400).json({

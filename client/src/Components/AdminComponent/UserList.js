@@ -26,15 +26,37 @@ const UserList = () => {
     },
     { field: "email", headerName: "Email", width: 200 },
     {
-      field: "status",
-      headerName: "Status",
+      field: "sex",
+      headerName: "Sex",
       width: 120,
+      renderCell: (params) => {
+        return <div className="userListUser">{params.row.sex}</div>;
+      },
     },
     {
       field: "transaction",
-      headerName: "Transaction Volume",
+      headerName: "Birth Day",
       width: 160,
     },
+    {
+      field: "address",
+      headerName: "Address",
+      width: 160,
+      renderCell: (params) => {
+        console.log(params);
+        return <div className="userListUser">{params.row.address}</div>;
+      },
+    },
+    {
+      field: "phone",
+      headerName: "Phone",
+      width: 160,
+      renderCell: (params) => {
+        console.log(params);
+        return <div className="userListUser">{params.row.phone}</div>;
+      },
+    },
+
     {
       field: "action",
       headerName: "Action",

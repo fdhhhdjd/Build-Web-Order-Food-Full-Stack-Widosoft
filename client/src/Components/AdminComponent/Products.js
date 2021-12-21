@@ -12,6 +12,8 @@ const Products = () => {
   };
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
+    { field: "category", headerName: "Category", width: 160 },
+
     {
       field: "product",
       headerName: "Product",
@@ -25,11 +27,11 @@ const Products = () => {
         );
       },
     },
-    { field: "stock", headerName: "Stock", width: 200 },
+    { field: "stock", headerName: "Stock", width: 250 },
     {
       field: "status",
-      headerName: "Status",
-      width: 120,
+      headerName: "Size",
+      width: 110,
     },
     {
       field: "price",

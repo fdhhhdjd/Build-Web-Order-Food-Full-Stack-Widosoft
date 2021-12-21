@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import FoodReducer from "./Reducer";
+import AuthReducer from "./Reducer/ReducerAdmin";
 const rootReducer = combineReducers({
-  data: FoodReducer,
+  authAdmin: AuthReducer,
 });
 export default rootReducer;

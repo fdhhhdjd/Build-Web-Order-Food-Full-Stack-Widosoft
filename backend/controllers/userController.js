@@ -24,7 +24,7 @@ module.exports = {
       "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$"
     ).test(password);
     if (!reg) {
-      return res.status(400).json({
+      return res.json({
         status: 400,
         message:
           "Password must contain at least one number and one uppercase and lowercase and special letter, and at least 6 or more characters ",

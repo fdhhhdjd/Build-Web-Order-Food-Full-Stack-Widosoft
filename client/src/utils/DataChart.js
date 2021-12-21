@@ -57,6 +57,9 @@ export const userRows = [
     email: "jon@gmail.com",
     status: "active",
     transaction: "$120.00",
+    sex: "nam",
+    address: "To 9",
+    phone: "0798805741",
   },
   {
     id: 2,
@@ -66,6 +69,9 @@ export const userRows = [
     email: "jon@gmail.com",
     status: "active",
     transaction: "$120.00",
+    sex: "nam",
+    address: "To 9",
+    phone: "0798805741",
   },
   {
     id: 3,
@@ -75,6 +81,9 @@ export const userRows = [
     email: "jon@gmail.com",
     status: "active",
     transaction: "$120.00",
+    sex: "nam",
+    address: "To 9",
+    phone: "0798805741",
   },
   {
     id: 4,
@@ -84,6 +93,9 @@ export const userRows = [
     email: "jon@gmail.com",
     status: "active",
     transaction: "$120.00",
+    sex: "nam",
+    address: "To 9",
+    phone: "0798805741",
   },
   {
     id: 5,
@@ -93,6 +105,9 @@ export const userRows = [
     email: "jon@gmail.com",
     status: "active",
     transaction: "$120.00",
+    sex: "nam",
+    address: "To 9",
+    phone: "0798805741",
   },
   {
     id: 6,
@@ -102,6 +117,9 @@ export const userRows = [
     email: "jon@gmail.com",
     status: "active",
     transaction: "$120.00",
+    sex: "nam",
+    address: "To 9",
+    phone: "0798805741",
   },
   {
     id: 7,
@@ -111,6 +129,9 @@ export const userRows = [
     email: "jon@gmail.com",
     status: "active",
     transaction: "$120.00",
+    sex: "nam",
+    address: "To 9",
+    phone: "0798805741",
   },
   {
     id: 8,
@@ -120,6 +141,9 @@ export const userRows = [
     email: "jon@gmail.com",
     status: "active",
     transaction: "$120.00",
+    sex: "nam",
+    address: "To 9",
+    phone: "0798805741",
   },
   {
     id: 9,
@@ -129,6 +153,9 @@ export const userRows = [
     email: "jon@gmail.com",
     status: "active",
     transaction: "$120.00",
+    sex: "nam",
+    address: "To 9",
+    phone: "0798805741",
   },
   {
     id: 10,
@@ -138,5 +165,9 @@ export const userRows = [
     email: "jon@gmail.com",
     status: "active",
     transaction: "$120.00",
+    phone: "$120.00",
+    sex: "nam",
+    address: "To 9",
+    phone: "0798805741",
   },
 ];

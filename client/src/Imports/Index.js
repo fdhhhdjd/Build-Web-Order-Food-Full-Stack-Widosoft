@@ -51,3 +51,5 @@ export { default as ProductId } from "../Components/AdminComponent/ProductId";
 export { default as ProductIds } from "../Components/AdminComponent/ProductIds";
 export { default as NewProducts } from "../Components/AdminComponent/NewProducts";
 export { default as NewProduct } from "../Components/AdminComponent/NewProduct";
+export { default as ManagerAmin } from "../Components/AdminComponent/ManagerAmin";
+export { default as ManagerAdmins } from "../Components/AdminComponent/ManagerAdmins";

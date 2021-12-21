@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { UserStyle } from "../../Styles/StylePages/Admin/UserStyle";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import {
   CalendarToday,
   LocationSearching,
@@ -10,6 +12,17 @@ import {
   Publish,
 } from "@material-ui/icons";
 const User = () => {
+  const [detailUser, setDetailUser] = useState([]);
+  const { id } = useParams();
+  const { allUser } = useSelector((state) => state.authAdmin);
+  const allUsers = allUser.data;
+  useEffect(() => {
+    if (id) {
+      setDetailUser(allUsers);
+    }
+    console.log(detailUser);
+  }, [id, allUser]);
+
   return (
     <>
       <UserStyle />

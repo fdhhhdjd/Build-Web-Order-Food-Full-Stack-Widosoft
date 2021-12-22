@@ -1,12 +1,10 @@
 import React, { createContext, useState, useEffect } from "react";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import {
   InfoAdminInitiate,
   RefreshTokenInitiate,
 } from "../redux/Action/ActionAdmin";
-import AdminApi from "./AdminApi";
-import ProductApi from "./ProductApi";
+import { ProductApi, AdminApi } from "../Imports/Index";
 export const GlobalState = createContext();
 export const DataProvider = ({ children }) => {
   const [callback, setCallback] = useState(false);

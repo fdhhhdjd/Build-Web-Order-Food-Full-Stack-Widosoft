@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Loading from "../Loading/Loading";
 const LoadingToRedirect = () => {
   const [count, setCount] = useState(2);
@@ -10,6 +11,7 @@ const LoadingToRedirect = () => {
     }, 1000);
 
     count === 0 && navigate("/login");
+    count === 0 && toast.warning("Please Login when you to the website 😵");
     return () => clearInterval(interval);
   }, [count, navigate]);
   return <Loading />;

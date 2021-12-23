@@ -156,16 +156,60 @@ export const UserStyle = createGlobalStyle`
   }
 
 
- 
+  .newProduct {
+    flex: 4;
+  }
+  
+  .addProductForm {
+    margin-top: 10px;
+  }
+  
+  .addProductItem {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
+  .addProductItem > label {
+    color: gray;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .addProductItem > input {
+    padding: 10px;
+  }
+  
+  .addProductItem > select {
+    padding: 10px;
+  }
+  
+  .addProductButton {
+    margin-top: 10px;
+    padding: 7px 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: darkblue;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .create_product{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
 .upload{
     max-width: 250px;
-    height: 350px;
+    height: 400px;
     width: 100%;
     border: 1px solid #ddd;
     padding: 15px;
     margin: 20px;
     position: relative;
-    
 }
 #file_up{
     position: relative;
@@ -214,5 +258,28 @@ export const UserStyle = createGlobalStyle`
     color: crimson;
 }
 
-
+.create_product form{
+    max-width: 500px;
+    min-width: 290px;
+    width: 100%;
+    margin: 15px 30px;
+}
+.create_product form .row{
+    width: 100%;
+    margin: 15px 0;
+}
+.create_product form input, textarea{
+    width: 100%;
+    min-height: 40px;
+    padding: 0 5px;
+}
+.create_product form button{
+    width: 200px;
+    height: 40px;
+    background: #555;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
 `;

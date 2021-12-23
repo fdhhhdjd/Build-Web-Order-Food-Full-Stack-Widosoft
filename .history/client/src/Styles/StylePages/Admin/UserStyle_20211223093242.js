@@ -165,7 +165,6 @@ export const UserStyle = createGlobalStyle`
     padding: 15px;
     margin: 20px;
     position: relative;
-    
 }
 #file_up{
     position: relative;

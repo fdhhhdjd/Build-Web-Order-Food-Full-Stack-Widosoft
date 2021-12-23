@@ -159,13 +159,12 @@ export const UserStyle = createGlobalStyle`
  
 .upload{
     max-width: 250px;
-    height: 350px;
+    height: 400px;
     width: 100%;
     border: 1px solid #ddd;
     padding: 15px;
     margin: 20px;
     position: relative;
-    
 }
 #file_up{
     position: relative;

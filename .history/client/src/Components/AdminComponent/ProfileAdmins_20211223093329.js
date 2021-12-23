@@ -93,24 +93,6 @@ const ProfileAdmins = () => {
       toast.error(error.response.data.msg);
     }
   };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.patch(
-        `/admin/users/${user.id}`,
-        { ...user, public_id: images.public_id, url: images.url },
-        {
-          headers: {
-            Authorization: `Bearer ${token.accessToken}`,
-          },
-        }
-      );
-
-      setCallback(!callback);
-    } catch (error) {
-      alert(error.response.data.msg);
-    }
-  };
   const handleDestroy = async () => {
     try {
       setLoading(true);
@@ -189,7 +171,7 @@ const ProfileAdmins = () => {
           </div>
           <div className="userUpdate">
             <span className="userUpdateTitle">Edit Admin</span>
-            <form className="userUpdateForm" onSubmit={handleSubmit}>
+            <form className="userUpdateForm">
               <div className="userUpdateLeft">
                 <div className="userUpdateItem">
                   <label>Username</label>
@@ -275,6 +257,35 @@ const ProfileAdmins = () => {
               </div>
               <div className="userUpdateRight">
                 <div className="userUpdateUpload">
+                  {/* {loading ? (
+                    <div id="file_img">
+                      <LoadingImage />
+                    </div>
+                  ) : (
+                    <img
+                      className="userUpdateImg"
+                      style={styleUpload}
+                      src={images ? images.url : ""}
+                      alt=""
+                    />
+                  )}
+
+                  <label htmlFor="file">
+                    {images.url ? (
+                      <CloseIcon
+                        className="userUpdateIcon"
+                        onClick={handleDestroy}
+                      />
+                    ) : (
+                      <Publish className="userUpdateIcon" />
+                    )}
+                  </label>
+                  <input
+                    type="file"
+                    id="file"
+                    style={{ display: "none" }}
+                    onChange={handleUpload}
+                  /> */}
                   <div className="upload">
                     <input
                       type="file"

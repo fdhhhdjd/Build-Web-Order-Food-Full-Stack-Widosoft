@@ -174,7 +174,7 @@ export const UserStyle = createGlobalStyle`
     outline: none;
 }
 #file_up::before{
-    content: "+";
+    content: "🥰";
     position: absolute;
     width: 100%;
     height: 100%;

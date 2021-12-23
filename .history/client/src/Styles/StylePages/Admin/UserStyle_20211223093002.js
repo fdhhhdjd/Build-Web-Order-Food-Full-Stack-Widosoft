@@ -159,13 +159,12 @@ export const UserStyle = createGlobalStyle`
  
 .upload{
     max-width: 250px;
-    height: 350px;
+    height: 400px;
     width: 100%;
     border: 1px solid #ddd;
     padding: 15px;
-    margin: 20px;
+
     position: relative;
-    
 }
 #file_up{
     position: relative;
@@ -214,5 +213,28 @@ export const UserStyle = createGlobalStyle`
     color: crimson;
 }
 
-
+.create_product form{
+    max-width: 500px;
+    min-width: 290px;
+    width: 100%;
+    margin: 15px 30px;
+}
+.create_product form .row{
+    width: 100%;
+    margin: 15px 0;
+}
+.create_product form input, textarea{
+    width: 100%;
+    min-height: 40px;
+    padding: 0 5px;
+}
+.create_product form button{
+    width: 200px;
+    height: 40px;
+    background: #555;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
 `;

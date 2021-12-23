@@ -93,42 +93,6 @@ const ProfileAdmins = () => {
       toast.error(error.response.data.msg);
     }
   };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.patch(
-        `/admin/users/${user.id}`,
-        { ...user, public_id: images.public_id, url: images.url },
-        {
-          headers: {
-            Authorization: `Bearer ${token.accessToken}`,
-          },
-        }
-      );
-
-      setCallback(!callback);
-    } catch (error) {
-      alert(error.response.data.msg);
-    }
-  };
-  const handleDestroy = async () => {
-    try {
-      setLoading(true);
-      await axios.post(
-        "/cloud/destroy/admin",
-        { public_id: images.public_id },
-        {
-          headers: {
-            Authorization: `Bearer ${token.accessToken}`,
-          },
-        }
-      );
-      setLoading(false);
-      setImages(false);
-    } catch (err) {
-      alert(err.response.data.msg);
-    }
-  };
   const styleUpload = {
     display: images ? "block" : "none",
   };
@@ -189,7 +153,7 @@ const ProfileAdmins = () => {
           </div>
           <div className="userUpdate">
             <span className="userUpdateTitle">Edit Admin</span>
-            <form className="userUpdateForm" onSubmit={handleSubmit}>
+            <form className="userUpdateForm">
               <div className="userUpdateLeft">
                 <div className="userUpdateItem">
                   <label>Username</label>
@@ -275,24 +239,32 @@ const ProfileAdmins = () => {
               </div>
               <div className="userUpdateRight">
                 <div className="userUpdateUpload">
-                  <div className="upload">
-                    <input
-                      type="file"
-                      name="file"
-                      id="file_up"
-                      onChange={handleUpload}
+                  {loading ? (
+                    <div id="file_img">
+                      <LoadingImage />
+                    </div>
+                  ) : (
+                    <img
+                      className="userUpdateImg"
+                      style={styleUpload}
+                      src={images ? images.url : ""}
+                      alt=""
                     />
-                    {loading ? (
-                      <div id="file_img">
-                        <LoadingImage />
-                      </div>
+                  )}
+
+                  <label htmlFor="file">
+                    {images.url ? (
+                      <CloseIcon className="userUpdateIcon" />
                     ) : (
-                      <div id="file_img" style={styleUpload}>
-                        <img src={images ? images.url : ""} alt="" />
-                        <span onClick={handleDestroy}>X</span>
-                      </div>
+                      <Publish className="userUpdateIcon" />
                     )}
-                  </div>
+                  </label>
+                  <input
+                    type="file"
+                    id="file"
+                    style={{ display: "none" }}
+                    onChange={handleUpload}
+                  />
                 </div>
                 <button className="userUpdateButton">Update</button>
               </div>

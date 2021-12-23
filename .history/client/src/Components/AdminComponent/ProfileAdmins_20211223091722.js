@@ -11,14 +11,10 @@ import {
   Publish,
 } from "@material-ui/icons";
 import WcIcon from "@material-ui/icons/Wc";
-import CloseIcon from "@material-ui/icons/Close";
 import moment from "moment";
 import "moment/locale/vi";
 import { GlobalState } from "../../Contexts/GlobalState";
 import LoadingImage from "../Loading/LoadingImage";
-import swal from "sweetalert";
-import axios from "axios";
-import { toast } from "react-toastify";
 const initialState = {
   id: "",
   hoten: "",
@@ -31,16 +27,14 @@ const initialState = {
   admin: "",
 };
 const ProfileAdmins = () => {
-  const { InfoAdmin, allUsers, token } = useSelector(
-    (state) => state.authAdmin
-  );
+  const { InfoAdmin, allUsers ,token } } = useSelector((state) => state.authAdmin);
   const state = useContext(GlobalState);
   const [images, setImages] = useState(false);
   const [onEdit, setOnEdit] = useState(false);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(initialState);
   const [callback, setCallback] = state.callback;
-
+  
   const img =
     "https://png.pngtree.com/png-clipart/20190924/original/pngtree-businessman-user-avatar-free-vector-png-image_4827807.jpg";
   useEffect(() => {
@@ -92,45 +86,6 @@ const ProfileAdmins = () => {
     } catch (error) {
       toast.error(error.response.data.msg);
     }
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.patch(
-        `/admin/users/${user.id}`,
-        { ...user, public_id: images.public_id, url: images.url },
-        {
-          headers: {
-            Authorization: `Bearer ${token.accessToken}`,
-          },
-        }
-      );
-
-      setCallback(!callback);
-    } catch (error) {
-      alert(error.response.data.msg);
-    }
-  };
-  const handleDestroy = async () => {
-    try {
-      setLoading(true);
-      await axios.post(
-        "/cloud/destroy/admin",
-        { public_id: images.public_id },
-        {
-          headers: {
-            Authorization: `Bearer ${token.accessToken}`,
-          },
-        }
-      );
-      setLoading(false);
-      setImages(false);
-    } catch (err) {
-      alert(err.response.data.msg);
-    }
-  };
-  const styleUpload = {
-    display: images ? "block" : "none",
   };
   return (
     <>
@@ -189,7 +144,7 @@ const ProfileAdmins = () => {
           </div>
           <div className="userUpdate">
             <span className="userUpdateTitle">Edit Admin</span>
-            <form className="userUpdateForm" onSubmit={handleSubmit}>
+            <form className="userUpdateForm">
               <div className="userUpdateLeft">
                 <div className="userUpdateItem">
                   <label>Username</label>
@@ -275,24 +230,22 @@ const ProfileAdmins = () => {
               </div>
               <div className="userUpdateRight">
                 <div className="userUpdateUpload">
-                  <div className="upload">
-                    <input
-                      type="file"
-                      name="file"
-                      id="file_up"
-                      onChange={handleUpload}
+                  {loading ? (
+                    <div id="file_img">
+                      <LoadingImage />
+                    </div>
+                  ) : (
+                    <img
+                      className="userUpdateImg"
+                      src={images ? images.url : ""}
+                      alt=""
                     />
-                    {loading ? (
-                      <div id="file_img">
-                        <LoadingImage />
-                      </div>
-                    ) : (
-                      <div id="file_img" style={styleUpload}>
-                        <img src={images ? images.url : ""} alt="" />
-                        <span onClick={handleDestroy}>X</span>
-                      </div>
-                    )}
-                  </div>
+                  )}
+
+                  <label htmlFor="file">
+                    <Publish className="userUpdateIcon" />
+                  </label>
+                  <input type="file" id="file" style={{ display: "none" }} />
                 </div>
                 <button className="userUpdateButton">Update</button>
               </div>

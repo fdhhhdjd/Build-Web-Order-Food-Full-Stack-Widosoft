@@ -178,7 +178,7 @@ export const UserStyle = createGlobalStyle`
     position: absolute;
     width: 100%;
     height: 100%;
-    top:0;
+    top:-20;
     left: 0;
     background: white;
     color: rgb(250, 200, 107);

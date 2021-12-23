@@ -107,6 +107,7 @@ const ProfileAdmins = () => {
       );
 
       setCallback(!callback);
+      navigate("/users");
     } catch (error) {
       alert(error.response.data.msg);
     }

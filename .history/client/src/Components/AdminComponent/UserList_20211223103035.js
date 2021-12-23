@@ -4,20 +4,18 @@ import { AiFillDelete } from "../../Imports/Icons";
 import { DataGrid } from "@material-ui/data-grid";
 import { Link } from "react-router-dom";
 import { UserLists } from "../../Styles/StylePages/Admin/UserLists";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import moment from "moment";
 import "moment/locale/vi";
 import { GlobalState } from "../../Contexts/GlobalState";
 import axios from "axios";
 import swal from "sweetalert";
 import { toast } from "react-toastify";
-
 const UserList = () => {
   const state = useContext(GlobalState);
   const { token } = useSelector((state) => state.authAdmin);
   const [callback, setCallback] = state.callback;
   const [loading, setLoading] = useState(false);
-
   const handleDelete = async (id) => {
     try {
       if (window.confirm("Are you sure you want to delete 🥲!!")) {
@@ -27,7 +25,6 @@ const UserList = () => {
         });
 
         await deleteProduct;
-
         setCallback(!callback);
         swal("delete product successfully 🤩", {
           icon: "success",

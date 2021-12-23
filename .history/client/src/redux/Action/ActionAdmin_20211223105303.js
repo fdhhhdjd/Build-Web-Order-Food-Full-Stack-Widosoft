@@ -77,17 +77,19 @@ export const ChangePasswordAdminFail = (error) => ({
 });
 
 //? GetAll User
-export const GetAllUserStart = () => ({
-  type: types.GET_ALL_USER_START,
+export const DeleteUserAdminStart = () => ({
+  type: types.DELETE_ALL_USER_ADMIN_START,
 });
-export const GetAllUserSuccess = (token) => ({
-  type: types.GET_ALL_USER_SUCCESS,
-  payload: token,
+export const DeleteUserAdminSuccess = (id) => ({
+  type: types.DELETE_ALL_USER_ADMIN_SUCCESS,
+  payload: id,
 });
-export const GetAllUserFail = (error) => ({
-  type: types.GET_ALL_USER_FAIL,
+export const DeleteUserAdminFail = (error) => ({
+  type: types.DELETE_ALL_USER_ADMIN_FAIL,
   payload: error,
 });
+//? Delete user admin
+
 //!Register
 export const RegisterInitiate = (
   email,
@@ -218,6 +220,22 @@ export const GetAllUserInitiate = (token) => {
     await axios
       .get("/admin/users", {
         headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((user) => {
+        dispatch(GetAllUserSuccess(user.data));
+      })
+      .catch((error) => {
+        dispatch(GetAllUserFail(error.data));
+      });
+  };
+};
+//! Delete All User admin
+export const DeleteUserAdminInitiate = (token, id) => {
+  return async function (dispatch) {
+    dispatch(GetAllUserStart());
+    await axios
+      .delete(`/product/delete/${id}`, {
+        headers: { Authorization: `Bearer ${token.accessToken}` },
       })
       .then((user) => {
         dispatch(GetAllUserSuccess(user.data));

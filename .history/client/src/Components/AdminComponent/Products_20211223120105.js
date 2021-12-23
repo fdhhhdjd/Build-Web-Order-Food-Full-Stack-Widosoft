@@ -10,11 +10,11 @@ import swal from "sweetalert";
 import { toast } from "react-toastify";
 import { GlobalState } from "../../Contexts/GlobalState";
 const Products = () => {
-  const { product } = useSelector((state) => state.products);
-  const { token } = useSelector((state) => state.authAdmin);
+  const { product, token } = useSelector((state) => state.products);
   const state = useContext(GlobalState);
   const [callback, setCallback] = state.callback;
   const [loading, setLoading] = useState(false);
+  console.log(token.accessToken, "aaaaa");
   const handleDelete = async (id) => {
     try {
       if (window.confirm("Are you sure you want to delete 🥲!!")) {

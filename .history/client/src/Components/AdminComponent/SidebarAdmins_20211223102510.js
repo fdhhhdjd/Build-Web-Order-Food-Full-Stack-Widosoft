@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import { SidebarAdmin } from "../../Styles/StylePages/Admin/SidebarAdmin";
 import {
   MdLineStyle,
@@ -16,6 +16,7 @@ import {
   AiOutlineLogout,
   MdCreate,
 } from "../../Imports/Icons";
+
 import { LogoutInitiate } from "../../redux/Action/ActionAdmin";
 import { useDispatch } from "react-redux";
 const SidebarAdmins = () => {
@@ -89,9 +90,9 @@ const SidebarAdmins = () => {
                 <Link to="/products" className="link">
                   <li
                     className={` sidebarListItem  ${
-                      activeTab === "Products" ? "active" : ""
+                      activeTab === "Product" ? "active" : ""
                     }`}
-                    onClick={() => setActiveTab("Products")}
+                    onClick={() => setActiveTab("Product")}
                   >
                     <MdStorefront className="sidebarIcon" />
                     Products

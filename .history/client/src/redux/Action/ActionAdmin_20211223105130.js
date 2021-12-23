@@ -77,17 +77,19 @@ export const ChangePasswordAdminFail = (error) => ({
 });
 
 //? GetAll User
-export const GetAllUserStart = () => ({
-  type: types.GET_ALL_USER_START,
+export const DeleteUserAdminStart = () => ({
+  type: types.DELETE_ALL_USER_ADMIN_START,
 });
-export const GetAllUserSuccess = (token) => ({
-  type: types.GET_ALL_USER_SUCCESS,
+export const DeleteUserAdminSuccess = (token) => ({
+  type: types.DELETE_ALL_USER_ADMIN_SUCCESS,
   payload: token,
 });
-export const GetAllUserFail = (error) => ({
-  type: types.GET_ALL_USER_FAIL,
+export const DeleteUserAdminFail = (error) => ({
+  type: types.DELETE_ALL_USER_ADMIN_FAIL,
   payload: error,
 });
+//? Delete user admin
+
 //!Register
 export const RegisterInitiate = (
   email,

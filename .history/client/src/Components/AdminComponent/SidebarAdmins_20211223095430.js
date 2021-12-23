@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React from "react";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import { SidebarAdmin } from "../../Styles/StylePages/Admin/SidebarAdmin";
 import {
   MdLineStyle,
@@ -16,26 +16,14 @@ import {
   AiOutlineLogout,
   MdCreate,
 } from "../../Imports/Icons";
+
 import { LogoutInitiate } from "../../redux/Action/ActionAdmin";
 import { useDispatch } from "react-redux";
 const SidebarAdmins = () => {
-  const [activeTab, setActiveTab] = useState("Home");
   const dispatch = useDispatch();
-  const location = useLocation();
   const handleLogout = () => {
     dispatch(LogoutInitiate());
   };
-  useEffect(() => {
-    if (location.pathname === "/admin") {
-      setActiveTab("Home");
-    } else if (location.pathname === "/profileAdmin") {
-      setActiveTab("Profile");
-    } else if (location.pathname === "/users") {
-      setActiveTab("Users");
-    } else if (location.pathname === "/products") {
-      setActiveTab("Products");
-    }
-  }, [location]);
   return (
     <>
       <SidebarAdmin>
@@ -45,23 +33,13 @@ const SidebarAdmins = () => {
               <h3 className="sidebarTitle">Dashboard</h3>
               <ul className="sidebarList">
                 <Link to="/admin" className="link">
-                  <li
-                    className={` sidebarListItem  ${
-                      activeTab === "Home" ? "active" : ""
-                    }`}
-                    onClick={() => setActiveTab("Home")}
-                  >
+                  <li className="sidebarListItem active">
                     <MdLineStyle className="sidebarIcon" />
                     Home
                   </li>
                 </Link>
                 <Link to="/profileAdmin" className="link">
-                  <li
-                    className={` sidebarListItem  ${
-                      activeTab === "Profile" ? "active" : ""
-                    }`}
-                    onClick={() => setActiveTab("Profile")}
-                  >
+                  <li className="sidebarListItem">
                     <MdTimeline className="sidebarIcon" />
                     Profile
                   </li>
@@ -76,23 +54,13 @@ const SidebarAdmins = () => {
               <h3 className="sidebarTitle">Quick Product</h3>
               <ul className="sidebarList">
                 <Link to="/users" className="link">
-                  <li
-                    className={` sidebarListItem  ${
-                      activeTab === "Users" ? "active" : ""
-                    }`}
-                    onClick={() => setActiveTab("Users")}
-                  >
+                  <li className="sidebarListItem">
                     <MdPermIdentity className="sidebarIcon" />
                     Users
                   </li>
                 </Link>
                 <Link to="/products" className="link">
-                  <li
-                    className={` sidebarListItem  ${
-                      activeTab === "Products" ? "active" : ""
-                    }`}
-                    onClick={() => setActiveTab("Products")}
-                  >
+                  <li className="sidebarListItem">
                     <MdStorefront className="sidebarIcon" />
                     Products
                   </li>

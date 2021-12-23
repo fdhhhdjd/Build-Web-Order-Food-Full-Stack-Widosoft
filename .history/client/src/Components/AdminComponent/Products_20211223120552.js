@@ -31,7 +31,7 @@ const Products = () => {
         setLoading(false);
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
   };
   const columns = [

@@ -11,33 +11,32 @@ import { GlobalState } from "../../Contexts/GlobalState";
 import axios from "axios";
 import swal from "sweetalert";
 import { toast } from "react-toastify";
-
+import { DeleteUserAdminInitiate } from "../../redux/Action/ActionAdmin";
 const UserList = () => {
   const state = useContext(GlobalState);
   const { token } = useSelector((state) => state.authAdmin);
   const [callback, setCallback] = state.callback;
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  // const handleDelete = async (id) => {
+  //   try {
+  //     if (window.confirm("Are you sure you want to delete 🥲!!")) {
+  //       setLoading(true);
+  //       const deleteProduct = axios.delete(`/admin/users/delete/${id}`, {
+  //         headers: { Authorization: `Bearer ${token.accessToken}` },
+  //       });
 
-  const handleDelete = async (id) => {
-    try {
-      if (window.confirm("Are you sure you want to delete 🥲!!")) {
-        setLoading(true);
-        const deleteProduct = axios.delete(`/admin/users/delete/${id}`, {
-          headers: { Authorization: `Bearer ${token.accessToken}` },
-        });
-
-        await deleteProduct;
-
-        setCallback(!callback);
-        swal("delete product successfully 🤩", {
-          icon: "success",
-        });
-        setLoading(false);
-      }
-    } catch (err) {
-      toast.error(err.response.data.msg);
-    }
-  };
+  //       await deleteProduct;
+  //       setCallback(!callback);
+  //       swal("delete product successfully 🤩", {
+  //         icon: "success",
+  //       });
+  //       setLoading(false);
+  //     }
+  //   } catch (err) {
+  //     toast.error(err.response.data.msg);
+  //   }
+  // };
 
   const { allUsers } = useSelector((state) => state.authAdmin);
   const img =
@@ -153,7 +152,8 @@ const UserList = () => {
             </Link>
             <AiFillDelete
               className="userListDelete"
-              onClick={() => handleDelete(params.row.id)}
+              // onClick={() => handleDelete(params.row.id)}
+              onClick={() => dispatch(DeleteUserAdminInitiate(params.row.id))}
             />
           </>
         );

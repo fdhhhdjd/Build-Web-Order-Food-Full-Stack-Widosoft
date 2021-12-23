@@ -88,6 +88,19 @@ export const GetAllUserFail = (error) => ({
   type: types.GET_ALL_USER_FAIL,
   payload: error,
 });
+//? Delete user admin
+export const DeleteUserAdminStart = () => ({
+  type: types.DELETE_ALL_USER_ADMIN_START,
+});
+export const DeleteUserAdminSuccess = (id) => ({
+  type: types.DELETE_ALL_USER_ADMIN_SUCCESS,
+  payload: id,
+});
+export const DeleteUserAdminFail = (error) => ({
+  type: types.DELETE_ALL_USER_ADMIN_FAIL,
+  payload: error,
+});
+
 //!Register
 export const RegisterInitiate = (
   email,
@@ -225,5 +238,22 @@ export const GetAllUserInitiate = (token) => {
       .catch((error) => {
         dispatch(GetAllUserFail(error.data));
       });
+  };
+};
+//! Delete user admin
+export const DeleteUserAdminInitiate = (id, token) => {
+  return async function (dispatch) {
+    dispatch(DeleteUserAdminStart());
+    await axios
+      .delete(`/admin/users/delete/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((user) => {
+        dispatch(DeleteUserAdminSuccess(user.data));
+      })
+      .catch((error) => {
+        dispatch(DeleteUserAdminFail(error.data));
+      });
+    await deleteProduct;
   };
 };

@@ -10,8 +10,7 @@ import swal from "sweetalert";
 import { toast } from "react-toastify";
 import { GlobalState } from "../../Contexts/GlobalState";
 const Products = () => {
-  const { product } = useSelector((state) => state.products);
-  const { token } = useSelector((state) => state.authAdmin);
+  const { product, token } = useSelector((state) => state.products);
   const state = useContext(GlobalState);
   const [callback, setCallback] = state.callback;
   const [loading, setLoading] = useState(false);
@@ -30,9 +29,7 @@ const Products = () => {
         });
         setLoading(false);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (err) {}
   };
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
@@ -85,7 +82,6 @@ const Products = () => {
       <ProductStyle />
       <div className="productList">
         <DataGrid
-          getRowId={(r) => r.id}
           rows={product}
           disableSelectionOnClick
           columns={columns}

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { productRows } from "../../utils/dummyData";
@@ -10,8 +10,7 @@ import swal from "sweetalert";
 import { toast } from "react-toastify";
 import { GlobalState } from "../../Contexts/GlobalState";
 const Products = () => {
-  const { product } = useSelector((state) => state.products);
-  const { token } = useSelector((state) => state.authAdmin);
+  const { product, token } = useSelector((state) => state.products);
   const state = useContext(GlobalState);
   const [callback, setCallback] = state.callback;
   const [loading, setLoading] = useState(false);
@@ -30,8 +29,8 @@ const Products = () => {
         });
         setLoading(false);
       }
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      toast.error(err.response.data.msg);
     }
   };
   const columns = [
@@ -85,7 +84,6 @@ const Products = () => {
       <ProductStyle />
       <div className="productList">
         <DataGrid
-          getRowId={(r) => r.id}
           rows={product}
           disableSelectionOnClick
           columns={columns}

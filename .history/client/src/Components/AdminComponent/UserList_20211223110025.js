@@ -11,13 +11,13 @@ import { GlobalState } from "../../Contexts/GlobalState";
 import axios from "axios";
 import swal from "sweetalert";
 import { toast } from "react-toastify";
-
+import { DeleteUserAdminInitiate } from "../../redux/Action/ActionAdmin";
 const UserList = () => {
   const state = useContext(GlobalState);
   const { token } = useSelector((state) => state.authAdmin);
   const [callback, setCallback] = state.callback;
   const [loading, setLoading] = useState(false);
-
+  const dispatch = useDispatch();
   const handleDelete = async (id) => {
     try {
       if (window.confirm("Are you sure you want to delete 🥲!!")) {
@@ -27,7 +27,6 @@ const UserList = () => {
         });
 
         await deleteProduct;
-
         setCallback(!callback);
         swal("delete product successfully 🤩", {
           icon: "success",

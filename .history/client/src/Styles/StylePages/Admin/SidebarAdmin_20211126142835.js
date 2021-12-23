@@ -37,7 +37,7 @@ export const SidebarAdmin = styled.div`
 
   .sidebarListItem.active,
   .sidebarListItem:hover {
-    background-color: silver;
+    background-color: rgb(240, 240, 255);
   }
 
   .sidebarIcon {

@@ -1,42 +1,20 @@
-import React, { useState, useContext } from "react";
+import { useState } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { productRows } from "../../utils/dummyData";
 import { Link } from "react-router-dom";
 import { ProductStyle } from "../../Styles/StylePages/ProductsAdminStyle";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import swal from "sweetalert";
-import { toast } from "react-toastify";
-import { GlobalState } from "../../Contexts/GlobalState";
 const Products = () => {
+  const [data, setData] = useState(productRows);
   const { product } = useSelector((state) => state.products);
-  const { token } = useSelector((state) => state.authAdmin);
-  const state = useContext(GlobalState);
-  const [callback, setCallback] = state.callback;
-  const [loading, setLoading] = useState(false);
-  const handleDelete = async (id) => {
-    try {
-      if (window.confirm("Are you sure you want to delete 🥲!!")) {
-        setLoading(true);
-        const deleteProduct = axios.delete(`/product/delete/${id}`, {
-          headers: { Authorization: `Bearer ${token.accessToken}` },
-        });
-
-        await deleteProduct;
-        setCallback(!callback);
-        swal("delete product successfully 🤩", {
-          icon: "success",
-        });
-        setLoading(false);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  const handleDelete = (id) => {
+    setData(data.filter((item) => item.id !== id));
   };
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     { field: "id_dm", headerName: "Category", width: 160 },
+
     {
       field: "product",
       headerName: "Product",
@@ -85,7 +63,6 @@ const Products = () => {
       <ProductStyle />
       <div className="productList">
         <DataGrid
-          getRowId={(r) => r.id}
           rows={product}
           disableSelectionOnClick
           columns={columns}

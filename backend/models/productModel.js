@@ -14,6 +14,7 @@ module.exports = {
         "sanpham.public_id",
         "sanpham.url",
         "sanpham.id_dm",
+        "danhmuc.tendm",
         "sanpham.createdAt",
         "sanpham.updatedAt",
         "sanpham.deleted_fg"

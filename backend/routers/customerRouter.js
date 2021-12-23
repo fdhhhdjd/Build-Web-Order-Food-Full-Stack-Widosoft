@@ -33,4 +33,7 @@ router.patch(
   userController.updateProfile
 );
 
+//quên mật khẩu (khách hàng)
+router.post("/forgotPassword", userController.forgotPasswordCustomer);
+
 module.exports = router;

@@ -1,6 +1,7 @@
 const knex = require("../database/knex_db.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
 
 module.exports = {
   //đăng ký tài khoản
@@ -232,9 +233,19 @@ module.exports = {
     return user;
   },
 
-  //lấy toàn bộ tài khoản (admin)
-  async getAllUsers() {
-    let users = await knex("nguoidung").select("*");
+  //lấy toàn bộ tài khoản admin (admin)
+  async getAllAdminAccount() {
+    let users = await knex("nguoidung").select("*").where({
+      admin: 1,
+    });
+    return users;
+  },
+
+  //lấy toàn bộ tài khoản khách hàng (admin)
+  async getAllCustomerAccount() {
+    let users = await knex("nguoidung").select("*").where({
+      admin: 0,
+    });
     return users;
   },
 
@@ -269,5 +280,121 @@ module.exports = {
   async deleteUser(id) {
     let result = await knex("nguoidung").del().where("id", id);
     return result;
+  },
+
+  //Quên mật khẩu tài khoản admin
+  async forgotPasswordAdmin(email) {
+    //kiểm tra email nhập vào có phải là admin và tồn tại trong db
+    let count = await knex("nguoidung").select("id").where({
+      email: email,
+      admin: 1,
+    });
+    var Count = Object.values(JSON.parse(JSON.stringify(count)));
+    if (Count.length === 1) {
+      //nếu tồn tại email như vậy thì update mật khẩu mới
+      let newPassword = "Taideptrai@1";
+      const salt = bcrypt.genSaltSync();
+      const hashPassword = bcrypt.hashSync(newPassword, salt);
+      let updatePassword = await knex("nguoidung")
+        .update({
+          password: hashPassword,
+        })
+        .where({
+          id: count[0].id,
+        });
+
+      //gửi email thông báo mật khẩu mới
+      var transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: "slthinhtu2@gmail.com",
+          pass: "lhehdoqwrfmgyxzx",
+        },
+      });
+
+      var mailOptions = {
+        from: "slthinhtu2@gmail.com",
+        to: email,
+        subject: "Forgot Password",
+        text: `Your new password is : ${newPassword}`,
+      };
+
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Email sent: " + info.response);
+        }
+      });
+
+      return {
+        status: 200,
+        message: "New password was sent to email, please check your email",
+        data: updatePassword,
+      };
+    } else {
+      return {
+        status: 400,
+        message: "This account does not exist",
+      };
+    }
+  },
+
+  //Quên mật khẩu tài khoản khách hàng
+  async forgotPasswordCustomer(email) {
+    //kiểm tra email nhập vào có phải là customer và tồn tại trong db
+    let count = await knex("nguoidung").select("id").where({
+      email: email,
+      admin: 0,
+    });
+    var Count = Object.values(JSON.parse(JSON.stringify(count)));
+    if (Count.length === 1) {
+      //nếu tồn tại email như vậy thì update mật khẩu mới
+      let newPassword = "Taideptrai@1";
+      const salt = bcrypt.genSaltSync();
+      const hashPassword = bcrypt.hashSync(newPassword, salt);
+      let updatePassword = await knex("nguoidung")
+        .update({
+          password: hashPassword,
+        })
+        .where({
+          id: count[0].id,
+        });
+
+      //gửi email thông báo mật khẩu mới
+      var transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: "slthinhtu2@gmail.com",
+          pass: "lhehdoqwrfmgyxzx",
+        },
+      });
+
+      var mailOptions = {
+        from: "slthinhtu2@gmail.com",
+        to: email,
+        subject: "Forgot Password",
+        text: `Your new password is : ${newPassword}`,
+      };
+
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Email sent: " + info.response);
+        }
+      });
+
+      return {
+        status: 200,
+        message: "New password was sent to email, please check your email",
+        data: updatePassword,
+      };
+    } else {
+      return {
+        status: 400,
+        message: "This account does not exist",
+      };
+    }
   },
 };

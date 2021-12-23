@@ -202,21 +202,41 @@ module.exports = {
       });
   },
 
-  //lấy toàn bộ người dùng với role admin
-  getAllUser(req, res) {
+  //lấy toàn bộ tài khoản admin với role admin
+  getAllAdminAccount(req, res) {
     userModel
-      .getAllUsers()
+      .getAllAdminAccount()
       .then((users) => {
         return res.status(200).json({
           status: 200,
-          message: "Get all users successfully",
+          message: "Get all admin accounts successfully",
           data: users,
         });
       })
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to get all users",
+          message: "Failed to get all admin accounts",
+          data: err,
+        });
+      });
+  },
+
+  //lấy toàn bộ tài khoản khách hàng với role admin
+  getAllCustomerAccount(req, res) {
+    userModel
+      .getAllCustomerAccount()
+      .then((users) => {
+        return res.status(200).json({
+          status: 200,
+          message: "Get all customer accounts successfully",
+          data: users,
+        });
+      })
+      .catch((err) => {
+        return res.status(400).json({
+          status: 400,
+          message: "Failed to get all customer accounts",
           data: err,
         });
       });
@@ -365,6 +385,40 @@ module.exports = {
           status: 400,
           message: `Failed to delete user with id: ${id}`,
           data: error,
+        });
+      });
+  },
+
+  //quên mật khẩu tài khoản admin
+  forgotPasswordAdmin(req, res) {
+    const { email } = req.body;
+    userModel
+      .forgotPasswordAdmin(email)
+      .then((data) => {
+        return res.status(200).json(data);
+      })
+      .catch((err) => {
+        return res.status(400).json({
+          status: 400,
+          message: "Failed to handle forgot password",
+          data: err,
+        });
+      });
+  },
+
+  //quên mật khẩu tài khoản khách hàng
+  forgotPasswordCustomer(req, res) {
+    const { email } = req.body;
+    userModel
+      .forgotPasswordCustomer(email)
+      .then((data) => {
+        return res.status(200).json(data);
+      })
+      .catch((err) => {
+        return res.status(400).json({
+          status: 400,
+          message: "Failed to handle forgot password",
+          data: err,
         });
       });
   },

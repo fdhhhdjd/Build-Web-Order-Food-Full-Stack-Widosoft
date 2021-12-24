@@ -306,19 +306,14 @@ module.exports = {
       //gửi email thông báo mật khẩu mới
       var transporter = nodemailer.createTransport({
         service: "gmail",
-        secure: false, // use SSL
-        port: 25,
         auth: {
-          user: "nguyentientai10@gmail.com",
-          pass: "qbihxtxocrtqmmpi",
-        },
-        tls: {
-          rejectUnauthorized: false,
+          user: "slthinhtu2@gmail.com",
+          pass: "bjvjgrizydrvwhuw",
         },
       });
 
       var mailOptions = {
-        from: "nguyentientai10@gmail.com",
+        from: "slthinhtu2@gmail.com",
         to: email,
         subject: "Forgot Password",
         text: `Your new password is : ${newPassword}`,
@@ -370,13 +365,13 @@ module.exports = {
       var transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: "nguyentientai10@gmail.com",
+          user: "slthinhtu2@gmail.com",
           pass: "bjvjgrizydrvwhuw",
         },
       });
 
       var mailOptions = {
-        from: "nguyentientai10@gmail.com",
+        from: "slthinhtu2@gmail.com",
         to: email,
         subject: "Forgot Password",
         text: `Your new password is : ${newPassword}`,

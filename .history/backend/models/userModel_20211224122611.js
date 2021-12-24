@@ -304,18 +304,18 @@ module.exports = {
         });
 
       //gửi email thông báo mật khẩu mới
-      var transporter = nodemailer.createTransport({
-        service: "gmail",
-        secure: false, // use SSL
-        port: 25,
-        auth: {
-          user: "nguyentientai10@gmail.com",
-          pass: "qbihxtxocrtqmmpi",
-        },
-        tls: {
-          rejectUnauthorized: false,
-        },
-      });
+      var transporter = nodemailer.createTransport(
+        smtpTransport({
+          service: "gmail",
+          auth: {
+            user: "nguyentientai10@gmail.com",
+            pass: "qbihxtxocrtqmmpi",
+          },
+          tls: {
+            rejectUnauthorized: false,
+          },
+        })
+      );
 
       var mailOptions = {
         from: "nguyentientai10@gmail.com",

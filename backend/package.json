@@ -14,7 +14,8 @@
     "express-fileupload": "^1.2.1",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.95.14",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.7.2"
   },
   "scripts": {
     "start": "node server.js",

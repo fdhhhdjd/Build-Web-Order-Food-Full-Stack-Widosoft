@@ -3,8 +3,19 @@ const router = express.Router();
 const userController = require("../controllers/userController.js");
 const checkAuth = require("../middleware/checkAuth.js");
 
-//lấy tất cả thông tin user
-router.get("/users", checkAuth.checkAuthAdmin, userController.getAllUser);
+//lấy tất cả thông tin tài khoản admin
+router.get(
+  "/adminAccount",
+  checkAuth.checkAuthAdmin,
+  userController.getAllAdminAccount
+);
+
+//lấy tất cả thông tin tài khoản admin
+router.get(
+  "/customerAccount",
+  checkAuth.checkAuthAdmin,
+  userController.getAllCustomerAccount
+);
 
 //lấy thông tin tài khoản đang đăng nhập
 router.get("/profile", checkAuth.checkAuthAdmin, userController.getProfile);
@@ -41,5 +52,8 @@ router.delete(
   checkAuth.checkAuthAdmin,
   userController.deleteUser
 );
+
+//quên mật khẩu (Admin)
+router.post("/forgotPassword", userController.forgotPasswordAdmin);
 
 module.exports = router;

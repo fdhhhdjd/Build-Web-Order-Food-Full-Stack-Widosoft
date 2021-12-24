@@ -10,6 +10,7 @@
    - Chỉnh sửa toàn bộ tài khoản : patch --> http://localhost:5000/admin/users/id_nd
    - Đổi mật khẩu tài khoản admin đang đăng nhập : patch --> http://localhost:5000/admin/changePassword
    - Xóa tài khoản : delete --> http://localhost:5000/admin/users/delete/id_nd
+   - quên mật khẩu tài khoản admin : post --> http://localhost:5000/admin/forgotPassword
 
    Category :
 
@@ -67,6 +68,7 @@
    - Xem thông tin tài khoản khách hàng đang đăng nhập : get --> http://localhost:5000/customer/profile
    - Chỉnh sửa thông tin tài khoản khách hàng : patch --> http://localhost:5000/customer/updateProfile
    - Đổi mật khẩu tài khoản khách hàng : patch --> http://localhost:5000/customer/changePassword
+   - quên mật khẩu tài khoản khách hàng : post --> http://localhost:5000/customer/forgotPassword
 
    Cart :
 

@@ -285,16 +285,26 @@ module.exports = {
   //Quên mật khẩu tài khoản admin
   async forgotPasswordAdmin(email) {
     //kiểm tra email nhập vào có phải là admin và tồn tại trong db
-    let count = await knex("nguoidung").select("id").where({
+    let count = await knex("nguoidung").select("id", "hoten").where({
       email: email,
       admin: 1,
     });
     var Count = Object.values(JSON.parse(JSON.stringify(count)));
     if (Count.length === 1) {
       //nếu tồn tại email như vậy thì update mật khẩu mới
-      let newPassword = "Taideptrai@1";
+
+      //mật khẩu random 8 kí tự
+      var randPassword = Array(8)
+        .fill(
+          "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@!#$%^&*()_+=<>?/|"
+        )
+        .map(function (x) {
+          return x[Math.floor(Math.random() * x.length)];
+        })
+        .join("");
+
       const salt = bcrypt.genSaltSync();
-      const hashPassword = bcrypt.hashSync(newPassword, salt);
+      const hashPassword = bcrypt.hashSync(randPassword, salt);
       let updatePassword = await knex("nguoidung")
         .update({
           password: hashPassword,
@@ -321,7 +331,12 @@ module.exports = {
         from: "nguyentientai10@gmail.com",
         to: email,
         subject: "Forgot Password",
-        text: `Your new password is : ${newPassword}`,
+        html:
+          "<h1>Hi " +
+          count[0].hoten +
+          "</h1><p>We have sent you this email in response to your request to reset password</p><p>Here is your new password: " +
+          randPassword +
+          "</p><p>We recommend that you keep this password secure and not share it with anyone. If you feel this password has been compromised, you can change it by going to your profile and clicking on the 'Change Password' link.</p><h5>Pizza Food Customer Service</h5>",
       };
 
       transporter.sendMail(mailOptions, function (error, info) {
@@ -348,16 +363,27 @@ module.exports = {
   //Quên mật khẩu tài khoản khách hàng
   async forgotPasswordCustomer(email) {
     //kiểm tra email nhập vào có phải là customer và tồn tại trong db
-    let count = await knex("nguoidung").select("id").where({
+    let count = await knex("nguoidung").select("id", "hoten").where({
       email: email,
       admin: 0,
     });
     var Count = Object.values(JSON.parse(JSON.stringify(count)));
     if (Count.length === 1) {
+      // return count[0].hoten;
       //nếu tồn tại email như vậy thì update mật khẩu mới
-      let newPassword = "Taideptrai@1";
+
+      //mật khẩu random 8 kí tự
+      var randPassword = Array(8)
+        .fill(
+          "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@!#$%^&*()_+=<>?/|"
+        )
+        .map(function (x) {
+          return x[Math.floor(Math.random() * x.length)];
+        })
+        .join("");
+
       const salt = bcrypt.genSaltSync();
-      const hashPassword = bcrypt.hashSync(newPassword, salt);
+      const hashPassword = bcrypt.hashSync(randPassword, salt);
       let updatePassword = await knex("nguoidung")
         .update({
           password: hashPassword,
@@ -384,7 +410,12 @@ module.exports = {
         from: "nguyentientai10@gmail.com",
         to: email,
         subject: "Forgot Password",
-        text: `Your new password is : ${newPassword}`,
+        html:
+          "<h1>Hi " +
+          count[0].hoten +
+          "</h1><p>We have sent you this email in response to your request to reset password</p><p>Here is your new password: " +
+          randPassword +
+          "</p><p>We recommend that you keep this password secure and not share it with anyone. If you feel this password has been compromised, you can change it by going to your profile and clicking on the 'Change Password' link.</p><h5>Pizza Food Customer Service</h5>",
       };
 
       transporter.sendMail(mailOptions, function (error, info) {

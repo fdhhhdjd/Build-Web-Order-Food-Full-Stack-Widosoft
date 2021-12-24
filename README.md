@@ -1,7 +1,8 @@
 1. API dành cho admin
    User :
 
-   - Xem danh sách toàn bộ tài khoản : get -->http://localhost:5000/admin/users
+   - xem danh sách toàn bộ tài khoản admin : get -->http://localhost:5000/admin/adminAccount
+   - xem danh sách toàn bộ tài khoản khách hàng : get -->http://localhost:5000/admin/customerAccount
    - Đăng ký tài khoản admin : post --> http://localhost:5000/admin/register
    - Đăng nhập tài khoản admin : post --> http://localhost:5000/admin/login
    - Refresh token admin : get --> http://localhost:5000/admin/refreshToken

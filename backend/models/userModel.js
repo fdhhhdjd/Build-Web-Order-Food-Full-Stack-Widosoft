@@ -2,6 +2,8 @@ const knex = require("../database/knex_db.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
+const hbs = require("nodemailer-express-handlebars");
+const path = require("path");
 
 module.exports = {
   //đăng ký tài khoản
@@ -13,14 +15,14 @@ module.exports = {
     console.log(isRegistered.length);
     if (isRegistered.length === 1) {
       return {
-        status: 400,
-        message: "This email has already been registered",
+        Status: 400,
+        Message: "This email has already been registered",
       };
     } else {
       let id = await knex("nguoidung").insert(user).returning("id");
       return {
-        status: 200,
-        message: `Registered account with id : ${id}  successfully`,
+        Status: 200,
+        Message: `Registered account with id : ${id}  successfully`,
       };
     }
   },
@@ -305,7 +307,7 @@ module.exports = {
 
       const salt = bcrypt.genSaltSync();
       const hashPassword = bcrypt.hashSync(randPassword, salt);
-      let updatePassword = await knex("nguoidung")
+      var updatePassword = await knex("nguoidung")
         .update({
           password: hashPassword,
         })
@@ -327,16 +329,64 @@ module.exports = {
         },
       });
 
+      const handlebarOptions = {
+        viewEngine: {
+          extName: ".html",
+          partialsDir: path.resolve("../views"),
+          defaultLayout: false,
+        },
+        viewPath: path.resolve("../views"),
+        extName: ".html",
+      };
+
+      transporter.use("compile", hbs(handlebarOptions));
+
       var mailOptions = {
-        from: "nguyentientai10@gmail.com",
+        from: "slthinhtu2@gmail.com",
         to: email,
         subject: "Forgot Password",
-        html:
-          "<h1>Hi " +
-          count[0].hoten +
-          "</h1><p>We have sent you this email in response to your request to reset password</p><p>Here is your new password: " +
-          randPassword +
-          "</p><p>We recommend that you keep this password secure and not share it with anyone. If you feel this password has been compromised, you can change it by going to your profile and clicking on the 'Change Password' link.</p><h5>Pizza Food Customer Service</h5>",
+        attachments: [
+          {
+            filename: "animated_header.gif",
+            path: path.join(__dirname, "/images/animated_header.gif"),
+            cid: "animated_header",
+          },
+          {
+            filename: "bee.png",
+            path: path.join(__dirname, "/images/bee.png"),
+            cid: "bee",
+          },
+          {
+            filename: "body_background_2.png",
+            path: path.join(__dirname, "/images/body_background_2.png"),
+            cid: "body_background",
+          },
+          {
+            filename: "bottom_img.png",
+            path: path.join(__dirname, "/images/bottom_img.png"),
+            cid: "bottom",
+          },
+          {
+            filename: "instagram2x.png",
+            path: path.join(__dirname, "/images/instagram2x.png"),
+            cid: "instagram2x",
+          },
+          {
+            filename: "logo.jpg",
+            path: path.join(__dirname, "/images/logo.jpg"),
+            cid: "logo",
+          },
+          {
+            filename: "twitter2x.png",
+            path: path.join(__dirname, "/images/twitter2x.png"),
+            cid: "twitter2x",
+          },
+        ],
+        template: "index",
+        context: {
+          randPassword: randPassword,
+          hoten: count[0].hoten,
+        },
       };
 
       transporter.sendMail(mailOptions, function (error, info) {
@@ -369,7 +419,6 @@ module.exports = {
     });
     var Count = Object.values(JSON.parse(JSON.stringify(count)));
     if (Count.length === 1) {
-      // return count[0].hoten;
       //nếu tồn tại email như vậy thì update mật khẩu mới
 
       //mật khẩu random 8 kí tự
@@ -384,7 +433,7 @@ module.exports = {
 
       const salt = bcrypt.genSaltSync();
       const hashPassword = bcrypt.hashSync(randPassword, salt);
-      let updatePassword = await knex("nguoidung")
+      var updatePassword = await knex("nguoidung")
         .update({
           password: hashPassword,
         })
@@ -406,16 +455,64 @@ module.exports = {
         },
       });
 
+      const handlebarOptions = {
+        viewEngine: {
+          extName: ".html",
+          partialsDir: path.resolve("../views"),
+          defaultLayout: false,
+        },
+        viewPath: path.resolve("../views"),
+        extName: ".html",
+      };
+
+      transporter.use("compile", hbs(handlebarOptions));
+
       var mailOptions = {
-        from: "nguyentientai10@gmail.com",
+        from: "slthinhtu2@gmail.com",
         to: email,
         subject: "Forgot Password",
-        html:
-          "<h1>Hi " +
-          count[0].hoten +
-          "</h1><p>We have sent you this email in response to your request to reset password</p><p>Here is your new password: " +
-          randPassword +
-          "</p><p>We recommend that you keep this password secure and not share it with anyone. If you feel this password has been compromised, you can change it by going to your profile and clicking on the 'Change Password' link.</p><h5>Pizza Food Customer Service</h5>",
+        attachments: [
+          {
+            filename: "animated_header.gif",
+            path: path.join(__dirname, "/images/animated_header.gif"),
+            cid: "animated_header",
+          },
+          {
+            filename: "bee.png",
+            path: path.join(__dirname, "/images/bee.png"),
+            cid: "bee",
+          },
+          {
+            filename: "body_background_2.png",
+            path: path.join(__dirname, "/images/body_background_2.png"),
+            cid: "body_background",
+          },
+          {
+            filename: "bottom_img.png",
+            path: path.join(__dirname, "/images/bottom_img.png"),
+            cid: "bottom",
+          },
+          {
+            filename: "instagram2x.png",
+            path: path.join(__dirname, "/images/instagram2x.png"),
+            cid: "instagram2x",
+          },
+          {
+            filename: "logo.jpg",
+            path: path.join(__dirname, "/images/logo.jpg"),
+            cid: "logo",
+          },
+          {
+            filename: "twitter2x.png",
+            path: path.join(__dirname, "/images/twitter2x.png"),
+            cid: "twitter2x",
+          },
+        ],
+        template: "index",
+        context: {
+          randPassword: randPassword,
+          hoten: count[0].hoten,
+        },
       };
 
       transporter.sendMail(mailOptions, function (error, info) {

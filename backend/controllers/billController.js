@@ -45,6 +45,8 @@ module.exports = {
   //tạo hóa đơn (khách hàng)
   createBill(req, res, next) {
     const idUser = req.userData.id;
+    const tong_sl = req.tong_sl;
+    const tong_hd = req.tong_hd;
     const { id_diachi, id_thanhtoan } = req.body;
     //nếu hình thức thanh toán là COD thì tình trạng hóa đơn là chưa thanh toán
     let tinhtrangHD = id_thanhtoan == 4 ? "Chưa thanh toán" : "Đã thanh toán";
@@ -52,6 +54,8 @@ module.exports = {
       id_nd: idUser,
       id_diachi: id_diachi,
       ngaydathang: new Date(),
+      tong_sl: tong_sl,
+      tong_hd: tong_hd,
       createdAt: new Date(),
       updatedAt: new Date(),
       tinhtrangHD: tinhtrangHD,

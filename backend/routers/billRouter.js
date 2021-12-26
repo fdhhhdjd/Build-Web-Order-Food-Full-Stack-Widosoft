@@ -3,7 +3,7 @@ const router = express.Router();
 const checkAuth = require("../middleware/checkAuth.js");
 const billController = require("../controllers/billController.js");
 const billDetailController = require("../controllers/billDetailController.js");
-const { checkAuthAdmin } = require("../middleware/checkAuth.js");
+const cartController = require("../controllers/cartController.js");
 
 //xem hóa đơn toàn bộ khách hàng (Admin)
 router.get("/all", checkAuth.checkAuthAdmin, billController.getAllBill);
@@ -18,6 +18,7 @@ router.get("/detail/:id_hd", billDetailController.getBillDetail);
 router.post(
   "/create",
   checkAuth.checkAuthCustomer,
+  cartController.getAllQuantityAndPriceOfCart,
   billController.createBill,
   billDetailController.addBillDetail
 );

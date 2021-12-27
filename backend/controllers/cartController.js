@@ -164,4 +164,24 @@ module.exports = {
         });
       });
   },
+
+  //lấy tổng số lượng sp và tổng hóa đơn của giỏ hàng
+  async getAllQuantityAndPriceOfCart(req, res, next) {
+    const idUser = req.userData.id;
+    cartModel
+      .getAllQuantityAndPriceOfCart(idUser)
+      .then((data) => {
+        req.tong_sl = data[0].tong_sl;
+        req.tong_hd = data[0].tong_hd;
+        // return res.json(data[0].tong_hd);
+        next();
+      })
+      .catch((err) => {
+        return res.status(400).json({
+          status: 400,
+          message: "Failed to get all quantity and price of cart successfully",
+          data: err,
+        });
+      });
+  },
 };

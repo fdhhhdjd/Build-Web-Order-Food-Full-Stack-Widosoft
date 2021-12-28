@@ -3,7 +3,19 @@ const knex = require("../database/knex_db.js");
 module.exports = {
   //xem toàn bộ chi tiết hóa đơn (admin)
   async getAllBillDetail() {
-    let result = await knex("chitiethoadon").select("*");
+    let result = await knex("chitiethoadon")
+      .join("sanpham", "sanpham.id", "chitiethoadon.id_sp")
+      .select(
+        "chitiethoadon.id",
+        "chitiethoadon.id_hd",
+        "sanpham.tensp",
+        "chitiethoadon.don_gia",
+        "chitiethoadon.soluong",
+        "chitiethoadon.tong_gia",
+        "chitiethoadon.createdAt",
+        "chitiethoadon.updatedAt",
+        "chitiethoadon.deleted_fg"
+      );
     return result;
   },
 

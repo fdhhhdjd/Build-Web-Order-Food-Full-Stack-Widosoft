@@ -3,10 +3,7 @@ const router = express.Router();
 const checkAuth = require("../middleware/checkAuth.js");
 const billController = require("../controllers/billController.js");
 const billDetailController = require("../controllers/billDetailController.js");
-<<<<<<< HEAD
-=======
 const cartController = require("../controllers/cartController.js");
->>>>>>> 4e280c48d22f85cb21fdb1ceb4c58c96952b3189
 
 //xem hóa đơn toàn bộ khách hàng (Admin)
 router.get("/all", checkAuth.checkAuthAdmin, billController.getAllBill);

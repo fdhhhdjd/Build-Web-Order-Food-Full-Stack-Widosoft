@@ -203,7 +203,7 @@ function App() {
             path="/bill/:id"
             element={
               <UserRoute>
-                <EditBills />
+                <EditBill />
               </UserRoute>
             }
           />

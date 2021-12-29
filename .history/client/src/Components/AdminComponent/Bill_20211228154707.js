@@ -9,9 +9,9 @@ import swal from "sweetalert";
 import moment from "moment";
 import "moment/locale/vi";
 import { GlobalState } from "../../Contexts/GlobalState";
-import { GetAllRatingInitiate } from "../../redux/Action/ActionInfoAllUser";
-const Rating = () => {
-  const { rating } = useSelector((state) => state.info);
+import { GetAllBillInitiate } from "../../redux/Action/ActionInfoAllUser";
+const Bills = () => {
+  const { bill } = useSelector((state) => state.info);
   const { token } = useSelector((state) => state.authAdmin);
   const state = useContext(GlobalState);
   const [callback, setCallback] = state.callback;
@@ -19,9 +19,8 @@ const Rating = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     setCallback(true);
-    dispatch(GetAllRatingInitiate(token.accessToken));
+    dispatch(GetAllBillInitiate(token.accessToken));
   }, []);
-
   const handleDelete = async (id) => {
     try {
       setLoading(true);
@@ -32,7 +31,7 @@ const Rating = () => {
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
-          axios.delete(`/rating/delete/${id}`, {
+          axios.delete(`/product/delete/${id}`, {
             headers: { Authorization: `Bearer ${token.accessToken}` },
           });
           setCallback(!callback);
@@ -50,24 +49,24 @@ const Rating = () => {
   };
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
-    { field: "id_hd", headerName: "ID", width: 90 },
+    { field: "hoten", headerName: "User other", width: 200 },
+    { field: "tong_sl", headerName: "Quantify", width: 150 },
+    { field: "tong_hd", headerName: "Total Bill", width: 150 },
     {
-      field: "ten_hinhthuc",
-      headerName: "Name Payment",
-      width: 250,
+      field: "ngaydathang",
+      headerName: "Date order",
+      width: 160,
       renderCell: (params) => {
-        return <div className="productListItem">{params.row.hoten}</div>;
+        console.log(params);
+        return (
+          <div className="userListUser">
+            {moment(`${params.row.ngaydathang}`).format("Do MMM YYYY")}
+          </div>
+        );
       },
     },
-    { field: "diem_danhgia", headerName: "Rating Star", width: 150 },
-    {
-      field: "binhluan",
-      headerName: "Comment User",
-      width: 400,
-      renderCell: (params) => {
-        return <div className="productListItem">{params.row.binhluan}</div>;
-      },
-    },
+    { field: "tinhtrangHD", headerName: "Status", width: 150 },
+
     {
       field: "createdAt",
       headerName: "Date Create",
@@ -122,10 +121,10 @@ const Rating = () => {
         </Link>
         <DataGrid
           getRowId={(r) => r.id}
-          rows={rating}
+          rows={bill}
           disableSelectionOnClick
           columns={columns}
-          pageSize={8}
+          pageSize={2}
           checkboxSelection
         />
       </div>
@@ -133,4 +132,4 @@ const Rating = () => {
   );
 };
 
-export default Rating;
+export default Bills;

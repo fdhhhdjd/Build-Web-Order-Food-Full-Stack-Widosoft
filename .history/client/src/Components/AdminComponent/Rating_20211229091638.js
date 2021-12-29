@@ -125,7 +125,7 @@ const Rating = () => {
           rows={rating}
           disableSelectionOnClick
           columns={columns}
-          pageSize={8}
+          pageSize={2}
           checkboxSelection
         />
       </div>

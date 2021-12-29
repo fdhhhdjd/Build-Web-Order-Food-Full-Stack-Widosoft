@@ -20,7 +20,6 @@ import {
   Bills,
   NewPayments,
   InfoApps,
-  EditBills,
 } from "./Imports/Index";
 import {
   Home,
@@ -203,7 +202,7 @@ function App() {
             path="/bill/:id"
             element={
               <UserRoute>
-                <EditBills />
+                <Bills />
               </UserRoute>
             }
           />

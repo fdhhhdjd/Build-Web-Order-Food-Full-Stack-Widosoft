@@ -32,7 +32,7 @@ const Rating = () => {
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
-          axios.delete(`/rating/delete/${id}`, {
+          axios.delete(`/product/delete/${id}`, {
             headers: { Authorization: `Bearer ${token.accessToken}` },
           });
           setCallback(!callback);
@@ -63,7 +63,7 @@ const Rating = () => {
     {
       field: "binhluan",
       headerName: "Comment User",
-      width: 400,
+      width: 4000,
       renderCell: (params) => {
         return <div className="productListItem">{params.row.binhluan}</div>;
       },
@@ -125,7 +125,7 @@ const Rating = () => {
           rows={rating}
           disableSelectionOnClick
           columns={columns}
-          pageSize={8}
+          pageSize={2}
           checkboxSelection
         />
       </div>

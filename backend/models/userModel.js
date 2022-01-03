@@ -535,4 +535,40 @@ module.exports = {
       };
     }
   },
+
+  //hiển thị tài khoản đăng ký từ 3 ngày trước đến hiện tại
+  async getNewUser() {
+    const get_day_of_time = (d1, d2) => {
+      let ms1 = d1.getTime();
+      let ms2 = d2.getTime();
+      return Math.ceil((ms2 - ms1) / (24 * 60 * 60 * 1000));
+    };
+
+    let ds_nd = await knex("nguoidung").select("*");
+
+    var today = new Date();
+
+    var result = [];
+
+    for (var i = 0; i < ds_nd.length; i++) {
+      var time = get_day_of_time(ds_nd[i].createdAt, today);
+      if (time <= 3) {
+        result.push(ds_nd[i]);
+      }
+    }
+
+    if (result.length === 0) {
+      return {
+        status: 200,
+        message: "No users have recently signed up for an account",
+        data: result,
+      };
+    } else {
+      return {
+        status: 200,
+        message: "Get new user successfully",
+        data: result,
+      };
+    }
+  },
 };

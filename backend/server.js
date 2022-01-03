@@ -14,6 +14,7 @@ const paymentRouter = require("./routers/paymentRouter.js");
 const billRouter = require("./routers/billRouter.js");
 const billDetailRouter = require("./routers/billDetailRouter.js");
 const ratingRouter = require("./routers/ratingRouter.js");
+const voucherRouter = require("./routers/voucherRouter.js");
 
 const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
@@ -81,6 +82,9 @@ app.use("/billDetail", billDetailRouter);
 
 //cổng đánh giá
 app.use("/rating/", ratingRouter);
+
+//cổng voucher
+app.use("/voucher/", voucherRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

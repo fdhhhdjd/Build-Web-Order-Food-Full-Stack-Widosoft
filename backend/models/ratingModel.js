@@ -10,6 +10,7 @@ module.exports = {
         "danhgia.id",
         "danhgia.id_hd",
         "nguoidung.hoten",
+        "nguoidung.url",
         "danhgia.diem_danhgia",
         "danhgia.binhluan",
         "danhgia.createdAt",

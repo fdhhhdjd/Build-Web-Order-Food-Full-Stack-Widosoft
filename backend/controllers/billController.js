@@ -1,4 +1,5 @@
 const billModel = require("../models/billModel.js");
+const voucherModel = require("../models/voucherModel.js");
 
 module.exports = {
   //xem hóa đơn toàn bộ khách hàng (Admin)
@@ -42,27 +43,81 @@ module.exports = {
       });
   },
 
+  // //tạo hóa đơn (khách hàng)
+  // createBill(req, res, next) {
+  //   const idUser = req.userData.id;
+  //   const tong_sl = req.tong_sl;
+  //   const tong_hd = req.tong_hd;
+  //   const { id_diachi, id_thanhtoan } = req.body;
+  //   //nếu hình thức thanh toán là COD thì tình trạng hóa đơn là chưa thanh toán
+  //   let tinhtrangHD = id_thanhtoan == 4 ? "Chưa thanh toán" : "Đã thanh toán";
+  //   const bill = {
+  //     id_nd: idUser,
+  //     id_diachi: id_diachi,
+  //     ngaydathang: new Date(),
+  //     tong_sl: tong_sl,
+  //     tong_hd: tong_hd,
+  //     createdAt: new Date(),
+  //     updatedAt: new Date(),
+  //     tinhtrangHD: tinhtrangHD,
+  //     id_thanhtoan: id_thanhtoan,
+  //   };
+  //   billModel
+  //     .createBill(bill)
+  //     .then((id_bill) => {
+  //       req.idBill = id_bill[0];
+  //       next();
+  //     })
+  //     .catch((err) => {
+  //       return res.status(400).json({
+  //         status: 400,
+  //         message: "Failed to create bill",
+  //         data: err,
+  //       });
+  //     });
+  // },
+
   //tạo hóa đơn (khách hàng)
   createBill(req, res, next) {
     const idUser = req.userData.id;
     const tong_sl = req.tong_sl;
-    const tong_hd = req.tong_hd;
-    const { id_diachi, id_thanhtoan } = req.body;
+    const tongtien_gh = req.tongtien_gh;
+    const { id_diachi, id_thanhtoan, id_voucher } = req.body;
+    //nếu người dùng không nhập mã voucher thì sẽ mặc định không giảm giá
+    let ma_giamgia = id_voucher === undefined ? "Coupon0" : id_voucher;
     //nếu hình thức thanh toán là COD thì tình trạng hóa đơn là chưa thanh toán
     let tinhtrangHD = id_thanhtoan == 4 ? "Chưa thanh toán" : "Đã thanh toán";
-    const bill = {
-      id_nd: idUser,
-      id_diachi: id_diachi,
-      ngaydathang: new Date(),
-      tong_sl: tong_sl,
-      tong_hd: tong_hd,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      tinhtrangHD: tinhtrangHD,
-      id_thanhtoan: id_thanhtoan,
-    };
-    billModel
-      .createBill(bill)
+
+    voucherModel
+      .checkVoucher(ma_giamgia)
+      .then((existVoucher) => {
+        if (existVoucher === "Invalid voucher") {
+          return res.status(400).json({
+            status: 400,
+            message: "Invalid voucher",
+          });
+        } else {
+          const giatri_giamgia =
+            (tongtien_gh * Number(existVoucher[0].giatri)) / 100;
+          req.giatri_giamgia = giatri_giamgia;
+          const tong_hd = tongtien_gh - giatri_giamgia;
+          req.tong_hd = tong_hd;
+          const bill = {
+            id_nd: idUser,
+            id_diachi: id_diachi,
+            ngaydathang: new Date(),
+            tong_sl: tong_sl,
+            tongtien_gh: tongtien_gh,
+            id_voucher: ma_giamgia,
+            tong_hd: tong_hd,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            tinhtrangHD: tinhtrangHD,
+            id_thanhtoan: id_thanhtoan,
+          };
+          return billModel.createBill(bill);
+        }
+      })
       .then((id_bill) => {
         req.idBill = id_bill[0];
         next();
@@ -139,6 +194,26 @@ module.exports = {
         return res.status(400).json({
           status: 400,
           message: "Failed",
+          data: err,
+        });
+      });
+  },
+
+  //sắp xếp tổng giao dịch của người dùng trên 1 triệu
+  SortTotalTransactionsOfUser(req, res) {
+    billModel
+      .SortTotalTransactionsOfUser()
+      .then((result) => {
+        return res.status(200).json({
+          status: 200,
+          message: "Sort total transaction of user successfully",
+          data: result,
+        });
+      })
+      .catch((err) => {
+        return res.status(400).json({
+          status: 400,
+          message: "Failed to sort total transaction of user ",
           data: err,
         });
       });

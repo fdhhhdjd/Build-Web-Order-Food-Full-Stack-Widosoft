@@ -9,6 +9,7 @@ module.exports = {
         "chitiethoadon.id",
         "chitiethoadon.id_hd",
         "sanpham.tensp",
+        "sanpham.url",
         "chitiethoadon.don_gia",
         "chitiethoadon.soluong",
         "chitiethoadon.tong_gia",

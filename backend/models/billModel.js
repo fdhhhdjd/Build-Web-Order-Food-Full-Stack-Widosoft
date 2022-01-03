@@ -9,6 +9,7 @@ module.exports = {
       .join("danhsach_diachi", "danhsach_diachi.id", "hoadon.id_diachi")
       .select(
         "hoadon.id",
+        "nguoidung.url",
         "nguoidung.hoten",
         "hinhthucthanhtoan.ten_hinhthuc",
         "danhsach_diachi.diachi",
@@ -83,6 +84,19 @@ module.exports = {
     let result = await knex("hoadon").del().where({
       id: id_hd,
     });
+    return result;
+  },
+
+  //sắp xếp tổng giao dịch của khách hàng đã thanh toán hoặc đã nhân hàng ( trên 1 triệu)
+  async SortTotalTransactionsOfUser() {
+    let result = await knex("hoadon")
+      .select("hoadon.id_nd", "nguoidung.hoten", "nguoidung.url")
+      .sum("tong_hd as tong_giao_dich")
+      .join("nguoidung", "hoadon.id_nd", "nguoidung.id")
+      .whereIn("hoadon.tinhtrangHD", ["Đã thanh toán", "Đã nhận hàng"])
+      .groupBy("hoadon.id_nd")
+      .having("tong_giao_dich", ">=", 1000000)
+      .orderBy("tong_giao_dich", "desc");
     return result;
   },
 };

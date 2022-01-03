@@ -18,7 +18,7 @@ router.get("/detail/:id_hd", billDetailController.getBillDetail);
 router.post(
   "/create",
   checkAuth.checkAuthCustomer,
-  cartController.getAllQuantityAndPriceOfCart,
+  cartController.getAllQuantityAndPriceOfCartForCreateBill,
   billController.createBill,
   billDetailController.addBillDetail
 );
@@ -43,6 +43,13 @@ router.delete(
   checkAuth.checkAuthAdmin,
   billDetailController.deleteAllBillDetail,
   billController.deleteBill
+);
+
+//sắp xếp tổng giao dịch của người dùng trên 1 triệu
+router.get(
+  "/sortTransaction",
+  checkAuth.checkAuthAdmin,
+  billController.SortTotalTransactionsOfUser
 );
 
 module.exports = router;

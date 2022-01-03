@@ -49,6 +49,7 @@
    - Xem hóa đơn toàn bộ khách hàng : get --> http://localhost:5000/bill/all
    - Chỉnh sửa tình trạng hóa đơn : patch --> http://localhost:5000/bill/update/id_hd
    - Xóa hóa đơn -> xóa toàn bộ chi tiết hóa đơn theo id hóa đơn : delete --> http://localhost:5000/bill/delete/id_hd
+   - sắp xếp tổng giao dịch của khách hàng đã thanh toán hoặc đã nhận hàng (trên 1 triệu) : get -->http://localhost:5000/bill/sortTransaction
 
    Bill detail :
 
@@ -79,6 +80,7 @@
    - Chỉnh sửa số lượng sản phẩm trong giỏ hàng : patch --> http://localhost:5000/cart/updateQuantityProduct/id_cart
    - Xóa chi tiết giỏ hàng : delete --> http://localhost:5000/cart/delete/id_cart
    - Xóa toàn bộ chi tiết giỏ hàng : delete --> http://localhost:5000/cart/deleteAll
+   - Hiển thị tổng số lượng sản phẩm và tổng tiền của giỏ hàng : get --> http://localhost:5000/cart/getAllQuantityAndPriceOfCart
 
    Address :
 
@@ -94,6 +96,7 @@
    - Xem lịch sử đặt hàng của tài khoản khách hàng đang đăng nhập : get --> http://localhost:5000/bill/history
    - Xem hóa đơn : get --> http://localhost:5000/bill/detail/id_hd -
    - Hủy bill (khi hóa đơn của khách hàng chưa thanh toán ) : patch --> http://localhost:5000/bill/cancel/id_hd
+   - Kiểm tra mã voucher hợp lệ hay không : get --> http://localhost:5000/voucher/check
 
    Bill Detail :
 

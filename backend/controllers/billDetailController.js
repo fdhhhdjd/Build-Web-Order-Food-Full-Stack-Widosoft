@@ -66,6 +66,9 @@ module.exports = {
 
   //thêm chi tiết hóa đơn
   addBillDetail(req, res) {
+    const tien_giamgia = req.giatri_giamgia;
+    const tongtien_gh = req.tongtien_gh;
+    const tong_hd = req.tong_hd;
     const idUser = req.userData.id;
     const id_hd = req.idBill;
     cartModel
@@ -85,12 +88,14 @@ module.exports = {
           var don_gia = cartItems[i].don_gia;
           var soluong = cartItems[i].soluong;
           var tong_gia = cartItems[i].tong_gia;
+          var ghi_chu = cartItems[i].ghi_chu;
           var billDetail = {
             id_hd: id_hd,
             id_sp: id_sp,
             don_gia: don_gia,
             soluong: soluong,
             tong_gia: tong_gia,
+            ghi_chu: ghi_chu,
             createdAt: new Date(),
             updatedAt: new Date(),
           };
@@ -103,11 +108,16 @@ module.exports = {
         return cartModel.deleteAllCartItems(idUser);
       })
       .then((result) => {
-        var data = req.billDetails;
+        //var data = req.billDetails;
         return res.status(200).json({
           status: 200,
           message: "Create bill successfully",
-          data: data,
+          data: {
+            id_hd: id_hd,
+            tongtien_gh: tongtien_gh,
+            tien_giamgia: tien_giamgia,
+            tong_hd: tong_hd,
+          },
         });
       })
       .catch((err) => {

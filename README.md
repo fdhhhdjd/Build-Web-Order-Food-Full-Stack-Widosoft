@@ -12,6 +12,8 @@
    - Đổi mật khẩu tài khoản admin đang đăng nhập : patch --> http://localhost:5000/admin/changePassword
    - Xóa tài khoản : delete --> http://localhost:5000/admin/users/delete/id_nd
    - quên mật khẩu tài khoản admin : post --> http://localhost:5000/admin/forgotPassword
+   - hiển thị tài khoản đăng ký từ 3 ngày trước đến hiện tại : get --> http://localhost:5000/admin/newUser
+   - hiển thị tổng doanh thu : get --> http://localhost:5000/admin/totalRevenue
 
    Category :
 

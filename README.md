@@ -60,6 +60,13 @@
    - Xem toàn bộ đánh giá của khách hàng : get --> http://localhost:5000/rating/all
    - Xóa đánh giá : http://localhost:5000/rating/delete/id_danhgia
 
+   Voucher :
+
+   - Xem toàn bộ phiếu giảm giá : get --> http://localhost:5000/voucher/all
+   - Tạo một phiếu giảm giá : post --> http://localhost:5000/voucher/add
+   - Chỉnh sửa phiếu giảm giá : patch --> http://localhost:5000/voucher/update/:id_voucher
+   - Xóa phiếu giảm giá : delete --> http://localhost:5000/voucher/delete/:id_voucher
+
 2. API dành cho khách hàng
    User :
 

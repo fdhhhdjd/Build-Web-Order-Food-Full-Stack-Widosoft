@@ -218,4 +218,24 @@ module.exports = {
         });
       });
   },
+
+  //tổng doanh thu
+  getTotalRevenue(req, res) {
+    billModel
+      .getTotalRevenue()
+      .then((result) => {
+        return res.status(200).json({
+          status: 200,
+          message: "Get total revenue successfully",
+          data: result,
+        });
+      })
+      .catch((err) => {
+        return res.status(400).json({
+          status: 400,
+          message: "Failed to get total revenue ",
+          data: err,
+        });
+      });
+  },
 };

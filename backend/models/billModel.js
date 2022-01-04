@@ -99,4 +99,12 @@ module.exports = {
       .orderBy("tong_giao_dich", "desc");
     return result;
   },
+
+  //tổng doanh thu
+  async getTotalRevenue() {
+    let result = await knex("hoadon")
+      .sum("tong_hd as tong_doanhthu")
+      .whereIn("tinhtrangHD", ["Đã thanh toán", "Đã nhận hàng"]);
+    return result;
+  },
 };

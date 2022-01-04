@@ -63,10 +63,10 @@ module.exports = {
     return result;
   },
 
-  //lấy tổng số lượng sản phẩm và tổng giá của giỏ hàng
+  //lấy tổng số lượng sản phẩm và tổng tiền của giỏ hàng
   async getAllQuantityAndPriceOfCart(idUser) {
     let result = await knex("giohang")
-      .sum({ tong_hd: "tong_gia" })
+      .sum({ tongtien_gh: "tong_gia" })
       .sum({ tong_sl: "soluong" })
       .where({
         id_nd: idUser,

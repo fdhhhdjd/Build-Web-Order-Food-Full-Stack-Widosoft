@@ -422,4 +422,20 @@ module.exports = {
         });
       });
   },
+
+  //hiển thị tài khoản đăng ký từ 3 ngày trước đến hiện tại
+  getNewUser(req, res) {
+    userModel
+      .getNewUser()
+      .then((result) => {
+        return res.status(200).json(result);
+      })
+      .catch((err) => {
+        return res.status(400).json({
+          status: 400,
+          message: "Failed to get new user",
+          data: err,
+        });
+      });
+  },
 };

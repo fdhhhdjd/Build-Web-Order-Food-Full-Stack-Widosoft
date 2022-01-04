@@ -39,4 +39,10 @@ router.delete(
   cartController.deleteAllCartItems
 );
 
+router.get(
+  "/getAllQuantityAndPriceOfCart",
+  checkAuth.checkAuthCustomer,
+  cartController.getAllQuantityAndPriceOfCart
+);
+
 module.exports = router;

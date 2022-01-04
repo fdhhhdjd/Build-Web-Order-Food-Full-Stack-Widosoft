@@ -1,4 +1,4 @@
-npm i bcrypt cloudinary cookie-parser cors dotenv express express-fileupload jsonwebtoken mysql body-parser knex nodemailer nodemailer-express-handlebars
+npm i bcrypt cloudinary-core cookie-parser cors dotenv express express-fileupload jsonwebtoken mysql body-parser knex nodemailer nodemailer-express-handlebars
 npm i --save-dev nodemon
 password các tài khoản em đều để mặc định là 123456 hết ạ
 

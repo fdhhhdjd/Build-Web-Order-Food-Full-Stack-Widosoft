@@ -13,6 +13,7 @@ const initialState = {
   uploadImg: [],
   allAdmins: [],
   forget: [],
+  newAccount: [],
 };
 const AuthReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -25,6 +26,7 @@ const AuthReducer = (state = initialState, action) => {
     case types.GET_ALL_USER_START:
     case types.GET_ALL_ADMIN_START:
     case types.FORGET_ADMIN_START:
+    case types.GET_ACCOUNT_NEW_START:
       return {
         ...state,
         loading: true,
@@ -34,7 +36,6 @@ const AuthReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-
         Admin: action.payload,
       };
     case types.REGISTER_API_SUCCESS:
@@ -87,6 +88,12 @@ const AuthReducer = (state = initialState, action) => {
         loading: false,
         forget: action.payload,
       };
+    case types.GET_ACCOUNT_NEW_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        newAccount: action.payload,
+      };
 
     case types.LOGIN_API_FAIL:
     case types.REGISTER_API_FAIL:
@@ -97,6 +104,7 @@ const AuthReducer = (state = initialState, action) => {
     case types.GET_ALL_USER_FAIL:
     case types.GET_ALL_ADMIN_FAIL:
     case types.FORGET_ADMIN_FAIL:
+    case types.GET_ACCOUNT_NEW_FAIL:
       return {
         ...state,
         loading: false,

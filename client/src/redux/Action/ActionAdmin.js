@@ -113,6 +113,18 @@ export const GetAllAdminFail = (error) => ({
   type: types.GET_ALL_USER_FAIL,
   payload: error,
 });
+//?Account register user new 3 day
+export const GetAccountNewStart = () => ({
+  type: types.GET_ACCOUNT_NEW_START,
+});
+export const GetAccountNewSuccess = (token) => ({
+  type: types.GET_ACCOUNT_NEW_SUCCESS,
+  payload: token,
+});
+export const GetAccountNewFail = (error) => ({
+  type: types.GET_ACCOUNT_NEW_FAIL,
+  payload: error,
+});
 //!Register
 export const RegisterInitiate = (
   email,
@@ -280,6 +292,22 @@ export const GetAllAdminInitiate = (token) => {
       })
       .catch((error) => {
         dispatch(GetAllAdminFail(error.data));
+      });
+  };
+};
+//!Account register user new 3 day
+export const GetAccountNewInitiate = (token) => {
+  return async function (dispatch) {
+    dispatch(GetAccountNewStart());
+    await axios
+      .get("/admin/newUser", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((user) => {
+        dispatch(GetAccountNewSuccess(user.data.data));
+      })
+      .catch((error) => {
+        dispatch(GetAccountNewFail(error.data));
       });
   };
 };

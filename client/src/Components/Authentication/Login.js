@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { LoginGoogle } from "../../Imports/Index";
+import { LoginGoogle, Metadata } from "../../Imports/Index";
 import { useDispatch, useSelector } from "react-redux";
 import { loginInitiate } from "../../redux/Action/ActionAdmin";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { GlobalState } from "../../Contexts/GlobalState";
-const Login = () => {
+const Login = (flag) => {
   const [state, setState] = useState({
     email: "",
     password: "",

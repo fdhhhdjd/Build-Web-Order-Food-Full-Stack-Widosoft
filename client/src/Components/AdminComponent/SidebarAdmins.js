@@ -47,6 +47,10 @@ const SidebarAdmins = () => {
       setActiveTab("Rating");
     } else if (location.pathname === "/infoapp") {
       setActiveTab("Info");
+    } else if (location.pathname === "/billdetail") {
+      setActiveTab("billdetail");
+    } else if (location.pathname === "/voucher") {
+      setActiveTab("voucher");
     }
   }, [location]);
   return (
@@ -144,6 +148,17 @@ const SidebarAdmins = () => {
             <div className="sidebarMenu">
               <h3 className="sidebarTitle">Notifications</h3>
               <ul className="sidebarList">
+                <Link to="/billdetail" className="link">
+                  <li
+                    className={` sidebarListItem  ${
+                      activeTab === "billdetail" ? "active" : ""
+                    }`}
+                    onClick={() => setActiveTab("billdetail")}
+                  >
+                    <i class="fas fa-money-bill-alt"></i>
+                    &nbsp; Bill Detail
+                  </li>
+                </Link>
                 <Link to="/payment" className="link">
                   <li
                     className={` sidebarListItem  ${
@@ -193,10 +208,17 @@ const SidebarAdmins = () => {
             <div className="sidebarMenu">
               <h3 className="sidebarTitle">Staff</h3>
               <ul className="sidebarList">
-                <li className="sidebarListItem">
-                  <MdWorkOutline className="sidebarIcon" />
-                  Manage
-                </li>
+                <Link to="/voucher" className="link">
+                  <li
+                    className={` sidebarListItem  ${
+                      activeTab === "voucher" ? "active" : ""
+                    }`}
+                    onClick={() => setActiveTab("voucher")}
+                  >
+                    <i class="fas fa-tags"></i>
+                    &nbsp; Voucher
+                  </li>
+                </Link>
                 <li className="sidebarListItem">
                   <IoMdAnalytics className="sidebarIcon" />
                   Analytics

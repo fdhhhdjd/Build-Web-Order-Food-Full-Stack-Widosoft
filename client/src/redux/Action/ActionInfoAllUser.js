@@ -50,6 +50,30 @@ export const GetAllInfoFail = (error) => ({
   type: types.GET_ALL_APP_INFO_FAIL,
   payload: error,
 });
+//?get all bill Detail
+export const GetAllBillDetailStart = () => ({
+  type: types.GET_ALL_BILL_DETAIL_START,
+});
+export const GetAllBillDetailSuccess = (token) => ({
+  type: types.GET_ALL_BILL_DETAIL_SUCCESS,
+  payload: token,
+});
+export const GetAllBillDetailFail = (error) => ({
+  type: types.GET_ALL_BILL_DETAIL_FAIL,
+  payload: error,
+});
+//?customers buy the most
+export const GetAccountMuchStart = () => ({
+  type: types.GET_ACCOUNT_BUY_MUCH_START,
+});
+export const GetAccountMuchSuccess = (token) => ({
+  type: types.GET_ACCOUNT_BUY_MUCH_SUCCESS,
+  payload: token,
+});
+export const GetAccountMuchFail = (error) => ({
+  type: types.GET_ACCOUNT_BUY_MUCH_FAIL,
+  payload: error,
+});
 
 //! Get All Payment
 export const GetAllPaymentInitiate = (token) => {
@@ -109,6 +133,38 @@ export const GetAllInfoAppInitiate = (token) => {
       })
       .catch((error) => {
         dispatch(GetAllInfoFail(error.data));
+      });
+  };
+};
+//! Get all Bill Detail
+export const GetAllBillDetailInitiate = (token) => {
+  return async function (dispatch) {
+    dispatch(GetAllBillDetailStart());
+    await axios
+      .get("/billDetail/all", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((category) => {
+        dispatch(GetAllBillDetailSuccess(category.data));
+      })
+      .catch((error) => {
+        dispatch(GetAllRatingFail(error.data));
+      });
+  };
+};
+//!Customers buy the most
+export const GetAccountMuchInitiate = (token) => {
+  return async function (dispatch) {
+    dispatch(GetAccountMuchStart());
+    await axios
+      .get("/bill/sortTransaction", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((category) => {
+        dispatch(GetAccountMuchSuccess(category.data.data));
+      })
+      .catch((error) => {
+        dispatch(GetAccountMuchFail(error.data));
       });
   };
 };

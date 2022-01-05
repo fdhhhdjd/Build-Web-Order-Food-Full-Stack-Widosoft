@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import { Metadata } from "../../Imports/Index";
 import { RegisterInitiate } from "../../redux/Action/ActionAdmin";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -10,6 +11,7 @@ const Register = () => {
     formState: { errors },
     handleSubmit,
     watch,
+    getValues,
     control,
     reset,
   } = useForm();
@@ -59,8 +61,8 @@ const Register = () => {
 
   return (
     <>
+      <Metadata title="Authentication-Admin" />
       <form
-        actions=""
         className="sign-up-form form-main"
         onSubmit={handleSubmit(handleSubmitForm)}
       >
@@ -188,6 +190,7 @@ const Register = () => {
               minLength: {
                 value: 6,
               },
+              pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&^_-]{8,}$/,
             })}
             type={isLock ? "type" : "password"}
             placeholder="Password"
@@ -200,6 +203,8 @@ const Register = () => {
             "Mời bạn nhập đầy đủ mật khẩu. "}
           {errors?.password?.type === "minLength" &&
             "Mật khẩu của bạn phải 6 kí tự trở lên !!"}
+          {errors?.password?.type === "pattern" &&
+            "Mật khẩu có kí tự in hoa,số và kí tự đặt biệt !"}
         </span>
         <div className="input-field">
           {isLocks ? (
@@ -211,7 +216,7 @@ const Register = () => {
             {...register("passwordConfirm", {
               required: true,
               validate: (value) =>
-                value === passwords.current || "The passwords do not match",
+                value === getValues("password") || "The passwords do not match",
             })}
             type={isLocks ? "type" : "password"}
             placeholder="Confirm Password"

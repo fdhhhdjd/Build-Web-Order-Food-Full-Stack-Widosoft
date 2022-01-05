@@ -17,6 +17,9 @@ const Bills = () => {
   const [callback, setCallback] = state.callback;
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const img =
+    "https://png.pngtree.com/png-clipart/20190924/original/pngtree-businessman-user-avatar-free-vector-png-image_4827807.jpg";
+
   useEffect(() => {
     setCallback(true);
     dispatch(GetAllBillInitiate(token.accessToken));
@@ -49,7 +52,24 @@ const Bills = () => {
   };
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
-    { field: "hoten", headerName: "User other", width: 200 },
+    {
+      field: "hoten",
+      headerName: "User Order",
+      width: 250,
+      renderCell: (params) => {
+        return (
+          <div className="productListItem">
+            <img
+              className="productListImg"
+              src={params.row.url || img}
+              alt=""
+            />
+            {params.row.hoten}
+          </div>
+        );
+      },
+    },
+
     { field: "tong_sl", headerName: "Quantify", width: 150 },
     { field: "tong_hd", headerName: "Total Bill", width: 150 },
     {

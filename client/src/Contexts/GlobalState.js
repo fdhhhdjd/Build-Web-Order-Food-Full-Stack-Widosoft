@@ -1,10 +1,16 @@
 import React, { createContext, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  GetAccountNewInitiate,
   InfoAdminInitiate,
   RefreshTokenInitiate,
 } from "../redux/Action/ActionAdmin";
 import { ProductApi, AdminApi, InfoAllUserApi } from "../Imports/Index";
+import { GetAccountMuchInitiate } from "../redux/Action/ActionInfoAllUser";
+import {
+  ProductTotalInitiate,
+  VoucherAllInitiate,
+} from "../redux/Action/ActionProduct";
 export const GlobalState = createContext();
 export const DataProvider = ({ children }) => {
   const [callback, setCallback] = useState(false);
@@ -25,6 +31,10 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     if (token.accessToken) {
       dispatch(InfoAdminInitiate(token.accessToken));
+      dispatch(GetAccountNewInitiate(token.accessToken));
+      dispatch(GetAccountMuchInitiate(token.accessToken));
+      dispatch(ProductTotalInitiate(token.accessToken));
+      dispatch(VoucherAllInitiate(token.accessToken));
     }
   }, [token.accessToken, callback]);
   const data = {

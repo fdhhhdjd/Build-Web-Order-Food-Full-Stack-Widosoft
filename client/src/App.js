@@ -5,11 +5,9 @@ import {
   Loading,
   UserLists,
   Ratings,
-  Rating,
   ProductsAdmin,
   NewUsers,
   NewProducts,
-  ManagerAdmins,
   ChangePasswords,
   UserRoute,
   UserRoutes,
@@ -21,6 +19,11 @@ import {
   NewPayments,
   InfoApps,
   EditBills,
+  BillDetails,
+  Vouchers,
+  Infos,
+  NewVoucher,
+  NewVouchers,
 } from "./Imports/Index";
 import {
   Home,
@@ -28,7 +31,6 @@ import {
   ProductDetails,
   Authentication,
   Forget,
-  Payment,
   Checkout,
   Admin,
   ProfileAdmin,
@@ -192,6 +194,22 @@ function App() {
             }
           />
           <Route
+            path="/infoapp/:id"
+            element={
+              <UserRoute>
+                <Infos />
+              </UserRoute>
+            }
+          />
+          <Route
+            path="/newinfoapp"
+            element={
+              <UserRoute>
+                <Infos />
+              </UserRoute>
+            }
+          />
+          <Route
             path="/bill"
             element={
               <UserRoute>
@@ -212,6 +230,38 @@ function App() {
             element={
               <UserRoute>
                 <Ratings />
+              </UserRoute>
+            }
+          />
+          <Route
+            path="/billdetail"
+            element={
+              <UserRoute>
+                <BillDetails />
+              </UserRoute>
+            }
+          />
+          <Route
+            path="/voucher"
+            element={
+              <UserRoute>
+                <Vouchers />
+              </UserRoute>
+            }
+          />
+          <Route
+            path="/voucher/:id"
+            element={
+              <UserRoute>
+                <NewVouchers />
+              </UserRoute>
+            }
+          />
+          <Route
+            path="/newvoucher"
+            element={
+              <UserRoute>
+                <NewVouchers />
               </UserRoute>
             }
           />

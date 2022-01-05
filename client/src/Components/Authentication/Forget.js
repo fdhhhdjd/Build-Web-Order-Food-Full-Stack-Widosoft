@@ -3,6 +3,7 @@ import Lottie from "react-lottie";
 import { ForgetStyle } from "../../Styles/StylePages/ForgetStyle";
 import { Link } from "react-router-dom";
 import { defaultOptions3 } from "../../Imports/Lottie";
+import { Metadata } from "../../Imports/Index";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { ForgetAdminInitiate } from "../../redux/Action/ActionAdmin";
@@ -34,6 +35,7 @@ const Forget = () => {
   }, [forget]);
   return (
     <>
+      <Metadata title="Forget-Admin" />
       <ForgetStyle>
         <div className="container1">
           <div className="forms-container">

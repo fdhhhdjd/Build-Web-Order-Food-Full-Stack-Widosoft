@@ -25,7 +25,7 @@ const InfoApp = () => {
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
-          axios.delete(`/payment/delete/${id}`, {
+          axios.delete(`/appInfo/${id}`, {
             headers: { Authorization: `Bearer ${token.accessToken}` },
           });
           setCallback(!callback);
@@ -84,12 +84,12 @@ const InfoApp = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/payment/" + params.row.id}>
+            <Link to={"/infoapp/" + params.row.slug}>
               <button className="productListEdit">Edit</button>
             </Link>
             <DeleteOutline
               className="productListDelete"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row.slug)}
             />
           </>
         );
@@ -100,7 +100,7 @@ const InfoApp = () => {
     <>
       <ProductStyle />
       <div className="productList">
-        <Link to="/newpayment">
+        <Link to="/newinfoapp">
           <button className="userAddButton">Create</button>
         </Link>
         <DataGrid

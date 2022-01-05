@@ -2,8 +2,10 @@ import React from "react";
 import { WidgetSms } from "../../Styles/StylePages/Admin/WidgetSms";
 import { MdVisibility } from "../../Imports/Icons";
 import { useSelector } from "react-redux";
+import { GetAccountNewInitiate } from "../../redux/Action/ActionAdmin";
 const WidgetSm = () => {
-  const { allUsers } = useSelector((state) => state.authAdmin);
+  const { newAccount } = useSelector((state) => state.authAdmin);
+
   const img =
     "https://png.pngtree.com/png-clipart/20190924/original/pngtree-businessman-user-avatar-free-vector-png-image_4827807.jpg";
 
@@ -12,7 +14,7 @@ const WidgetSm = () => {
       <WidgetSms />
       <div className="widgetSm">
         <span className="widgetSmTitle">New Join Members</span>
-        {allUsers.map((item) => {
+        {newAccount.map((item) => {
           return (
             <ul className="widgetSmList" key={item.id}>
               <li className="widgetSmListItem">

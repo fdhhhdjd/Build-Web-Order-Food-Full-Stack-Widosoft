@@ -105,7 +105,7 @@
    - Xem lịch sử đặt hàng của tài khoản khách hàng đang đăng nhập : get --> http://localhost:5000/bill/history
    - Xem hóa đơn : get --> http://localhost:5000/bill/detail/id_hd -
    - Hủy bill (khi hóa đơn của khách hàng chưa thanh toán ) : patch --> http://localhost:5000/bill/cancel/id_hd
-   - Kiểm tra mã voucher hợp lệ hay không : get --> http://localhost:5000/voucher/check
+   - Kiểm tra mã voucher hợp lệ hay không : get --> http://localhost:5000/voucher/check/id_voucher
 
    Bill Detail :
 

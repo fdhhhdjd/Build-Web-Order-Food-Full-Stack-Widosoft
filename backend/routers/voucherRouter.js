@@ -7,7 +7,7 @@ const checkAuth = require("../middleware/checkAuth.js");
 //kiểm tra phiếu giảm giá có tồn tại trong bảng phieu_giamgia không?
 //nếu tồn tại thì lấy ra giá trị của phiếu
 router.get(
-  "/check",
+  "/check/:id",
   checkAuth.checkAuthCustomer,
   voucherController.checkVoucher
 );

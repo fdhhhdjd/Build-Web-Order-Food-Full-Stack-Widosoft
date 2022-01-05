@@ -4,7 +4,7 @@ module.exports = {
   //kiểm tra phiếu giảm giá có tồn tại trong bảng phieu_giamgia không?
   //nếu tồn tại thì lấy ra giá trị của phiếu
   checkVoucher(req, res) {
-    const { id_voucher } = req.body;
+    const id_voucher = req.params.id;
     voucherModel
       .checkVoucher(id_voucher)
       .then((existVoucher) => {

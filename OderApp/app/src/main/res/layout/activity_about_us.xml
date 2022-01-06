@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".fragmentinfo.AboutUs">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Terms and condition"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="@color/primary_dark"
+            android:gravity="center"
+            />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_160sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/restaurant"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The Pizza Company"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20ssp"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="The Pizza Company tại Việt Nam"
+            android:textSize="@dimen/_17ssp"
+            android:textColor="@color/red_dark"
+            android:layout_marginTop="@dimen/_20sdp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:text="Có mặt tại hơn 118 quốc gia với chuỗi 35,000 nhà hàng tại khắp các châu lục, mỗi ngày, McDonald’s toàn cầu phục vụ hơn 70 triệu người tiêu dùng, không chỉ đảm bảo mang đến cho họ những bữa ăn ngon, an toàn vệ sinh, mà còn làm họ hài lòng với dịch vụ của McDonald’s."
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nắm bắt nhu cầu của người tiêu dùng Việt Nam hiện nay, chúng tôi mong muốn phục vụ những bữa ăn nhanh nhưng hợp vệ sinh, đầy đủ dưỡng chất cùng với cung cách phục vụ chuyên nghiệp, McDonald’s cam kết sẽ làm bạn hài lòng với dòng sản phẩm nổi tiếng khắp thế giới của chúng tôi như Big Mac, Chicken McNuggets, Egg McMuffin. Không chỉ nổi tiếng về thức ăn ngon, McDonald’s còn nổi tiếng về chuỗi tiêu chuẩn Chất Lượng, Dịch Vụ, Vệ Sinh và Giá trị."
+            android:textSize="@dimen/_12ssp"
+
+            android:textColor="@color/black"
+            android:layout_marginBottom="@dimen/_20sdp"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_160sdp"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:src="@drawable/restauranta"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="tầm nhìn &amp; hoài bão thương hiệu"
+            android:textSize="@dimen/_17ssp"
+            android:textColor="@color/red_dark"
+            android:layout_marginTop="@dimen/_20sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The Pizza Company sẽ thiết lập một chuẩn mực mới cho ngành công nghiệp nhà hàng phục vụ thức ăn nhanh tại Việt Nam, mang đến cho khách hàng những trải nghiệm độc nhất chỉ có tại chuỗi nhà hàng của chúng tôi."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_20sdp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hoài bão của chúng tôi là phục vụ Thức ăn ngon cùng đội ngũ Nhân Viên Chuyên Nghiệp,Thân Thiện và là một Thành Viên Tốt của cộng đồng."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_20sdp"
+           />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thức ăn ngon: chúng tôi phục vụ thức ăn ngon từ nguồn nguyên vật liệu chất lượng nhất và được chế biến theo từng yêu cầu của khách hàng."
+            android:textSize="@dimen/_12ssp"
+
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_20sdp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nhân viên chuyên nghiệp, thân thiện: chúng tôi luôn tạo cơ hội để nhân viên phát triển sự nghiệp cùng công ty; từ đó, cùng nhau, chúng tôi phục vụ khách hàng một cách tốt nhất."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_20sdp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thành viên tốt của cộng đồng: Chúng tôi luôn quan tâm đến cộng đồng, đặc biệt là trẻ em và các gia đình; chúng tôi mang đến niềm vui và làm phong phú hơn cuộc sống của mọi người."
+            android:textSize="@dimen/_12ssp"
+
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_20sdp"
+            />
+
+
+    </LinearLayout>
+
+</ScrollView>

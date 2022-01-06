@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".fragmentinfo.FAQ">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Question and answer"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="@color/primary_dark"
+            android:gravity="center"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/qaa"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Ứng dụng Pizza's - Những câu hỏi thường gặp"
+            android:gravity="center"
+            android:textSize="@dimen/_17ssp"
+            android:layout_marginTop="@dimen/_20sdp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Múc đích sử dụng ứng dụng?"
+            android:textColor="@color/red_dark"
+            android:textSize="@dimen/_16ssp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ngoài mục đích cung cấp thêm thông tin về sản phẩm và dịch vụ của The Pizza
+Company, chúng tôi còn muốn mang ứng dụng này nhắm đem đến những ưu đãi hấp dẫn cho các khách hàng thân
+thiết của The Pizza Company"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="@dimen/_20sdp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Tôi không có kết nối internet, tôi không thể sử dụng ứng dụng này?"
+            android:textColor="@color/red_dark"
+            android:textSize="@dimen/_16ssp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bạn cần phải có kết nối internet để có thể cập nhật những ưu đãi mới nhất
+từ The Pizza Company"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="@dimen/_20sdp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Tôi không thể truy cập vào mạng wifi tại cửa hàng, làm cách nào tôi có thể
+sử dụng ưu đãi?"
+            android:textColor="@color/red_dark"
+            android:textSize="@dimen/_16ssp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Để hoàn thành 1 ưu đãi, bạn phải có kết nối với internet (bạn có thể sử dụng
+3G để thay thế). Ưu đãi sẽ hiện trong thời gian nhất định ngay cả sau khi không còn kết nối"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="@dimen/_20sdp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="THÔNG TIN VỀ CÁC ƯU ĐÃI"
+            android:textSize="@dimen/_17ssp"
+            android:textColor="@color/red_dark"
+            android:layout_marginTop="@dimen/_20sdp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Tôi đã kích hoạt ưu đãi nhưng không có đủ thời gian để hoàn thành. Tôi có
+thể kích hoạt lại được không?"
+            android:textColor="@color/red_dark"
+            android:textSize="@dimen/_16ssp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chúng tôi rất tiếc, như vậy ưu đãi coi như đã được sử dụng. Khi ưu đãi hiện
+ra, bạn chỉ có 1 khoảng thời gian nhất định để hoàn thành. Tuy nhiên vẫn có một số ưu đãi có thể được
+sử dụng nhiều lần, vui lòng xem điều kiện áp dụng của từng ưu đãi"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="@dimen/_20sdp"/>
+
+
+    </LinearLayout>
+
+</ScrollView>

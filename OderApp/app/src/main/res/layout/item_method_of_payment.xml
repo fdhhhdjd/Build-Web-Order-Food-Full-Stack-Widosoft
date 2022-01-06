@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ln_method"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_80sdp"
+    android:layout_margin="@dimen/_5sdp"
+    android:background="@drawable/border_background_itemcart"
+    android:weightSum="10"
+    android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/img_method"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_weight="1"
+            android:src="@drawable/cod"/>
+
+    <TextView
+        android:id="@+id/tv_method"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:text="COD"
+        android:textSize="@dimen/_18ssp"
+        android:textColor="@color/primary_dark"
+        android:layout_gravity="center"/>
+    </LinearLayout>
+

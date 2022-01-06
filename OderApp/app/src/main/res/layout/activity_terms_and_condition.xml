@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".fragmentinfo.TermsAndCondition">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Terms and condition"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="@color/primary_dark"
+            android:gravity="center"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/qaa"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="IMPORTANT: PLEASE CAREFULLY READ AND UNDERSTAND THESE TERMS AND CONDITIONS (“TERMS”). THEY CONTAIN LIMITATIONS ON McDONALD’S LIABILITY AND OTHER PROVISIONS THAT AFFECT YOUR LEGAL RIGHTS."
+            android:textSize="@dimen/_17ssp"
+            android:textColor="@color/red_dark"
+            android:layout_marginTop="@dimen/_20sdp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="By installing, accessing or using any websites, mobile apps, email newsletters and subscriptions, and other digital properties on which these terms are posted or referenced (together, “online services”), you are entering into a binding agreement with GOOD DAY HOSPITALITY JOINT STOCK COMPANY (“McDonald’s”, “we” or “us”), in VIETNAM, which it controls and operates from its headquarters at 2-6 Bis Dien Bien Phu Street, Dakao Ward, District 1, Hochiminh City, Vietnam."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_20sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="By accepting these terms, you also understand and consent to McDonald’s Privacy Statement, which is incorporated into, and part of, this agreement. Our Privacy Statement describes how we collect, use and share information."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The online services are not intended to be used by, or targeted to, anyone under the age of 13. You must be at least 13 years old to use the online services.  If you are at least 13 but not yet 15  years old (or the legal age of majority if different in your jurisdiction), then you must review these terms with your parent or guardian and they must understand and agree to these terms in order for you to use the online services."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="1. About the online services."
+            android:textColor="@color/red_dark"
+            android:textSize="@dimen/_20ssp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Availability of products and services."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/red_dark"
+            android:layout_marginTop="@dimen/_10sdp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="McDonald's products and services are available in many parts of the world. However, the online services may describe products and services that are not available worldwide"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="@dimen/_10sdp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You are responsible for your devices and accounts"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/red_dark"
+            android:layout_marginTop="@dimen/_10sdp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You are responsible for any devices, software and services needed to use the online services. McDonald’s does not guarantee that the online services will fully function on any particular device or with any particular software. You are also responsible for any messaging and data charges, fees and taxes for your use of the online services, including when we communicate with you by text, email or other means that you choose. You may only use the online services with devices that you own or control and using only the authorized operating system (e.g., Apple iPhone OS for Apple devices). If you create an online services account, you are responsible for keeping the account secure and for all activity under the account. You can only use one online services account and must keep your account information accurate at all times."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="@dimen/_10sdp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Obey the rules of the road."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/red_dark"
+            android:layout_marginTop="@dimen/_10sdp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Whenever you use the online services, you must obey the rules of the road and all applicable rules and regulations. YOU MUST NOT USE THE ONLINE SERVICES WHILST DRIVING OR WHILST BEHIND THE WHEEL OR CONTROLS OF A VEHICLE THAT IS MOVING OR NOT IN “PARK”. In the interest of safety at all times, you should only use the online services when it is lawful and safe to do so."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="@dimen/_10sdp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="2. Our information practices and communications with you."
+            android:textColor="@color/red_dark"
+            android:textSize="@dimen/_20ssp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="McDonald’s Privacy Statement."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/red_dark"
+            android:layout_marginTop="@dimen/_10sdp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="These terms incorporate McDonald’s Privacy Statement as part of the terms. Our Privacy Statement describes our information practices, including how we collect, use and share information."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="@dimen/_10sdp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How we communicate with you."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/red_dark"
+            android:layout_marginTop="@dimen/_10sdp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Through the online services, you may opt in to receive emails, text messages to the mobile number you provide to us or push notifications from McDonald’s. When you opt in to any of these types of communications, you understand and consent that you will receive marketing, transactional and other messages from McDonald’s. McDonald’s may use the information you have provided to us to communicate with you in accordance with McDonald’s Privacy Statement."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="@dimen/_10sdp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="3. Offers."
+            android:textColor="@color/red_dark"
+            android:textSize="@dimen/_20ssp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You have the possibility of receiving offers through the online services."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/red_dark"
+            android:layout_marginTop="@dimen/_10sdp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" The following general terms apply to the offers: (1) the offer may only be available through that particular online service and for the product shown and subject to availability, in participating restaurants only, and until the expiration date; (2) serving times apply (e.g., certain non-breakfast offers may not be available at breakfast serving times); (3) unless otherwise stated each offer expires on redemption; (4) only one offer can be used per restaurant visit; (5) offers are not transferable; and (6) there is no cash alternative. In addition there may be specific terms that apply to the offer which are stated on the app next to the offer. Not all offers may be combined with orders."
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="@dimen/_10sdp"/>
+
+    </LinearLayout>
+
+</ScrollView>

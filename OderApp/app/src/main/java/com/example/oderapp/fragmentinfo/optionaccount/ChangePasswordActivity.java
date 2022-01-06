@@ -74,7 +74,9 @@ public class ChangePasswordActivity extends AppCompatActivity {
         hashMap.put(Contants.accessToken, "Bearer " + StoreUtil.get(ChangePasswordActivity.this, Contants.accessToken));
         hashMap.put(Contants.contentType, "application/json");
         hashMap.put(Contants.contentLength, "<calculated when request is sent>");
-        if (TextUtils.isEmpty(edtNewPassword.getText().toString()) || TextUtils.isEmpty(edtConfirmNewPassword.getText().toString())) {
+        String pass= edtNewPassword.getText().toString();
+        String confrim = edtConfirmNewPassword.getText().toString();
+        if ((TextUtils.isEmpty(pass) || TextUtils.isEmpty(confrim)) && pass!=confrim) {
             String message = "Email or password blank...";
             Toast.makeText(ChangePasswordActivity.this, message, Toast.LENGTH_SHORT).show();
         } else {

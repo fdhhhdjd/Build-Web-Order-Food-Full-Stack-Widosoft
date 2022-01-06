@@ -238,4 +238,84 @@ module.exports = {
         });
       });
   },
+
+  //tổng sản phẩm bán được
+  getTotalProductSold(req, res) {
+    billModel
+      .getTotalProductSold()
+      .then((result) => {
+        return res.status(200).json({
+          status: 200,
+          message: "Get total product sold successfully",
+          data: result,
+        });
+      })
+      .catch((err) => {
+        return res.status(400).json({
+          status: 400,
+          message: "Failed to get total product sold ",
+          data: err,
+        });
+      });
+  },
+
+  //tổng hóa đơn khách hàng chưa nhận được sản phẩm
+  getTotalBillCustomerNotReceived(req, res) {
+    billModel
+      .getTotalBillCustomerNotReceived()
+      .then((result) => {
+        return res.status(200).json({
+          status: 200,
+          message: "Get total bill customer have not received successfully",
+          data: result,
+        });
+      })
+      .catch((err) => {
+        return res.status(400).json({
+          status: 400,
+          message: "Failed to get total bill customer have not received ",
+          data: err,
+        });
+      });
+  },
+
+  //tổng hóa đơn khách hàng hủy
+  getTotalBillCancelled(req, res) {
+    billModel
+      .getTotalBillCancelled()
+      .then((result) => {
+        return res.status(200).json({
+          status: 200,
+          message: "Get total bill customer cancelled",
+          data: result,
+        });
+      })
+      .catch((err) => {
+        return res.status(400).json({
+          status: 400,
+          message: "Failed to get total bill customer cancelled",
+          data: err,
+        });
+      });
+  },
+
+  //lấy ra doanh thu theo từng tháng
+  getRevenueByMonth(req, res) {
+    billModel
+      .getRevenueByMonth()
+      .then((result) => {
+        return res.status(200).json({
+          status: 200,
+          message: "Get revenue by month successfully",
+          data: result,
+        });
+      })
+      .catch((err) => {
+        return res.status(400).json({
+          status: 400,
+          message: "Failed to get revenue by month",
+          data: err,
+        });
+      });
+  },
 };

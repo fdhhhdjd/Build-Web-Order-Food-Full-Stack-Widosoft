@@ -14,8 +14,12 @@
    - quên mật khẩu tài khoản admin : post --> http://localhost:5000/admin/forgotPassword
    - hiển thị tài khoản đăng ký từ 3 ngày trước đến hiện tại : get --> http://localhost:5000/admin/newUser
    - hiển thị tổng doanh thu : get --> http://localhost:5000/admin/totalRevenue
+   - hiển thị tổng sản phẩm bán được : get --> http://localhost:5000/admin/totalProductSold
+   - hiển thị tổng hóa đơn khách hàng chưa nhận được sản phẩm : get --> http://localhost:5000/admin/totalBillCustomerNotReceived
+   - hiển thị tổng hóa đơn khách hàng đã hủy: get --> http://localhost:5000/admin/totalBillCancelled
+   - hiển thị doanh thu theo tháng : get --> http://localhost:5000/admin/revenueByMonth
 
-   Category :
+   - Category :
 
    - Thêm mới danh mục : post --> http://localhost:5000/category/
    - Chỉnh sửa tên danh mục : patch --> http://localhost:5000/category/id_dm

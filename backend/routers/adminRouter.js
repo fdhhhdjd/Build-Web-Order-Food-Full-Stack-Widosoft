@@ -67,4 +67,32 @@ router.get(
   billController.getTotalRevenue
 );
 
+//tổng sản phẩm bán được
+router.get(
+  "/totalProductSold",
+  checkAuth.checkAuthAdmin,
+  billController.getTotalProductSold
+);
+
+//tổng hóa đơn khách hàng chưa nhận được sản phẩm
+router.get(
+  "/totalBillCustomerNotReceived",
+  checkAuth.checkAuthAdmin,
+  billController.getTotalBillCustomerNotReceived
+);
+
+//tổng hóa đơn khách hàng hủy
+router.get(
+  "/totalBillCancelled",
+  checkAuth.checkAuthAdmin,
+  billController.getTotalBillCancelled
+);
+
+//lấy ra doanh thu theo tháng
+router.get(
+  "/revenueByMonth",
+  checkAuth.checkAuthAdmin,
+  billController.getRevenueByMonth
+);
+
 module.exports = router;

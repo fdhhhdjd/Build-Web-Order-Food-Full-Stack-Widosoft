@@ -104,7 +104,90 @@ module.exports = {
   async getTotalRevenue() {
     let result = await knex("hoadon")
       .sum("tong_hd as tong_doanhthu")
-      .whereIn("tinhtrangHD", ["Đã thanh toán", "Đã nhận hàng"]);
+      .whereIn("tinhtrangHD", ["Đã nhận hàng"]);
+    return result;
+  },
+
+  //tổng sản phẩm bán được
+  async getTotalProductSold() {
+    let result = await knex("hoadon")
+      .sum("tong_sl as tong_sp_ban_duoc")
+      .whereIn("tinhtrangHD", ["Đã nhận hàng"]);
+    return result;
+  },
+
+  //tổng hóa đơn khách hàng chưa nhận được sản phẩm
+  async getTotalBillCustomerNotReceived() {
+    let result = await knex("hoadon")
+      .sum("tong_hd as tong_hd_khach_chua_nhan_hang")
+      .whereIn("tinhtrangHD", ["Đã thanh toán", "Chưa thanh toán"]);
+    return result;
+  },
+
+  //tổng hóa đơn khách hàng hủy
+  async getTotalBillCancelled() {
+    let result = await knex("hoadon")
+      .sum("tong_hd as tong_hd_bi_huy")
+      .whereIn("tinhtrangHD", ["Hủy"]);
+    return result;
+  },
+
+  //lấy ra doanh thu theo từng tháng
+  async getRevenueByMonth() {
+    let doanh_thu_theo_thang = await knex("hoadon")
+      .sum("tong_hd as doanh_thu")
+      .where("tinhtrangHD", "Đã nhận hàng")
+      .whereRaw("extract(YEAR_MONTH from updatedAt) = 202201")
+      .unionAll(
+        knex.raw(
+          'SELECT SUM(tong_hd) FROM `hoadon` WHERE tinhtrangHD = "Đã nhận hàng" and extract(YEAR_MONTH from updatedAt) = 202202'
+        ),
+        knex.raw(
+          'SELECT SUM(tong_hd) FROM `hoadon` WHERE tinhtrangHD = "Đã nhận hàng" and extract(YEAR_MONTH from updatedAt) = 202203'
+        ),
+        knex.raw(
+          'SELECT SUM(tong_hd) FROM `hoadon` WHERE tinhtrangHD = "Đã nhận hàng" and extract(YEAR_MONTH from updatedAt) = 202204'
+        ),
+        knex.raw(
+          'SELECT SUM(tong_hd) FROM `hoadon` WHERE tinhtrangHD = "Đã nhận hàng" and extract(YEAR_MONTH from updatedAt) = 202205'
+        ),
+        knex.raw(
+          'SELECT SUM(tong_hd) FROM `hoadon` WHERE tinhtrangHD = "Đã nhận hàng" and extract(YEAR_MONTH from updatedAt) = 202206'
+        ),
+        knex.raw(
+          'SELECT SUM(tong_hd) FROM `hoadon` WHERE tinhtrangHD = "Đã nhận hàng" and extract(YEAR_MONTH from updatedAt) = 202207'
+        ),
+        knex.raw(
+          'SELECT SUM(tong_hd) FROM `hoadon` WHERE tinhtrangHD = "Đã nhận hàng" and extract(YEAR_MONTH from updatedAt) = 202208'
+        ),
+        knex.raw(
+          'SELECT SUM(tong_hd)  FROM `hoadon` WHERE tinhtrangHD = "Đã nhận hàng" and extract(YEAR_MONTH from updatedAt) = 202209'
+        ),
+        knex.raw(
+          'SELECT SUM(tong_hd) FROM `hoadon` WHERE tinhtrangHD = "Đã nhận hàng" and extract(YEAR_MONTH from updatedAt) = 202210'
+        ),
+        knex.raw(
+          'SELECT SUM(tong_hd) FROM `hoadon` WHERE tinhtrangHD = "Đã nhận hàng" and extract(YEAR_MONTH from updatedAt) = 202211'
+        ),
+        knex.raw(
+          'SELECT SUM(tong_hd) FROM `hoadon` WHERE tinhtrangHD = "Đã nhận hàng" and extract(YEAR_MONTH from updatedAt) = 202212'
+        )
+      );
+
+    var result = ["doanh_thu_theo_thang"];
+    for (var i = 0; i < doanh_thu_theo_thang.length; i++) {
+      // result.push(doanh_thu_theo_thang[i].doanh_thu);
+      var thang = i + 1;
+      var doanhthu =
+        doanh_thu_theo_thang[i].doanh_thu === null
+          ? 0
+          : doanh_thu_theo_thang[i].doanh_thu;
+      result.push({
+        thang: thang,
+        doanh_thu: doanhthu,
+      });
+    }
+
     return result;
   },
 };

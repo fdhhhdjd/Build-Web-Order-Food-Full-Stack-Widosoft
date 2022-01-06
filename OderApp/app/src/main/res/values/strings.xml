@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Pizza</string>
+    <string name="welcome">Welcome</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="login_to_continue">Login to continue</string>
+    <string name="email">Email</string>
+    <string name="lego">Let go</string>
+    <string name="password">Password</string>
+    <string name="sing_in">Sign In</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="add_image">Add Image</string>
+    <string name="name">Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="select_user">Select User</string>
+    <string name="type_a_message">Type a message</string>
+    <string name="online">Online</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="let_go">Let go</string>
+    <string name="pizza_around_everyone">Pizza around everyone</string>
+    <string name="sign_in">Sign in</string>
+    <string name="create_account">Create account</string>
+    <string name="thang">|</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="pizza_love">Pizza Love</string>
+    <string name="from_italy_with">From Italy with</string>
+    <string name="hot_this_month">Hot this month</string>
+    <string name="promotion">Promotion</string>
+    <string name="welcome_to_the_pizza_store">Welcome to the Pizza Store,</string>
+    <string name="my_account">My account</string>
+    <string name="infomation">Infomation</string>
+    <string name="about_us">About us</string>
+    <string name="recruitment">Recruitment</string>
+    <string name="faq">FAQ</string>
+    <string name="terms_and_condition">Terms and condition</string>
+</resources>

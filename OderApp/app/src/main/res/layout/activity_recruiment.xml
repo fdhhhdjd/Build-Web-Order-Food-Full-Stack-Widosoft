@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".fragmentinfo.Recruiment">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recruiment"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="@color/primary_dark"
+            android:gravity="center"
+           />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:src="@drawable/ungtuyen"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Nhà sáng lập McDonald’s Ray Kroc đã từng nói: “Hãy chăm sóc cho nhân viên, công việc kinh doanh khắc sẽ thành công.” McDonald‘s Việt Nam luôn nỗ lực hết mình trong việc đem đến cho nhân viên môi trường làm việc vui vẻ thân thiện, đến từ sự linh động trong việc tuyển dụng, đến từ một sự nghiệp với lộ trình thăng tiến rõ ràng
+                                 Ứng tuyển ngay hôm nay để trở thành những quản lý nhà hàng trong tương lai!"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_20sdp"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:src="@drawable/ungtuyenc"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:src="@drawable/ungtuyenb"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="@dimen/_50sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Các vị trí ứng tuyển"
+            android:textColor="@color/main_color"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="@dimen/_16ssp"
+            android:layout_marginTop="@dimen/_20sdp"/>
+   <LinearLayout
+       android:layout_margin="@dimen/_10sdp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Nhân viên phục vụ"
+           android:textColor="@color/black"
+           android:textSize="@dimen/_16ssp"/>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="McDonald‘s Aeon Bình Dương, Tầng trệt, Số 01 Đại lộ Bình Dương, Khu phố Bình Giao, Thuận An, Bình Dương"
+           android:textSize="@dimen/_12ssp"
+           android:textColor="@color/primary"/>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Toàn thời gian  5,200,000 — 6,500,000 VNĐ"/>
+       <Button
+           android:layout_gravity="center"
+           android:layout_width="@dimen/_100sdp"
+           android:layout_height="@dimen/_30sdp"
+           android:backgroundTint="@color/main_color"
+           android:text="Apply"/>
+   </LinearLayout>
+    <LinearLayout
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nhân viên phục vụ"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="McDonald‘s Aeon Bình Dương, Tầng trệt, Số 01 Đại lộ Bình Dương, Khu phố Bình Giao, Thuận An, Bình Dương"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/primary"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bán thời gian  21,000 — 23,000 VNĐ"/>
+        <Button
+            android:layout_gravity="center"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:backgroundTint="@color/main_color"
+            android:text="Apply"/>
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhân viên pha chế"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="McDonald‘s Aeon Bình Dương, Tầng trệt, Số 01 Đại lộ Bình Dương, Khu phố Bình Giao, Thuận An, Bình Dương"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/primary"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bán thời gian  21,000 — 23,000 VNĐ"/>
+            <Button
+                android:layout_gravity="center"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:backgroundTint="@color/main_color"
+                android:text="Apply"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chuyên viên chăm sóc trải nghiệm khách hàng"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="McDonald‘s Aeon Bình Dương, Tầng trệt, Số 01 Đại lộ Bình Dương, Khu phố Bình Giao, Thuận An, Bình Dương"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/primary"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bán thời gian  40,000 — 45,000 VNĐ"/>
+            <Button
+                android:layout_gravity="center"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:backgroundTint="@color/main_color"
+                android:text="Apply"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhân viên phục vụ"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="McDonald‘s Aeon Celadon Tân Phú, 30 Bờ Bao Tân Thắng, P. Sơn Kỳ, Q. Tân Phú, TP. HCM"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/primary"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bán thời gian  21,000 — 23,000 VNĐ"/>
+            <Button
+                android:layout_gravity="center"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:backgroundTint="@color/main_color"
+                android:text="Apply"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

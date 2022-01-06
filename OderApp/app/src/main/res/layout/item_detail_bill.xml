@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipereveallayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:background="@drawable/border_background_itemcart">
+
+    <ImageView
+        android:id="@+id/img_product"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:scaleType="centerInside"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_nameProduct"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="Pizza Double Cheese"
+        android:textColor="@color/primary_dark"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintRight_toLeftOf="@+id/tv_donGia"
+        app:layout_constraintStart_toEndOf="@+id/img_product"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_donGia"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="26dp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="6dp"
+        android:text="100.000"
+        android:textColor="@color/primary_dark"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/tv_nameProduct"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_tongGia"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="6dp"
+        android:text="100.000"
+        android:textColor="@color/primary_dark"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_donGia" />
+
+    <TextView
+        android:id="@+id/tv_soluong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:inputType="number"
+        android:text="1"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16ssp"
+        app:layout_constraintStart_toEndOf="@+id/img_product"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nameProduct" />
+
+    <TextView
+        android:id="@+id/tv_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_10ssp"
+        android:layout_marginTop="-5dp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:text="dsadsa"
+        android:textColor="@color/main_color"
+        app:layout_constraintTop_toBottomOf="@+id/tv_soluong"
+        app:layout_constraintLeft_toRightOf="@+id/img_product"
+        android:visibility="visible"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

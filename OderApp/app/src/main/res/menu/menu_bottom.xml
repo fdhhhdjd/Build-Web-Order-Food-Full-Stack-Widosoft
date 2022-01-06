@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+ <item
+     android:checked="true"
+     android:title="Home"
+     android:id="@+id/home"
+    android:icon="@drawable/home"
+    app:cnb_iconColor="#fff"
+    app:cnb_backgroundColor="@color/main_color"
+    app:cnb_textColor="#fff"/>
+
+    <item
+        android:title="Menu"
+        android:id="@+id/menu"
+        android:icon="@drawable/pizzanav"
+        app:cnb_iconColor="#fff"
+        app:cnb_backgroundColor="@color/main_color"
+        app:cnb_textColor="#fff"/>
+    <item
+        android:title="Cart"
+        android:id="@+id/cart"
+        android:icon="@drawable/carts"
+        app:cnb_iconColor="#fff"
+        app:cnb_backgroundColor="@color/main_color"
+        app:cnb_textColor="#fff"/>
+    <item
+        android:title="Bill"
+        android:id="@+id/bill"
+        android:icon="@drawable/bill"
+        app:cnb_iconColor="#fff"
+        app:cnb_backgroundColor="@color/main_color"
+        app:cnb_textColor="#fff"/>
+
+    <item
+        android:title="Info"
+        android:id="@+id/info"
+        android:icon="@drawable/option"
+        app:cnb_iconColor="#fff"
+        app:cnb_backgroundColor="@color/main_color"
+        app:cnb_textColor="#fff"/>
+
+
+</menu>

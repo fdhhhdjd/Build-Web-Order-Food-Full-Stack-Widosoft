@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.oderapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/pizza_cheese"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/pizza_cheese"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.OderApp"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activities.RegisterGoogleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.DetailBillActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".fragmentinfo.optionaccount.UpdateInformationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fragmentinfo.optionaccount.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fragmentinfo.SendEmailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AddAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MethodPaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.PaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.QRCode"
+            android:exported="false" />
+        <activity
+            android:name=".activities.HotThisMonthDetail"
+            android:exported="false" />
+        <activity android:name=".activities.DetailActivity" />
+        <activity android:name=".activities.Login" />
+        <activity android:name=".fragmentinfo.AboutUs" />
+        <activity android:name=".fragmentinfo.TermsAndCondition" />
+        <activity android:name=".fragmentinfo.FAQ" />
+        <activity android:name=".fragmentinfo.Recruiment" />
+        <activity android:name=".fragmentinfo.Account" />
+        <activity android:name=".activities.SliderActivity" />
+        <activity
+            android:name=".activities.SignUp"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activities.FirstScreenActivity"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.MainActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

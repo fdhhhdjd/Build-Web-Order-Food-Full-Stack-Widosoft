@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_50sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/_5sdp"
+    app:mode="same_level"
+    app:dragEdge="right"
+    android:background="@drawable/border_background_itemcart">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/img_edit_address"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_background_edit_item"
+            android:src="@drawable/ic_baseline_edit_24"
+            />
+        <ImageView
+            android:id="@+id/img_delete_address"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_delete_outline_24"
+            android:background="@drawable/border_background_delete_item"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ln_address"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_5sdp"
+        android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_diaChi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_weight="9"
+        android:text="30 Duong Hien Quyen, Nha Trang"
+        android:textSize="@dimen/_18ssp"
+        android:textColor="@color/primary_dark"
+        android:layout_gravity="center"/>
+
+<!--        <CheckBox-->
+<!--            android:layout_width="@dimen/_20sdp"-->
+<!--            android:layout_height="@dimen/_20sdp"-->
+
+<!--            android:layout_gravity="center"/>-->
+    <ImageView
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:src="@drawable/place"
+        android:layout_gravity="bottom"
+        app:tint="@color/primary" />
+
+    </LinearLayout>
+
+</com.chauthai.swipereveallayout.SwipeRevealLayout>

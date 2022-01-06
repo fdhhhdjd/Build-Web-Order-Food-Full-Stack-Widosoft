@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="@dimen/_7sdp"
+    android:layout_height="wrap_content"
+
+    >
+    <LinearLayout
+        android:id="@+id/layout_hot_this_month"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_140sdp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_90sdp"
+            android:scaleType="centerCrop"
+            android:id="@+id/hot_image"
+            android:src="@drawable/hota"/>
+        <TextView
+            android:id="@+id/tv_hot_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_dark"
+            android:textSize="@dimen/_12ssp"
+            android:padding="@dimen/_2sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:text="Pizza Pesto"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@color/gray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/ic_baseline_access_time_24"/>
+            <TextView
+                android:id="@+id/tv_hot_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                android:padding="4dp"
+                android:text="10:00 - 23:55"/>
+        </LinearLayout>
+
+        </LinearLayout>
+
+</androidx.cardview.widget.CardView>

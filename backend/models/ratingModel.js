@@ -16,7 +16,8 @@ module.exports = {
         "danhgia.createdAt",
         "danhgia.updatedAt",
         "danhgia.deleted_fg"
-      );
+      )
+      .where("hoadon.tinhtrangHD", "Đã nhận hàng");
     return ratings;
   },
 

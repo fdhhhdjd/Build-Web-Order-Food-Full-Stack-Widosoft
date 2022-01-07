@@ -49,11 +49,6 @@ const EditBill = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!images)
-      return swal("No Image Upload 😅.", {
-        icon: "error",
-      });
-
     await axios.patch(
       `/bill/update/${products.id}`,
       { ...products },
@@ -87,9 +82,10 @@ const EditBill = () => {
                   onChange={handleChangeInput}
                 >
                   <option value="">Please select a category</option>
-                  <option value="Đã Thanh Toán">Đã Thanh Toán</option>
-                  <option value="Chưa Thanh Toán">Chưa Thanh Toán</option>
-                  <option value="Đang Thanh Toán">Đang Thanh Toán</option>
+                  <option value="Đã thanh toán">Đã Thanh Toán</option>
+                  <option value="Chưa thanh toán">Chưa Thanh Toán</option>
+                  <option value="Hủy">Hủy Đơn Hàng</option>
+                  <option value="Đã nhận hàng">Đã Nhận Hàng</option>
                 </select>
               </div>
             </div>

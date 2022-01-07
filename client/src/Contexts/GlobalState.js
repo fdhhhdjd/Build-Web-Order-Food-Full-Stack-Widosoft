@@ -8,7 +8,10 @@ import {
 import { ProductApi, AdminApi, InfoAllUserApi } from "../Imports/Index";
 import { GetAccountMuchInitiate } from "../redux/Action/ActionInfoAllUser";
 import {
+  ProductTotalCancelInitiate,
   ProductTotalInitiate,
+  ProductTotalMothInitiate,
+  ProductTotalNotReceivedInitiate,
   VoucherAllInitiate,
 } from "../redux/Action/ActionProduct";
 export const GlobalState = createContext();
@@ -35,6 +38,10 @@ export const DataProvider = ({ children }) => {
       dispatch(GetAccountMuchInitiate(token.accessToken));
       dispatch(ProductTotalInitiate(token.accessToken));
       dispatch(VoucherAllInitiate(token.accessToken));
+
+      dispatch(ProductTotalCancelInitiate(token.accessToken));
+      dispatch(ProductTotalNotReceivedInitiate(token.accessToken));
+      dispatch(ProductTotalMothInitiate(token.accessToken));
     }
   }, [token.accessToken, callback]);
   const data = {

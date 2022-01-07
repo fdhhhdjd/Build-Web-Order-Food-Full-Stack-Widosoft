@@ -38,6 +38,42 @@ export const ProductTotalFail = (error) => ({
   type: types.PRODUCT_TOTAL_FAIL,
   payload: error,
 });
+//?total cancel
+export const ProductTotalCancelStart = () => ({
+  type: types.PRODUCT_TOTAL_CANCEL_START,
+});
+export const ProductTotalCancelSuccess = (token) => ({
+  type: types.PRODUCT_TOTAL_CANCEL_SUCCESS,
+  payload: token,
+});
+export const ProductTotalCancelFail = (error) => ({
+  type: types.PRODUCT_TOTAL_CANCEL_FAIL,
+  payload: error,
+});
+//?total NOT  RECEIVED
+export const ProductTotalNotReceivedStart = () => ({
+  type: types.PRODUCT_TOTAL_NOT_RECEIVED_START,
+});
+export const ProductTotalNotReceivedSuccess = (token) => ({
+  type: types.PRODUCT_TOTAL_NOT_RECEIVED_SUCCESS,
+  payload: token,
+});
+export const ProductTotalNotReceivedFail = (error) => ({
+  type: types.PRODUCT_TOTAL_NOT_RECEIVED_FAIL,
+  payload: error,
+});
+//? every total moth
+export const ProductTotalMothStart = () => ({
+  type: types.PRODUCT_TOTAL_MOTH_START,
+});
+export const ProductTotalMothSuccess = (token) => ({
+  type: types.PRODUCT_TOTAL_MOTH_SUCCESS,
+  payload: token,
+});
+export const ProductTotalMothFail = (error) => ({
+  type: types.PRODUCT_TOTAL_MOTH_FAIL,
+  payload: error,
+});
 //?Voucher All
 export const VoucherAllStart = () => ({
   type: types.VOUCHER_ALL_START,
@@ -93,6 +129,54 @@ export const ProductTotalInitiate = (token) => {
       })
       .catch((error) => {
         dispatch(ProductTotalFail(error.data));
+      });
+  };
+};
+//! total cancel
+export const ProductTotalCancelInitiate = (token) => {
+  return async function (dispatch) {
+    dispatch(ProductTotalCancelStart());
+    await axios
+      .get("/admin/totalBillCancelled", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((category) => {
+        dispatch(ProductTotalCancelSuccess(category.data.data));
+      })
+      .catch((error) => {
+        dispatch(ProductTotalCancelFail(error.data));
+      });
+  };
+};
+//! Total Not RECEIVED
+export const ProductTotalNotReceivedInitiate = (token) => {
+  return async function (dispatch) {
+    dispatch(ProductTotalNotReceivedStart());
+    await axios
+      .get("/admin/totalBillCustomerNotReceived", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((category) => {
+        dispatch(ProductTotalNotReceivedSuccess(category.data.data));
+      })
+      .catch((error) => {
+        dispatch(ProductTotalNotReceivedFail(error.data));
+      });
+  };
+};
+//!every total moth
+export const ProductTotalMothInitiate = (token) => {
+  return async function (dispatch) {
+    dispatch(ProductTotalMothStart());
+    await axios
+      .get("/admin/revenueByMonth", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((category) => {
+        dispatch(ProductTotalMothSuccess(category.data.data));
+      })
+      .catch((error) => {
+        dispatch(ProductTotalMothFail(error.data));
       });
   };
 };

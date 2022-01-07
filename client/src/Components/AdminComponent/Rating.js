@@ -20,7 +20,7 @@ const Rating = () => {
   useEffect(() => {
     setCallback(true);
     dispatch(GetAllRatingInitiate(token.accessToken));
-  }, []);
+  }, [callback, token]);
 
   const handleDelete = async (id) => {
     try {
@@ -56,10 +56,15 @@ const Rating = () => {
       headerName: "Name Payment",
       width: 250,
       renderCell: (params) => {
-        return <div className="productListItem">{params.row.hoten}</div>;
+        return (
+          <div className="productListItem">
+            <img className="productListImg" src={params.row.url} alt="" />
+            {params.row.hoten}
+          </div>
+        );
       },
     },
-    { field: "diem_danhgia", headerName: "Rating Star", width: 150 },
+    { field: "diem_danhgia", headerName: "Rating Star ⭐", width: 170 },
     {
       field: "binhluan",
       headerName: "Comment User",
@@ -101,9 +106,6 @@ const Rating = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/product/" + params.row.id}>
-              <button className="productListEdit">Edit</button>
-            </Link>
             <DeleteOutline
               className="productListDelete"
               onClick={() => handleDelete(params.row.id)}

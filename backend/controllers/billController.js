@@ -341,4 +341,66 @@ module.exports = {
         });
       });
   },
+
+  //hiển thị doanh thu bán được tháng này và so sánh tháng trước
+  getRevenueThisAndLastMonth(req, res) {
+    billModel
+      .getRevenueThisAndLastMonth()
+      .then((result) => {
+        return res.status(200).json({
+          status: 200,
+          message: `Get revenue this month and last month successfully`,
+          data: result,
+        });
+      })
+      .catch((err) => {
+        return res.status(400).json({
+          status: 400,
+          message: "Failed to get revenue this month and last month",
+          data: err,
+        });
+      });
+  },
+
+  //hiển thị tổng hóa đơn khách hàng chưa nhận được tháng này và so sánh tháng trước
+  getTotalBillCustomerNotReceivedThisAndLastMonth(req, res) {
+    billModel
+      .getTotalBillCustomerNotReceivedThisAndLastMonth()
+      .then((result) => {
+        return res.status(200).json({
+          status: 200,
+          message: `Get total bill customer have not received products this month and last month successfully`,
+          data: result,
+        });
+      })
+      .catch((err) => {
+        return res.status(400).json({
+          status: 400,
+          message:
+            "Failed to get total bill customer have not received products this month and last month",
+          data: err,
+        });
+      });
+  },
+
+  //hiển thị tổng hóa đơn khách hàng hủy tháng này và so sánh tháng trước
+  getTotalBillCustomerCancelledThisAndLastMonth(req, res) {
+    billModel
+      .getTotalBillCustomerCancelledThisAndLastMonth()
+      .then((result) => {
+        return res.status(200).json({
+          status: 200,
+          message: `Get total bill customer cancelled this month and last month successfully`,
+          data: result,
+        });
+      })
+      .catch((err) => {
+        return res.status(400).json({
+          status: 400,
+          message:
+            "Failed to get total bill customer cancelled this month and last month",
+          data: err,
+        });
+      });
+  },
 };

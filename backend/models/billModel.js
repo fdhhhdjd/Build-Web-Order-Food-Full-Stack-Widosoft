@@ -212,4 +212,111 @@ module.exports = {
       .whereBetween("createdAt", [fromDate, toDate]);
     return result;
   },
+
+  //hiển thị doanh thu bán được tháng này và so sánh tháng trước
+  async getRevenueThisAndLastMonth() {
+    let data = await knex("hoadon")
+      .sum("tong_hd as doanh_thu")
+      .where("tinhtrangHD", "Đã nhận hàng")
+      .whereRaw(
+        "EXTRACT(YEAR_MONTH FROM updatedAt) = EXTRACT(YEAR_MONTH FROM CURRENT_DATE)"
+      )
+      .unionAll(
+        knex.raw(
+          'SELECT sum(tong_hd) FROM hoadon WHERE YEAR(updatedAt) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH) AND MONTH(updatedAt) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH) and tinhtrangHD = "Đã nhận hàng"'
+        )
+      );
+
+    var result = ["doanh thu thang nay va so voi thang truoc"];
+    const doanh_thu_thang_nay =
+      data[0].doanh_thu === null ? 0 : data[0].doanh_thu;
+    const doanh_thu_thang_truoc =
+      data[1].doanh_thu === null ? 0 : data[1].doanh_thu;
+    const sosanh_thang_truoc =
+      doanh_thu_thang_truoc === 0
+        ? "last month does not exist data"
+        : ((doanh_thu_thang_nay - doanh_thu_thang_truoc) /
+            doanh_thu_thang_truoc) *
+          100;
+
+    result.push({
+      doanh_thu_thang_nay: doanh_thu_thang_nay,
+      doanh_thu_thang_truoc: doanh_thu_thang_truoc,
+      sosanh_thang_truoc: sosanh_thang_truoc,
+    });
+
+    return result;
+  },
+
+  //hiển thị tổng hóa đơn khách hàng chưa nhận được tháng này và so sánh tháng trước
+  async getTotalBillCustomerNotReceivedThisAndLastMonth() {
+    let data = await knex("hoadon")
+      .sum("tong_hd as doanh_thu")
+      .whereIn("tinhtrangHD", ["Đã thanh toán", "Chưa thanh toán"])
+      .whereRaw(
+        "EXTRACT(YEAR_MONTH FROM updatedAt) = EXTRACT(YEAR_MONTH FROM CURRENT_DATE)"
+      )
+      .unionAll(
+        knex.raw(
+          'SELECT sum(tong_hd) FROM hoadon WHERE YEAR(updatedAt) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH) AND MONTH(updatedAt) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH) and tinhtrangHD = "Đã thanh toán" or tinhtrangHD = "Chưa thanh toán"'
+        )
+      );
+
+    var result = [
+      "tong hoa don khach hang chua nhan duoc thang nay va so voi thang truoc",
+    ];
+
+    const tong_hd_thang_nay =
+      data[0].doanh_thu === null ? 0 : data[0].doanh_thu;
+    const tong_hd_thang_truoc =
+      data[1].doanh_thu === null ? 0 : data[1].doanh_thu;
+    const sosanh_thang_truoc =
+      tong_hd_thang_truoc === 0
+        ? "last month does not exist data"
+        : ((tong_hd_thang_nay - tong_hd_thang_truoc) / tong_hd_thang_truoc) *
+          100;
+
+    result.push({
+      tong_hd_thang_nay: tong_hd_thang_nay,
+      tong_hd_thang_truoc: tong_hd_thang_truoc,
+      sosanh_thang_truoc: sosanh_thang_truoc,
+    });
+
+    return result;
+  },
+
+  //hiển thị tổng hóa đơn khách hàng hủy tháng này và so sánh tháng trước
+  async getTotalBillCustomerCancelledThisAndLastMonth() {
+    let data = await knex("hoadon")
+      .sum("tong_hd as doanh_thu")
+      .whereIn("tinhtrangHD", ["Hủy"])
+      .whereRaw(
+        "EXTRACT(YEAR_MONTH FROM updatedAt) = EXTRACT(YEAR_MONTH FROM CURRENT_DATE)"
+      )
+      .unionAll(
+        knex.raw(
+          'SELECT sum(tong_hd) FROM hoadon WHERE YEAR(updatedAt) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH) AND MONTH(updatedAt) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH) and tinhtrangHD = "Hủy"'
+        )
+      );
+
+    var result = ["tong hoa don bi huy thang nay va so voi thang truoc"];
+
+    const tong_hd_thang_nay =
+      data[0].doanh_thu === null ? 0 : data[0].doanh_thu;
+    const tong_hd_thang_truoc =
+      data[1].doanh_thu === null ? 0 : data[1].doanh_thu;
+    const sosanh_thang_truoc =
+      tong_hd_thang_truoc === 0
+        ? "last month does not exist data"
+        : ((tong_hd_thang_nay - tong_hd_thang_truoc) / tong_hd_thang_truoc) *
+          100;
+
+    result.push({
+      tong_hd_thang_nay: tong_hd_thang_nay,
+      tong_hd_thang_truoc: tong_hd_thang_truoc,
+      sosanh_thang_truoc: sosanh_thang_truoc,
+    });
+
+    return result;
+  },
 };

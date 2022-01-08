@@ -318,4 +318,27 @@ module.exports = {
         });
       });
   },
+
+  //thống kê hóa đơn từ ngày tới ngày
+  statisticsBillByDay(req, res) {
+    const { from, to } = req.body;
+    const fromDate = new Date(from);
+    const toDate = new Date(to);
+    billModel
+      .statisticsBillByDay(fromDate, toDate)
+      .then((result) => {
+        return res.status(200).json({
+          status: 200,
+          message: `Statistics bills from ${from} to ${to} successfully`,
+          data: result,
+        });
+      })
+      .catch((err) => {
+        return res.status(400).json({
+          status: 400,
+          message: "Failed to statistics bill",
+          data: err,
+        });
+      });
+  },
 };

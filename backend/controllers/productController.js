@@ -130,4 +130,44 @@ module.exports = {
         });
       });
   },
+
+  //sắp xếp sản phẩm tăng dần theo giá
+  getAllProductAsc(req, res) {
+    productModel
+      .getAllProductAsc()
+      .then((data) => {
+        res.status(200).json({
+          status: 200,
+          msg: "Get all products ascending by price successfully",
+          data: data,
+        });
+      })
+      .catch((error) => {
+        res.status(400).json({
+          status: 400,
+          msg: "Failed to get all products ascending by price",
+          data: error,
+        });
+      });
+  },
+
+  //sắp xếp sản phẩm giảm dần theo giá
+  getAllProductDesc(req, res) {
+    productModel
+      .getAllProductDesc()
+      .then((data) => {
+        res.status(200).json({
+          status: 200,
+          msg: "Get all products descending by price successfully",
+          data: data,
+        });
+      })
+      .catch((error) => {
+        res.status(400).json({
+          status: 400,
+          msg: "Failed to get all products descending by price",
+          data: error,
+        });
+      });
+  },
 };

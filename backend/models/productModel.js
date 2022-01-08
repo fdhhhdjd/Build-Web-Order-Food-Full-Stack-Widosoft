@@ -47,4 +47,48 @@ module.exports = {
     });
     return result;
   },
+
+  //sắp xếp sản phẩm tăng dần theo giá
+  async getAllProductAsc() {
+    let products = await knex("sanpham")
+      .join("danhmuc", "danhmuc.id", "=", "sanpham.id_dm")
+      .select(
+        "sanpham.id",
+        "sanpham.tensp",
+        "sanpham.chitiet",
+        "sanpham .size",
+        "sanpham.gia",
+        "sanpham.public_id",
+        "sanpham.url",
+        "sanpham.id_dm",
+        "danhmuc.tendm",
+        "sanpham.createdAt",
+        "sanpham.updatedAt",
+        "sanpham.deleted_fg"
+      )
+      .orderBy("sanpham.gia");
+    return products;
+  },
+
+  //sắp xếp sản phẩm giảm dần theo giá
+  async getAllProductDesc() {
+    let products = await knex("sanpham")
+      .join("danhmuc", "danhmuc.id", "=", "sanpham.id_dm")
+      .select(
+        "sanpham.id",
+        "sanpham.tensp",
+        "sanpham.chitiet",
+        "sanpham .size",
+        "sanpham.gia",
+        "sanpham.public_id",
+        "sanpham.url",
+        "sanpham.id_dm",
+        "danhmuc.tendm",
+        "sanpham.createdAt",
+        "sanpham.updatedAt",
+        "sanpham.deleted_fg"
+      )
+      .orderBy("sanpham.gia", "desc");
+    return products;
+  },
 };

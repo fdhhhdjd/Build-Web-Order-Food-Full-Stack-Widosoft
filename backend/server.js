@@ -15,6 +15,7 @@ const billRouter = require("./routers/billRouter.js");
 const billDetailRouter = require("./routers/billDetailRouter.js");
 const ratingRouter = require("./routers/ratingRouter.js");
 const voucherRouter = require("./routers/voucherRouter.js");
+const loginGoogle = require("./routers/loginGoogle.js");
 
 const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
@@ -85,6 +86,9 @@ app.use("/rating/", ratingRouter);
 
 //cổng voucher
 app.use("/voucher/", voucherRouter);
+
+//cổng google
+app.use("/auth/google/", loginGoogle);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

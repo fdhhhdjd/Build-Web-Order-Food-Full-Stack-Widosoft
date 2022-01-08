@@ -3,13 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { SidebarAdmin } from "../../Styles/StylePages/Admin/SidebarAdmin";
 import {
   MdLineStyle,
-  FiTrendingUp,
   MdPermIdentity,
   MdStorefront,
-  MdMailOutline,
-  MdDynamicFeed,
-  MdChatBubbleOutline,
-  MdWorkOutline,
   IoMdAnalytics,
   MdCategory,
   AiOutlineLogout,
@@ -155,7 +150,7 @@ const SidebarAdmins = () => {
                     }`}
                     onClick={() => setActiveTab("billdetail")}
                   >
-                    <i class="fas fa-money-bill-alt"></i>
+                    <i className="fas fa-money-bill-alt"></i>
                     &nbsp; Bill Detail
                   </li>
                 </Link>
@@ -166,7 +161,7 @@ const SidebarAdmins = () => {
                     }`}
                     onClick={() => setActiveTab("Payment")}
                   >
-                    <i class="far fa-money-bill-alt sidebarIcon"></i>
+                    <i className="far fa-money-bill-alt sidebarIcon"></i>
                     Payment
                   </li>
                 </Link>
@@ -177,7 +172,7 @@ const SidebarAdmins = () => {
                     }`}
                     onClick={() => setActiveTab("Bill")}
                   >
-                    <i class="fas fa-file-invoice-dollar sidebarIcon"></i>
+                    <i className="fas fa-file-invoice-dollar sidebarIcon"></i>
                     Bill
                   </li>
                 </Link>
@@ -188,7 +183,7 @@ const SidebarAdmins = () => {
                     }`}
                     onClick={() => setActiveTab("Rating")}
                   >
-                    <i class="fas fa-star sidebarIcon"></i>
+                    <i className="fas fa-star sidebarIcon"></i>
                     Rating
                   </li>
                 </Link>
@@ -199,7 +194,7 @@ const SidebarAdmins = () => {
                     }`}
                     onClick={() => setActiveTab("Info")}
                   >
-                    <i class="fas fa-rocket"></i>
+                    <i className="fas fa-rocket"></i>
                     &nbsp; Info app
                   </li>
                 </Link>
@@ -215,7 +210,7 @@ const SidebarAdmins = () => {
                     }`}
                     onClick={() => setActiveTab("voucher")}
                   >
-                    <i class="fas fa-tags"></i>
+                    <i className="fas fa-tags"></i>
                     &nbsp; Voucher
                   </li>
                 </Link>

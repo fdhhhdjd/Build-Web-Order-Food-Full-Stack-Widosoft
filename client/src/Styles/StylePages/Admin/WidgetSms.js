@@ -61,4 +61,15 @@ export const WidgetSms = createGlobalStyle`
     font-size: 16px !important;
     margin-right: 5px;
   }
+  .widgetSmButton1{
+    display: flex;
+    align-items: center;
+  
+    border: none;
+    border-radius: 10px;
+    padding: 7px 10rem;
+    background-color: #eeeef7;
+    color: #555;
+    cursor: pointer;
+  }
 `;

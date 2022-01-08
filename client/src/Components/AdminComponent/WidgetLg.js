@@ -24,7 +24,7 @@ const WidgetLg = () => {
             </tr>
             {AccountBuyMuch.map((item, i) => {
               return (
-                <tr className="widgetLgTr">
+                <tr className="widgetLgTr" key={i}>
                   <td className="widgetLgUser">
                     <img
                       src={item.url || img}

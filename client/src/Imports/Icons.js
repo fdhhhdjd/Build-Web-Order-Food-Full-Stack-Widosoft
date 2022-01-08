@@ -23,6 +23,7 @@ import {
   AiFillDelete,
   AiOutlineLogout,
   AiOutlineProfile,
+  AiOutlineReload,
 } from "react-icons/ai";
 import { IoMdAnalytics } from "react-icons/io";
 export {
@@ -51,4 +52,5 @@ export {
   AiOutlineLogout,
   MdCreate,
   AiOutlineProfile,
+  AiOutlineReload,
 };

@@ -15,7 +15,7 @@ const FeaturedInfos = () => {
             <span className="featuredTitle">Total Buy</span>
             <div className="featuredMoneyContainer">
               <span className="featuredMoney">
-                $
+                $&nbsp;
                 <CountUp
                   className="count"
                   start={0}
@@ -34,7 +34,7 @@ const FeaturedInfos = () => {
             <span className="featuredTitle">Cancel Bill</span>
             <div className="featuredMoneyContainer">
               <span className="featuredMoney">
-                $
+                $&nbsp;
                 <CountUp
                   className="count"
                   start={0}
@@ -53,7 +53,7 @@ const FeaturedInfos = () => {
             <span className="featuredTitle">Not Received</span>
             <div className="featuredMoneyContainer">
               <span className="featuredMoney">
-                $
+                $&nbsp;
                 <CountUp
                   className="count"
                   start={0}

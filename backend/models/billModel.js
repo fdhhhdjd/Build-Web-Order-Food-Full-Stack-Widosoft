@@ -175,15 +175,29 @@ module.exports = {
       );
 
     var result = ["doanh_thu_theo_thang"];
+    var month = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Agu",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
     for (var i = 0; i < doanh_thu_theo_thang.length; i++) {
       // result.push(doanh_thu_theo_thang[i].doanh_thu);
-      var thang = i + 1;
+      // var thang = i + 1;
       var doanhthu =
         doanh_thu_theo_thang[i].doanh_thu === null
           ? 0
           : doanh_thu_theo_thang[i].doanh_thu;
       result.push({
-        thang: thang,
+        thang: month[i],
         doanh_thu: doanhthu,
       });
     }

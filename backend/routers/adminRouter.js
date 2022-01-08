@@ -102,4 +102,25 @@ router.get(
   billController.statisticsBillByDay
 );
 
+//hiển thị doanh thu bán được tháng này và so sánh tháng trước
+router.get(
+  "/getRevenueThisAndLastMonth",
+  checkAuth.checkAuthAdmin,
+  billController.getRevenueThisAndLastMonth
+);
+
+//hiển thị tổng hóa đơn khách hàng chưa nhận được tháng này và so sánh tháng trước
+router.get(
+  "/getTotalBillCustomerNotReceivedThisAndLastMonth",
+  checkAuth.checkAuthAdmin,
+  billController.getTotalBillCustomerNotReceivedThisAndLastMonth
+);
+
+//hiển thị tổng hóa đơn khách hàng hủy tháng này và so sánh tháng trước
+router.get(
+  "/getTotalBillCustomerCancelledThisAndLastMonth",
+  checkAuth.checkAuthAdmin,
+  billController.getTotalBillCustomerCancelledThisAndLastMonth
+);
+
 module.exports = router;

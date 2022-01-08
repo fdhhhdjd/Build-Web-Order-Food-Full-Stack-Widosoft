@@ -19,6 +19,9 @@
    - hiển thị tổng hóa đơn khách hàng đã hủy: get --> http://localhost:5000/admin/totalBillCancelled
    - hiển thị doanh thu theo tháng : get --> http://localhost:5000/admin/revenueByMonth
    - thống kê hóa đơn từ ngày ... đến ngày ... : get --> http://localhost:5000/admin/statisticBillByDay
+   - hiển thị doanh thu bán được tháng này và so sánh tháng trước : get --> http://localhost:5000/admin/getRevenueThisAndLastMonth
+   - hiển thị tổng hóa đơn khách hàng chưa nhận được tháng này và so sánh tháng trước: get --> http://localhost:5000/admin/getTotalBillCustomerNotReceivedThisAndLastMonth
+   - hiển thị tổng hóa đơn khách hàng hủy tháng này và so sánh tháng trước: get --> http://localhost:5000/admin/getTotalBillCustomerCancelledThisAndLastMonth
 
    - Category :
 

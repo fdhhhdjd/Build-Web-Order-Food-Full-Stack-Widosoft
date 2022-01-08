@@ -286,11 +286,11 @@ module.exports = {
   changePassword(req, res) {
     const id = req.userData.id;
 
-    const { password, confirmPassword } = req.body;
-    if (!password || !confirmPassword)
+    const { oldPassword, password, confirmPassword } = req.body;
+    if (!password || !confirmPassword || !oldPassword)
       return res.json({
         status: 400,
-        message: "Password and Confirm Password is not empty.",
+        message: "Password , Confirm Password and Old Password are not empty.",
       });
 
     if (password.length < 6)
@@ -324,7 +324,7 @@ module.exports = {
     };
 
     userModel
-      .changePassword(id, user)
+      .changePassword(id, user, oldPassword)
       .then((result) => {
         return res.status(200).json(result);
       })

@@ -95,4 +95,11 @@ router.get(
   billController.getRevenueByMonth
 );
 
+//thống kê hóa đơn từ ngày tới ngày
+router.get(
+  "/statisticBillByDay",
+  checkAuth.checkAuthAdmin,
+  billController.statisticsBillByDay
+);
+
 module.exports = router;

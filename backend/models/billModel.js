@@ -204,4 +204,12 @@ module.exports = {
 
     return result;
   },
+
+  //thống kê hóa đơn từ ngày tới ngày
+  async statisticsBillByDay(fromDate, toDate) {
+    let result = await knex("hoadon")
+      .select("*")
+      .whereBetween("createdAt", [fromDate, toDate]);
+    return result;
+  },
 };

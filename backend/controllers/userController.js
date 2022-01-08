@@ -438,4 +438,32 @@ module.exports = {
         });
       });
   },
+
+  loginByGoogle(req, res) {
+    const hoten = req.hoten;
+    const google_id = req.google_id;
+    const email = req.email;
+
+    const user = {
+      email: email,
+      hoten: hoten,
+      google_id: google_id,
+      kieu_dangnhap: "Google",
+      admin: 0,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+    userModel
+      .loginByGoogle(google_id, user)
+      .then((msg) => {
+        return res.status(200).json(msg);
+      })
+      .catch((err) => {
+        return res.json({
+          status: 400,
+          message: "Failed login by google",
+          data: err,
+        });
+      });
+  },
 };

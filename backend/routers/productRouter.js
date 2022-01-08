@@ -23,4 +23,10 @@ router.delete(
   productController.deleteProduct
 );
 
+//sắp xếp sản phẩm tăng dần theo giá
+router.get("/sort/asc", productController.getAllProductAsc);
+
+//sắp xếp sản phẩm giảm dần theo giá
+router.get("/sort/desc", productController.getAllProductDesc);
+
 module.exports = router;

@@ -571,4 +571,91 @@ module.exports = {
       };
     }
   },
+
+  async loginByGoogle(google_id, user) {
+    //kiểm tra tài khoản google này đã đăng ký chưa
+    let registered = await knex("nguoidung")
+      .where({
+        google_id: google_id,
+        kieu_dangnhap: "Google",
+      })
+      .select("*");
+    var isRegistered = Object.values(JSON.parse(JSON.stringify(registered)));
+    console.log(isRegistered.length);
+
+    //nếu có tài khoản gg trong database thì sẽ gửi token
+    if (isRegistered.length === 1) {
+      let id = isRegistered[0].id;
+      let admin = isRegistered[0].admin;
+
+      let accessToken = jwt.sign(
+        { id, admin },
+        process.env.ACCESS_TOKEN_SECRET,
+        {
+          expiresIn: "10m",
+        }
+      );
+
+      let refreshToken = jwt.sign(
+        { id, admin },
+        process.env.REFRESH_TOKEN_SECRET,
+        {
+          expiresIn: "1d",
+        }
+      );
+
+      await knex("nguoidung")
+        .where({
+          id: id,
+        })
+        .update({
+          refresh_token: refreshToken,
+          thisKeyIsSkipped: undefined,
+        });
+
+      return {
+        status: 200,
+        message: "Login successful",
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+      };
+    }
+    //nếu chưa có tài khoản trong database thì tạo tài khoản rồi gửi token
+    else {
+      let id = await knex("nguoidung").insert(user).returning("id");
+      let admin = 0;
+
+      let accessToken = jwt.sign(
+        { id, admin },
+        process.env.ACCESS_TOKEN_SECRET,
+        {
+          expiresIn: "10m",
+        }
+      );
+
+      let refreshToken = jwt.sign(
+        { id, admin },
+        process.env.REFRESH_TOKEN_SECRET,
+        {
+          expiresIn: "1d",
+        }
+      );
+
+      await knex("nguoidung")
+        .where({
+          id: id,
+        })
+        .update({
+          refresh_token: refreshToken,
+          thisKeyIsSkipped: undefined,
+        });
+
+      return {
+        status: 200,
+        message: "Login successful",
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+      };
+    }
+  },
 };

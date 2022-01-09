@@ -260,13 +260,33 @@ module.exports = {
     };
   },
 
-  async changePassword(id, user) {
-    let result = await knex("nguoidung").update(user).where("id", id);
-    return {
-      status: 200,
-      message: "Change password successfully",
-      result: result,
-    };
+  //thay đổi mật khẩu
+  async changePassword(id, user, oldPassword) {
+    //kiểm tra tài khoản có tồn tại không
+    let data = await knex("nguoidung").where({
+      id: id,
+    });
+    let existUser = Object.values(JSON.parse(JSON.stringify(data)));
+    if (existUser.length === 1) {
+      let match = await bcrypt.compare(oldPassword, existUser[0].password);
+      if (match) {
+        await knex("nguoidung").update(user).where("id", id);
+        return {
+          status: 200,
+          message: "Change password successfully",
+        };
+      } else {
+        return {
+          status: 400,
+          message: "Wrong old password",
+        };
+      }
+    } else {
+      return {
+        status: 400,
+        message: "This account does not exist",
+      };
+    }
   },
 
   //chỉnh sửa tài khoản đang đăng nhập (customer )

@@ -8,6 +8,9 @@ import {
 import { ProductApi, AdminApi, InfoAllUserApi } from "../Imports/Index";
 import { GetAccountMuchInitiate } from "../redux/Action/ActionInfoAllUser";
 import {
+  CompareMothBeforeInitiate,
+  CompareMothTotalCancelBeforeInitiate,
+  CompareMothTotalNotReceivedBeforeInitiate,
   ProductTotalCancelInitiate,
   ProductTotalInitiate,
   ProductTotalMothInitiate,
@@ -42,6 +45,10 @@ export const DataProvider = ({ children }) => {
       dispatch(ProductTotalCancelInitiate(token.accessToken));
       dispatch(ProductTotalNotReceivedInitiate(token.accessToken));
       dispatch(ProductTotalMothInitiate(token.accessToken));
+
+      dispatch(CompareMothBeforeInitiate(token.accessToken));
+      dispatch(CompareMothTotalCancelBeforeInitiate(token.accessToken));
+      dispatch(CompareMothTotalNotReceivedBeforeInitiate(token.accessToken));
     }
   }, [token.accessToken, callback]);
   const data = {

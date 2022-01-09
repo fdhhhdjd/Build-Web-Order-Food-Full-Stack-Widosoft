@@ -24,6 +24,7 @@ import {
   AiOutlineLogout,
   AiOutlineProfile,
   AiOutlineReload,
+  AiOutlineArrowUp,
 } from "react-icons/ai";
 import { IoMdAnalytics } from "react-icons/io";
 export {
@@ -53,4 +54,5 @@ export {
   MdCreate,
   AiOutlineProfile,
   AiOutlineReload,
+  AiOutlineArrowUp,
 };

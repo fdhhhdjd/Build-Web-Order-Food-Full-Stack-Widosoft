@@ -94,7 +94,11 @@ const AuthReducer = (state = initialState, action) => {
         loading: false,
         newAccount: action.payload,
       };
-
+    case types.CLEAR_ERRORS_SUCCESS:
+      return {
+        ...state,
+        error: null,
+      };
     case types.LOGIN_API_FAIL:
     case types.REGISTER_API_FAIL:
     case types.LOGIN_API_FAIL:
@@ -110,6 +114,7 @@ const AuthReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       };
+
     default:
       return state;
   }

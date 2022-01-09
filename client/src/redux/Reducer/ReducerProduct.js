@@ -9,6 +9,9 @@ const initialState = {
   cancel: [],
   moth: null,
   received: [],
+  compareTotal: [],
+  compareTotalCancel: [],
+  compareTotalReceived: [],
 };
 const ProductReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -19,6 +22,9 @@ const ProductReducer = (state = initialState, action) => {
     case types.PRODUCT_TOTAL_NOT_RECEIVED_START:
     case types.PRODUCT_TOTAL_MOTH_START:
     case types.VOUCHER_ALL_START:
+    case types.COMPARE_REVENUE_TOTAL_BUY_MOTH_START:
+    case types.COMPARE_REVENUE_TOTAL_CANCEL_MOTH_START:
+    case types.COMPARE_REVENUE_TOTAL_NOT_RECEIVED_MOTH_START:
       return {
         ...state,
         loading: true,
@@ -66,6 +72,24 @@ const ProductReducer = (state = initialState, action) => {
         loading: false,
         voucher: action.payload,
       };
+    case types.COMPARE_REVENUE_TOTAL_BUY_MOTH_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        compareTotal: action.payload,
+      };
+    case types.COMPARE_REVENUE_TOTAL_CANCEL_MOTH_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        compareTotalCancel: action.payload,
+      };
+    case types.COMPARE_REVENUE_TOTAL_NOT_RECEIVED_MOTH_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        compareTotalReceived: action.payload,
+      };
     case types.GET_ALL_PRODUCT_FAIL:
     case types.GET_ALL_PRODUCT_FAIL:
     case types.PRODUCT_TOTAL_FAIL:
@@ -73,6 +97,9 @@ const ProductReducer = (state = initialState, action) => {
     case types.PRODUCT_TOTAL_CANCEL_FAIL:
     case types.PRODUCT_TOTAL_MOTH_FAIL:
     case types.PRODUCT_TOTAL_NOT_RECEIVED_FAIL:
+    case types.COMPARE_REVENUE_TOTAL_BUY_MOTH_FAIL:
+    case types.COMPARE_REVENUE_TOTAL_CANCEL_MOTH_FAIL:
+    case types.COMPARE_REVENUE_TOTAL_NOT_RECEIVED_MOTH_FAIL:
       return {
         ...state,
         loading: false,

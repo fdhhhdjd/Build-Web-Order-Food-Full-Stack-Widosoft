@@ -7,6 +7,7 @@ import swal from "sweetalert";
 import { ChangeAdminInitiate } from "../../redux/Action/ActionAdmin";
 const initialState = {
   email: "",
+  oldPassword: "",
   password: "",
   confirmPassword: "",
 };
@@ -16,7 +17,7 @@ const ChangePassword = () => {
     (state) => state.authAdmin
   );
   const passwordEl = useRef();
-  const { email, password, confirmPassword } = state;
+  const { email, password, confirmPassword, oldPassword } = state;
   const { id } = useParams();
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
@@ -30,7 +31,7 @@ const ChangePassword = () => {
   };
   useEffect(() => {
     if (changePassword.status === 200) {
-      setState({ password: "", confirmPassword: "" });
+      setState({ oldPassword: "", password: "", confirmPassword: "" });
     } else if (changePassword.status === 400) {
       swal(`${changePassword.message} 🤨`, {
         icon: "error",
@@ -52,14 +53,14 @@ const ChangePassword = () => {
         <h1 className="newUserTitle">Change Password</h1>
         <form className="newUserForm" onSubmit={handleSubmit}>
           <div className="newUserItem">
-            <label>Email</label>
+            <label>OldPassword</label>
             <input
-              type="email"
-              placeholder="john@gmail.com"
-              name="email"
-              value={email}
+              type="password"
+              placeholder="oldPassword"
+              name="oldPassword"
+              value={oldPassword}
+              ref={passwordEl}
               onChange={handleChangeInput}
-              disabled
             />
           </div>
           <div className="newUserItem">
@@ -69,7 +70,6 @@ const ChangePassword = () => {
               placeholder="password"
               name="password"
               value={password}
-              ref={passwordEl}
               onChange={handleChangeInput}
             />
           </div>

@@ -125,6 +125,12 @@ export const GetAccountNewFail = (error) => ({
   type: types.GET_ACCOUNT_NEW_FAIL,
   payload: error,
 });
+//?clear Error
+export const ClearErrorSuccess = (error) => ({
+  type: types.CLEAR_ERRORS_SUCCESS,
+  payload: error,
+});
+
 //!Register
 export const RegisterInitiate = (
   email,
@@ -310,4 +316,8 @@ export const GetAccountNewInitiate = (token) => {
         dispatch(GetAccountNewFail(error.data));
       });
   };
+};
+//! ClearErrorSuccess
+export const clearErrors = () => async (dispatch) => {
+  dispatch({ type: types.CLEAR_ERRORS_SUCCESS });
 };

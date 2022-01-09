@@ -1,12 +1,18 @@
 import React from "react";
 import { FeaturedInfo } from "../../Styles/StylePages/Admin/FeaturedInfo";
-import { MdArrowDownward } from "../../Imports/Icons";
+import { MdArrowDownward, AiOutlineArrowUp } from "../../Imports/Icons";
 import { useDispatch, useSelector } from "react-redux";
 import CountUp from "react-countup";
 const FeaturedInfos = () => {
-  const { total, cancel, moth, received } = useSelector(
-    (state) => state.products
-  );
+  const {
+    total,
+    cancel,
+    moth,
+    received,
+    compareTotal,
+    compareTotalCancel,
+    compareTotalReceived,
+  } = useSelector((state) => state.products);
   return (
     <>
       <FeaturedInfo>
@@ -24,11 +30,8 @@ const FeaturedInfos = () => {
                   separator=","
                 />
               </span>
-              <span className="featuredMoneyRate">
-                -11.4 <MdArrowDownward className="featuredIcon negative" />
-              </span>
             </div>
-            <span className="featuredSub">Compared to last month</span>
+            <span className="featuredSub">Total All Buy every a month</span>
           </div>
           <div className="featuredItem">
             <span className="featuredTitle">Cancel Bill</span>
@@ -43,11 +46,8 @@ const FeaturedInfos = () => {
                   separator=","
                 />
               </span>
-              <span className="featuredMoneyRate">
-                -1.4 <MdArrowDownward className="featuredIcon negative" />
-              </span>
             </div>
-            <span className="featuredSub">Compared to last month</span>
+            <span className="featuredSub">Cancel Bill All Every A Month</span>
           </div>
           <div className="featuredItem">
             <span className="featuredTitle">Not Received</span>
@@ -62,11 +62,155 @@ const FeaturedInfos = () => {
                   separator=","
                 />
               </span>
+            </div>
+            <span className="featuredSub">Not Received Every A Month</span>
+          </div>
+        </div>
+        {/* row tow */}
+        <div className="featured">
+          <div className="featuredItem">
+            <span className="featuredTitle">Total Compare to last month</span>
+            <div className="featuredMoneyContainer">
+              <span className="featuredMoney">
+                $&nbsp;
+                <CountUp
+                  className="count"
+                  start={0}
+                  end={compareTotal[1].doanh_thu_thang_nay}
+                  duration={5.75}
+                  separator=","
+                />
+                <br />
+                $&nbsp;
+                <CountUp
+                  className="count"
+                  start={0}
+                  end={compareTotal[1].doanh_thu_thang_truoc}
+                  duration={5.75}
+                  separator=","
+                />
+              </span>
               <span className="featuredMoneyRate">
-                +2.4 <MdArrowDownward className="featuredIcon" />
+                {compareTotal[1].sosanh_thang_truoc ===
+                  "last month does not exist data" ||
+                compareTotal[1].sosanh_thang_truoc < 0 ? (
+                  <>
+                    -{compareTotal[1].sosanh_thang_truoc.toFixed(3)}
+                    <MdArrowDownward className="featuredIcon negative" />
+                  </>
+                ) : (
+                  <>
+                    +
+                    {(compareTotal[1].sosanh_thang_truoc ===
+                      "last month does not exist data" &&
+                      0) ||
+                      compareTotal[1].sosanh_thang_truoc.toFixed(3)}
+                    <AiOutlineArrowUp className="featuredIcon" />
+                  </>
+                )}
               </span>
             </div>
-            <span className="featuredSub">Compared to last month</span>
+            <span className="featuredSub">
+              {compareTotal[1].sosanh_thang_truoc < 0
+                ? "Decrease Compared to last month"
+                : "Increase Compared to last month"}
+            </span>
+          </div>
+          <div className="featuredItem">
+            <span className="featuredTitle">
+              Cancel bill Compare to last month
+            </span>
+            <div className="featuredMoneyContainer">
+              <span className="featuredMoney">
+                $&nbsp;
+                <CountUp
+                  className="count"
+                  start={0}
+                  end={compareTotalCancel[1].tong_hd_thang_nay}
+                  duration={5.75}
+                  separator=","
+                />
+                <br />
+                $&nbsp;
+                <CountUp
+                  className="count"
+                  start={0}
+                  end={compareTotalCancel[1].tong_hd_thang_truoc}
+                  duration={5.75}
+                  separator=","
+                />
+              </span>
+              <span className="featuredMoneyRate">
+                {compareTotalCancel[1].sosanh_thang_truoc ===
+                  "last month does not exist data" ||
+                compareTotalCancel[1].sosanh_thang_truoc < 0 ? (
+                  <>
+                    -
+                    {(compareTotalCancel[1].sosanh_thang_truoc ===
+                      "last month does not exist data" &&
+                      "0") ||
+                      compareTotalCancel[1].sosanh_thang_truoc.toFixed(3)}
+                    <MdArrowDownward className="featuredIcon negative" />
+                  </>
+                ) : (
+                  <>
+                    +{compareTotalCancel[1].sosanh_thang_truoc.toFixed(3)}
+                    <AiOutlineArrowUp className="featuredIcon" />
+                  </>
+                )}
+              </span>
+            </div>
+            <span className="featuredSub">
+              {compareTotalCancel[1].sosanh_thang_truoc < 0
+                ? "Decrease Compared to last month"
+                : "Increase Compared to last month"}
+            </span>
+          </div>
+          <div className="featuredItem">
+            <span className="featuredTitle">
+              Not Received Compare to last month
+            </span>
+            <div className="featuredMoneyContainer">
+              <span className="featuredMoney">
+                $&nbsp;
+                <CountUp
+                  className="count"
+                  start={0}
+                  end={compareTotalReceived[1].tong_hd_thang_nay}
+                  duration={5.75}
+                  separator=","
+                />
+                <br />
+                $&nbsp;
+                <CountUp
+                  className="count"
+                  start={0}
+                  end={compareTotalReceived[1].tong_hd_thang_truoc}
+                  duration={5.75}
+                  separator=","
+                />
+              </span>
+              <span className="featuredMoneyRate">
+                {compareTotalReceived[1].sosanh_thang_truoc ===
+                  "last month does not exist data" ||
+                compareTotalReceived[1].sosanh_thang_truoc < 0 ? (
+                  <>
+                    {compareTotalReceived[1].sosanh_thang_truoc.toFixed(3)}
+                    <MdArrowDownward className="featuredIcon negative" />
+                  </>
+                ) : (
+                  <>
+                    {compareTotalReceived[1].sosanh_thang_truoc.toFixed(3)}
+                    <AiOutlineArrowUp className="featuredIcon" />
+                  </>
+                )}
+              </span>
+            </div>
+            <span className="featuredSub">
+              {compareTotalReceived[1].sosanh_thang_truoc < 0
+                ? "Decrease Compared to last month"
+                : "Increase Compared to last month"}
+            </span>
           </div>
         </div>
       </FeaturedInfo>

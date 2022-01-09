@@ -86,6 +86,42 @@ export const VoucherAllFail = (error) => ({
   type: types.VOUCHER_ALL_FAIL,
   payload: error,
 });
+//?COMPARE Total buy
+export const CompareTotalStart = () => ({
+  type: types.COMPARE_REVENUE_TOTAL_BUY_MOTH_START,
+});
+export const CompareTotalSuccess = (token) => ({
+  type: types.COMPARE_REVENUE_TOTAL_BUY_MOTH_SUCCESS,
+  payload: token,
+});
+export const CompareTotalFail = (error) => ({
+  type: types.COMPARE_REVENUE_TOTAL_BUY_MOTH_FAIL,
+  payload: error,
+});
+//?COMPARE Total Cancel
+export const CompareTotalCancelStart = () => ({
+  type: types.COMPARE_REVENUE_TOTAL_CANCEL_MOTH_START,
+});
+export const CompareTotalCancelSuccess = (token) => ({
+  type: types.COMPARE_REVENUE_TOTAL_CANCEL_MOTH_SUCCESS,
+  payload: token,
+});
+export const CompareTotalCancelFail = (error) => ({
+  type: types.COMPARE_REVENUE_TOTAL_CANCEL_MOTH_FAIL,
+  payload: error,
+});
+//?COMPARE Total Not Received
+export const CompareTotalNotReceiveStart = () => ({
+  type: types.COMPARE_REVENUE_TOTAL_NOT_RECEIVED_MOTH_START,
+});
+export const CompareTotalNotReceiveSuccess = (token) => ({
+  type: types.COMPARE_REVENUE_TOTAL_NOT_RECEIVED_MOTH_SUCCESS,
+  payload: token,
+});
+export const CompareTotalNotReceiveFail = (error) => ({
+  type: types.COMPARE_REVENUE_TOTAL_NOT_RECEIVED_MOTH_FAIL,
+  payload: error,
+});
 
 //! Get All Product
 export const GetAllProductInitiate = () => {
@@ -193,6 +229,54 @@ export const VoucherAllInitiate = (token) => {
       })
       .catch((error) => {
         dispatch(VoucherAllFail(error.data));
+      });
+  };
+};
+//!compare total before moth
+export const CompareMothBeforeInitiate = (token) => {
+  return async function (dispatch) {
+    dispatch(CompareTotalStart());
+    await axios
+      .get("/admin/getRevenueThisAndLastMonth", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((category) => {
+        dispatch(CompareTotalSuccess(category.data.data));
+      })
+      .catch((error) => {
+        dispatch(CompareTotalFail(error.data));
+      });
+  };
+};
+//!compare total Cancel before month
+export const CompareMothTotalCancelBeforeInitiate = (token) => {
+  return async function (dispatch) {
+    dispatch(CompareTotalCancelStart());
+    await axios
+      .get("/admin/getTotalBillCustomerCancelledThisAndLastMonth", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((category) => {
+        dispatch(CompareTotalCancelSuccess(category.data.data));
+      })
+      .catch((error) => {
+        dispatch(CompareTotalCancelFail(error.data));
+      });
+  };
+};
+//!compare total not received before month
+export const CompareMothTotalNotReceivedBeforeInitiate = (token) => {
+  return async function (dispatch) {
+    dispatch(CompareTotalNotReceiveStart());
+    await axios
+      .get("/admin/getTotalBillCustomerNotReceivedThisAndLastMonth", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((category) => {
+        dispatch(CompareTotalNotReceiveSuccess(category.data.data));
+      })
+      .catch((error) => {
+        dispatch(CompareTotalNotReceiveFail(error.data));
       });
   };
 };

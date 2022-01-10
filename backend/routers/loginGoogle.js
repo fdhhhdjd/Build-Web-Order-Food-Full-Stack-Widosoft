@@ -16,7 +16,6 @@ router.get(
   (req, res, next) => {
     req.hoten = req.user._json.name;
     req.google_id = req.user._json.sub;
-    req.email = req.user._json.email;
     next();
   },
   userController.loginByGoogle

@@ -442,10 +442,8 @@ module.exports = {
   loginByGoogle(req, res) {
     const hoten = req.hoten;
     const google_id = req.google_id;
-    const email = req.email;
 
     const user = {
-      email: email,
       hoten: hoten,
       google_id: google_id,
       kieu_dangnhap: "Google",

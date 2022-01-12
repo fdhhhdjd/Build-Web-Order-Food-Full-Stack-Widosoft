@@ -1,8 +1,10 @@
 package com.example.oderapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Dialog;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -22,6 +24,7 @@ import android.widget.Toast;
 import com.example.oderapp.R;
 import com.example.oderapp.eventbus.EvenbusAddress;
 import com.example.oderapp.eventbus.EvenbusMethodPayment;
+import com.example.oderapp.fragment.BillAndRatingFragment;
 import com.example.oderapp.fragmentinfo.optionaccount.ChangePasswordActivity;
 import com.example.oderapp.model.Address;
 import com.example.oderapp.model.InformationUser;
@@ -250,6 +253,7 @@ public class PaymentActivity extends AppCompatActivity {
                                 public void onClick(View v) {
                                     onBackPressed();
                                 }
+
                             });
                             // show dialog thanks
                             dialog.show();

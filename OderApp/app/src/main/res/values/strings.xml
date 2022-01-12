@@ -34,4 +34,11 @@
     <string name="recruitment">Recruitment</string>
     <string name="faq">FAQ</string>
     <string name="terms_and_condition">Terms and condition</string>
+
+
+    <string-array name="numbers">
+        <item>Filter</item>
+        <item>Ex to cheap</item>
+        <item>Cheap to ex</item>
+    </string-array>
 </resources>

@@ -10,9 +10,10 @@ public class InformationUser implements Serializable {
     private int gioitinh;
     private String dienthoai;
     private String email;
+    private String public_id;
     private String url;
 
-    public InformationUser(int id, String hoten, String username, String ngaysinh, int gioitinh, String dienthoai, String email, String url) {
+    public InformationUser(int id, String hoten, String username, String ngaysinh, int gioitinh, String dienthoai, String email, String public_id, String url) {
         this.id = id;
         this.hoten = hoten;
         this.username = username;
@@ -20,6 +21,7 @@ public class InformationUser implements Serializable {
         this.gioitinh = gioitinh;
         this.dienthoai = dienthoai;
         this.email = email;
+        this.public_id = public_id;
         this.url = url;
     }
 
@@ -85,5 +87,13 @@ public class InformationUser implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getPublic_id() {
+        return public_id;
+    }
+
+    public void setPublic_id(String public_id) {
+        this.public_id = public_id;
     }
 }

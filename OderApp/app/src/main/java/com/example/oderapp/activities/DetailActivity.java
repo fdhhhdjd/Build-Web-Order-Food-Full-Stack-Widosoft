@@ -1,7 +1,6 @@
 package com.example.oderapp.activities;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,7 +22,8 @@ import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.FoldingCube;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,7 +54,6 @@ public class DetailActivity extends AppCompatActivity {
 //            Intent i = getIntent();
 //            String s =  i.getStringExtra("key");
 //            Toast.makeText(DetailActivity.this,"tui nef" + s, Toast.LENGTH_LONG).show();
-
 
         initUI();
         Bundle bundle = getIntent().getExtras();
@@ -142,5 +140,4 @@ public class DetailActivity extends AppCompatActivity {
         btn_buy_now = findViewById(R.id.btn_buy);
         progressBar = findViewById(R.id.spin_kit);
     }
-
 }

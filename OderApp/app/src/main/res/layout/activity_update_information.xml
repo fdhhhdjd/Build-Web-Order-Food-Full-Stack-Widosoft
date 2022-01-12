@@ -111,7 +111,7 @@
         app:startIconTint="@color/primary">
     <EditText
         android:id="@+id/edt_ngay_sinh"
-        android:layout_width="@dimen/_130sdp"
+        android:layout_width="@dimen/_140sdp"
         android:layout_height="wrap_content"
         android:background="@drawable/background_input"
         android:hint="Date of birth"
@@ -158,20 +158,31 @@
             android:text="Female"
             android:textColor="@color/primary" />
     </RadioGroup>
+        <TextView
+            android:id="@+id/tv_validateSex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/teal_700"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintLeft_toLeftOf="@+id/radioGroup"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup"/>
 
-    <com.google.android.material.textfield.TextInputLayout
+
+        <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_phone_number"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_10sdp"
+        android:maxLength="10"
         app:startIconDrawable="@drawable/ic_baseline_local_phone_24"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_date_of_birth"
         app:startIconTint="@color/primary">
     <EditText
         android:id="@+id/edt_phone_number"
-        android:layout_width="@dimen/_130sdp"
+        android:layout_width="@dimen/_140sdp"
         android:layout_height="wrap_content"
         android:background="@drawable/background_input"
         android:hint="Phone number"
@@ -182,57 +193,19 @@
         />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_url"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
-        app:startIconDrawable="@drawable/ic_baseline_link_24"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_phone_number"
-        app:startIconTint="@color/primary">
-    <EditText
-        android:id="@+id/edt_url"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_input"
-        android:hint="Url your image"
-        android:paddingStart="@dimen/_20ssp"
-        android:textColor="@color/primary"
-        android:textColorHint="@color/primary"
-        android:textSize="@dimen/_13ssp"
-         />
-    </com.google.android.material.textfield.TextInputLayout>
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imgUserInfor"
-        android:layout_width="@dimen/_150sdp"
-        android:layout_height="@dimen/_150sdp"
-        android:layout_marginTop="@dimen/_30sdp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/loadimage"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_url" />
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgUserInfor"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_marginTop="36dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/loadimage"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_phone_number" />
 
-    <Button
-        android:id="@+id/buttonImage"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_margin="@dimen/_10sdp"
-        android:text="Update"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_13ssp"
-        android:textStyle="bold"
-        android:visibility="gone"
-        app:backgroundTint="@color/primary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <Button
+        <Button
         android:id="@+id/buttonUpdate"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
@@ -246,5 +219,15 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spin_kit"
+        style="@style/SpinKitView.Large.FoldingCube"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:max="150"
+        android:progress="10"
+        android:visibility="invisible"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/main_color" />
     </FrameLayout>
 

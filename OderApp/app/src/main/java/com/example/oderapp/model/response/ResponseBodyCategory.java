@@ -1,21 +1,22 @@
 package com.example.oderapp.model.response;
 
-import com.example.oderapp.model.ItemFood;
+import com.example.oderapp.model.Category;
+import com.example.oderapp.model.ItemCart;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ResponseBodyProduct {
+public class ResponseBodyCategory {
     @SerializedName("status")
     @Expose
     private Integer status;
-    @SerializedName("message")
+    @SerializedName("msg")
     @Expose
-    private String message;
+    private String msg;
     @SerializedName("data")
     @Expose
-    private List<ItemFood> data = null;
+    private List<Category> data = null;
 
     public Integer getStatus() {
         return status;
@@ -25,19 +26,20 @@ public class ResponseBodyProduct {
         this.status = status;
     }
 
-    public String getMessage() {
-        return message;
+
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public List<ItemFood> getData() {
+    public List<Category> getData() {
         return data;
     }
 
-    public void setData(List<ItemFood> data) {
+    public void setData(List<Category> data) {
         this.data = data;
     }
 

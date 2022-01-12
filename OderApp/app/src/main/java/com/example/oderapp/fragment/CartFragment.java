@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +35,8 @@ import com.example.oderapp.model.response.ResponseBodyCart;
 import com.example.oderapp.model.response.ResponseBodyQuantilyAndPrice;
 import com.example.oderapp.utils.Contants;
 import com.example.oderapp.utils.StoreUtil;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.FoldingCube;
 
 import java.util.HashMap;
 import java.util.List;
@@ -51,6 +55,7 @@ public class CartFragment extends Fragment {
     private Button btnCheckOut;
     private ImageView imgDeleteAllItemInCart;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private ProgressBar progressBar;
 
     public CartFragment() {
         // Required empty public constructor
@@ -66,14 +71,13 @@ public class CartFragment extends Fragment {
         getQuantilyAndPrice();
 
 
-
         btnCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (adappter.getItemCount() != 0){
+                if (adappter.getItemCount() != 0) {
                     Intent intent = new Intent(getContext(), PaymentActivity.class);
                     startActivity(intent);
-                }else{
+                } else {
                     Toast.makeText(getContext(), "Cart is blank", Toast.LENGTH_SHORT).show();
                 }
 
@@ -83,13 +87,21 @@ public class CartFragment extends Fragment {
             @Override
             public void onRefresh() {
                 getCart();
+                getQuantilyAndPrice();
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         swipeRefreshLayout.setRefreshing(false);
+
+                        if (adappter.getItemCount() == 0) {
+                            tvPrice.setText("");
+                            tvQuantily.setText("");
+                        }
+
+
                     }
-                },1000);
+                }, 1000);
             }
         });
 
@@ -126,6 +138,7 @@ public class CartFragment extends Fragment {
                 btnDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         Call<ResponseBodyCart> responseBodyCartCall = ApiClient.getProductService().deleteAllItemInCart(
                                 "Bearer " + StoreUtil.get(v.getContext(), Contants.accessToken));
                         responseBodyCartCall.enqueue(new Callback<ResponseBodyCart>() {
@@ -143,6 +156,27 @@ public class CartFragment extends Fragment {
                     }
                 });
 
+                Sprite foldingCube = new FoldingCube();
+                progressBar.setIndeterminateDrawable(foldingCube);
+                progressBar.setVisibility(View.VISIBLE);
+
+                CountDownTimer countDownTimer = new CountDownTimer(3000, 1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        int current = progressBar.getProgress();
+                        if (current >= progressBar.getMax()) {
+                            current = 0;
+                        }
+                        progressBar.setProgress(current + 10);
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        progressBar.setVisibility(View.INVISIBLE);
+                    }
+                };
+                countDownTimer.start();
+
 
             }
         });
@@ -156,6 +190,7 @@ public class CartFragment extends Fragment {
         swipeRefreshLayout = mview.findViewById(R.id.refresh);
         tvPrice = mview.findViewById(R.id.tv_price);
         tvQuantily = mview.findViewById(R.id.tv_quantily);
+        progressBar = mview.findViewById(R.id.spin_kit);
     }
 
     private void getCart() {
@@ -166,10 +201,11 @@ public class CartFragment extends Fragment {
         responseDTOCall.enqueue(new Callback<ResponseBodyCart>() {
             @Override
             public void onResponse(Call<ResponseBodyCart> call, Response<ResponseBodyCart> response) {
-               adappter = new ItemCartAdappter(getContext(), response.body().getData());
+                adappter = new ItemCartAdappter(getContext(), response.body().getData());
                 mRecyclerView.setAdapter(adappter);
                 mRecyclerView.setHasFixedSize(true);
                 mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                adappter.notifyDataSetChanged();
             }
 
             @Override
@@ -178,7 +214,8 @@ public class CartFragment extends Fragment {
             }
         });
     }
-    public void getQuantilyAndPrice(){
+
+    public void getQuantilyAndPrice() {
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put(Contants.accessToken, "Bearer " + StoreUtil.get(getContext(), Contants.accessToken));
 

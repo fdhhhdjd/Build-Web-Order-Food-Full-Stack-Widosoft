@@ -1,15 +1,25 @@
 package com.example.oderapp.model.response;
 
-public class ReponseUrl {
-    private String public_id;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
+public class ReponseUrl implements Serializable{
+    @SerializedName("public_id")
+    @Expose
+    private String publicId;
+
+    @SerializedName("url")
+    @Expose
     private String url;
 
-    public String getPublic_id() {
-        return public_id;
+    public String getPublicId() {
+        return publicId;
     }
 
-    public void setPublic_id(String public_id) {
-        this.public_id = public_id;
+    public void setPublicId(String publicId) {
+        this.publicId = publicId;
     }
 
     public String getUrl() {
@@ -19,4 +29,5 @@ public class ReponseUrl {
     public void setUrl(String url) {
         this.url = url;
     }
+
 }

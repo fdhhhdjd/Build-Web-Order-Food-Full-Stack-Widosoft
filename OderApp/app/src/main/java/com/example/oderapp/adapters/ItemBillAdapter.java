@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +38,8 @@ import com.example.oderapp.model.response.ResponseDTO;
 import com.example.oderapp.model.response.ResponseRating;
 import com.example.oderapp.utils.Contants;
 import com.example.oderapp.utils.StoreUtil;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.FoldingCube;
 
 import java.util.HashMap;
 import java.util.List;
@@ -81,26 +85,58 @@ public class ItemBillAdapter extends RecyclerView.Adapter<ItemBillAdapter.ItemVi
         holder.lnCancelBill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String c = "Đã nhận hàng";
-                if (tinhtrang.equals(c)){
-                    Toast.makeText(v.getContext(), "Bạn đã nhận được hàng", Toast.LENGTH_SHORT).show();
-                }else {
+                String c = "Chưa thanh toán";
+                if (tinhtrang.equals(c)) {
+                    Sprite foldingCube = new FoldingCube();
+                    holder.progressBar.setIndeterminateDrawable(foldingCube);
+                    holder.progressBar.setVisibility(View.VISIBLE);
+                    CountDownTimer countDownTimer = new CountDownTimer(3000, 1000) {
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            int current = holder.progressBar.getProgress();
+                            if (current >= holder.progressBar.getMax()) {
+                                current = 0;
+                            }
+                            holder.progressBar.setProgress(current + 10);
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            holder.progressBar.setVisibility(View.INVISIBLE);
+                            holder.tvTinhTrangHD.setText("Hủy");
+                            holder.tvTinhTrangHD.setTextColor(Color.parseColor("#FA655A"));
+                        }
+
+                    };
+                    countDownTimer.start();
                     Call<ResponseBodyBill> responseBodyBillCall = ApiClient.getProductService().cancelBill(id,
                             "Bearer " + StoreUtil.get(v.getContext(), Contants.accessToken));
                     responseBodyBillCall.enqueue(new Callback<ResponseBodyBill>() {
                         @Override
                         public void onResponse(Call<ResponseBodyBill> call, Response<ResponseBodyBill> response) {
+
                         }
 
                         @Override
                         public void onFailure(Call<ResponseBodyBill> call, Throwable t) {
-
                         }
                     });
+                }else{
+                    final Dialog dialog = new Dialog(v.getContext());
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.setContentView(R.layout.dialog_cannot_cancel_bill);
+                    Window window = dialog.getWindow();
+                    if (window == null) {
+                        return;
+                    }
+                    window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    WindowManager.LayoutParams windowAtribute = window.getAttributes();
+                    window.setAttributes(windowAtribute);
+                    dialog.show();
                 }
             }
         });
-
 
 
         // lấy ra tất cả các bill, sau đó so sánh nếu tình trạng HD là đã nhận hàng thì show dialog để đánh giá.
@@ -133,7 +169,7 @@ public class ItemBillAdapter extends RecyclerView.Adapter<ItemBillAdapter.ItemVi
                             WindowManager.LayoutParams windowAtribute = window.getAttributes();
                             window.setAttributes(windowAtribute);
 
-
+                            ProgressBar progressBar = dialog.findViewById(R.id.spin_kit);
                             EditText edtComment = dialog.findViewById(R.id.edt_comment_dialog);
                             Button btnCancel = dialog.findViewById(R.id.btn_cancel);
                             Button btnSave = dialog.findViewById(R.id.btn_save_address);
@@ -153,33 +189,55 @@ public class ItemBillAdapter extends RecyclerView.Adapter<ItemBillAdapter.ItemVi
                                 public void onClick(View v) {
                                     int myRating = (int) ratingBar.getRating();
                                     String cmt = edtComment.getText().toString();
+                                    if (cmt.isEmpty()) {
+                                        Toast.makeText(v.getContext(), "Please write your feedback", Toast.LENGTH_SHORT).show();
+                                    } else {
 
-                                    Rating rating = new Rating(myRating, cmt);
+                                        Rating rating = new Rating(myRating, cmt);
 
-                                    HashMap<String, String> hashMap = new HashMap<>();
-                                    hashMap.put(Contants.accessToken, "Bearer " + StoreUtil.get(v.getContext(), Contants.accessToken));
-                                    hashMap.put(Contants.contentLength, "<calculated when request is sent>");
-                                    Call<ResponseRating> loginResponeCall = ApiClient.getService().ratingBill(id, rating, hashMap);
-                                    loginResponeCall.enqueue(new Callback<ResponseRating>() {
-                                        @Override
-                                        public void onResponse(Call<ResponseRating> call, Response<ResponseRating> response) {
-                                            Toast.makeText(mContext, "Thanks for your feedback", Toast.LENGTH_SHORT).show();
+                                        HashMap<String, String> hashMap = new HashMap<>();
+                                        hashMap.put(Contants.accessToken, "Bearer " + StoreUtil.get(v.getContext(), Contants.accessToken));
+                                        hashMap.put(Contants.contentLength, "<calculated when request is sent>");
+                                        Call<ResponseRating> loginResponeCall = ApiClient.getService().ratingBill(id, rating, hashMap);
+                                        loginResponeCall.enqueue(new Callback<ResponseRating>() {
+                                            @Override
+                                            public void onResponse(Call<ResponseRating> call, Response<ResponseRating> response) {
+                                                if (response.isSuccessful()) {
+                                                    Sprite foldingCube = new FoldingCube();
+                                                    progressBar.setIndeterminateDrawable(foldingCube);
+                                                    progressBar.setVisibility(View.VISIBLE);
 
-                                        }
+                                                    CountDownTimer countDownTimer = new CountDownTimer(3000, 1000) {
+                                                        @Override
+                                                        public void onTick(long millisUntilFinished) {
+                                                            int current = progressBar.getProgress();
+                                                            if (current >= progressBar.getMax()) {
+                                                                current = 0;
+                                                            }
+                                                            progressBar.setProgress(current + 10);
+                                                        }
 
-                                        @Override
-                                        public void onFailure(Call<ResponseRating> call, Throwable t) {
+                                                        @Override
+                                                        public void onFinish() {
+                                                            progressBar.setVisibility(View.INVISIBLE);
+                                                            dialog.dismiss();
+                                                        }
+                                                    };
+                                                    countDownTimer.start();
+                                                }
+                                            }
 
-                                        }
-                                    });
+                                            @Override
+                                            public void onFailure(Call<ResponseRating> call, Throwable t) {
 
-                                    dialog.dismiss();
+                                            }
+                                        });
+                                    }
                                 }
                             });
-
                         }
                     });
-                }else{
+                } else {
                     holder.imgRatingBill.setVisibility(View.INVISIBLE);
                 }
 
@@ -195,12 +253,11 @@ public class ItemBillAdapter extends RecyclerView.Adapter<ItemBillAdapter.ItemVi
             public void onClick(View v) {
                 Intent i = new Intent(mContext, DetailBillActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("bill",currentItem);
-                i.putExtras( bundle);
+                bundle.putSerializable("bill", currentItem);
+                i.putExtras(bundle);
                 mContext.startActivity(i);
             }
         });
-
 
 
     }
@@ -221,11 +278,9 @@ public class ItemBillAdapter extends RecyclerView.Adapter<ItemBillAdapter.ItemVi
         private TextView tvTongHd;
         private ImageView imgBill;
         private ImageView imgRatingBill;
-
+        private ProgressBar progressBar;
         private LinearLayout lnCancelBill;
         private LinearLayout lnItemBill;
-
-
 
 
         public ItemViewHolder(View itemView) {
@@ -236,10 +291,12 @@ public class ItemBillAdapter extends RecyclerView.Adapter<ItemBillAdapter.ItemVi
             tvTongHd = itemView.findViewById(R.id.tv_tong_hd);
             imgBill = itemView.findViewById(R.id.img_bill);
             imgRatingBill = itemView.findViewById(R.id.img_rating_bill);
-
+            progressBar = itemView.findViewById(R.id.spin_kit);
             lnCancelBill = itemView.findViewById(R.id.ln_cancel_bill);
             lnItemBill = itemView.findViewById(R.id.ln_item_bill);
         }
+
+
     }
 
 

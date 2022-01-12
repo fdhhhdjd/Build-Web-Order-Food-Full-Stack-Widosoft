@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.CartFragment">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
     <com.jetradarmobile.snowfall.SnowfallView
         android:layout_width="match_parent"
@@ -21,164 +17,183 @@
         app:snowflakesAlreadyFalling="false"
         app:snowflakesFadingEnabled="false"
         app:snowflakesNum="30" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/a"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="@dimen/_10sdp"
-        android:text="My cart"
-        android:textColor="@color/primary_dark"
-        android:textSize="@dimen/_20ssp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/b"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/gray"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/a" />
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/refresh"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_330sdp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/c"
-        app:layout_constraintTop_toBottomOf="@+id/b">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv_cart"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@+id/c"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/b"
-        app:layout_constraintVertical_bias="0.0" />
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    <LinearLayout
-        android:id="@+id/c"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_16sdp"
-        android:background="@drawable/cart_backgroung"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/refresh"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/a"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/border_background_itemcart"
-            android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5sdp"
-            android:weightSum="10"
-            android:orientation="horizontal">
+            android:layout_gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:text="My cart"
+            android:textColor="@color/primary_dark"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Quantily"
-                android:textColor="@color/secondary_text"
-                android:layout_weight="7"
-                android:textSize="@dimen/_13ssp"/>
-            <TextView
-                android:id="@+id/tv_quantily"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:layout_weight="3"
-                android:textColor="@color/primary_dark"
-                android:textSize="@dimen/_13ssp"
-                android:textStyle="bold" />
-        </LinearLayout>
+        <View
+            android:id="@+id/b"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/a" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_330sdp"
+            app:layout_constraintBottom_toTopOf="@+id/c"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/b">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_cart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toTopOf="@+id/c"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/b"
+                app:layout_constraintVertical_bias="0.0" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <LinearLayout
+            android:id="@+id/c"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="10"
-            android:layout_margin="@dimen/_5sdp"
-            android:orientation="horizontal">
+            android:layout_margin="@dimen/_16sdp"
+            android:background="@drawable/cart_backgroung"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/refresh">
 
-            <TextView
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Total"
-                android:textColor="@color/secondary_text"
-                android:layout_weight="6"
-                android:textSize="@dimen/_13ssp" />
-            <TextView
-                android:id="@+id/tv_price"
-                android:layout_width="0dp"
+                android:background="@drawable/border_background_itemcart"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="7"
+                        android:text="Quantily"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <TextView
+                        android:id="@+id/tv_quantily"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="right"
+                        android:textColor="@color/primary_dark"
+                        android:textSize="@dimen/_13ssp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="6"
+                        android:text="Total"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.7"
+                        android:gravity="right"
+                        android:textColor="@color/primary_dark"
+                        android:textSize="@dimen/_13ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:gravity="right"
+                        android:text="đ"
+                        android:textColor="@color/primary_dark"
+                        android:textSize="@dimen/_13ssp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:textColor="@color/primary_dark"
-                android:layout_weight="3.7"
-                android:textSize="@dimen/_13ssp"
-                android:textStyle="bold" />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="đ"
-                android:textColor="@color/primary_dark"
-                android:layout_weight="0.3"
-                android:textSize="@dimen/_13ssp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="5"
+                    android:text="Delete all item in cart"
+                    android:textColor="@color/primary_dark"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/img_delete_all_item_cart"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/primary"
+                    android:src="@drawable/ic_baseline_delete_outline_24"
+                    android:text="Delete" />
+
+                <Button
+                    android:id="@+id/btn_check_out"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_weight="4"
+                    android:backgroundTint="@color/main_color"
+                    android:text="CheckOut" />
+            </LinearLayout>
+
         </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="10"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Delete all item in cart"
-                android:textColor="@color/primary_dark"
-                android:layout_weight="5"
-                android:textSize="@dimen/_13ssp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/img_delete_all_item_cart"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_25sdp"
-                android:text="Delete"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_baseline_delete_outline_24"
-                android:backgroundTint="@color/primary"
-                 />
-            <Button
-                android:id="@+id/btn_check_out"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_weight="4"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:backgroundTint="@color/main_color"
-                android:text="CheckOut"
-                 />
-        </LinearLayout>
-
-    </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-    </FrameLayout>
-</LinearLayout>
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spin_kit"
+        style="@style/SpinKitView.Large.FoldingCube"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:max="150"
+        android:progress="10"
+        android:visibility="invisible"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/main_color" />
+</FrameLayout>

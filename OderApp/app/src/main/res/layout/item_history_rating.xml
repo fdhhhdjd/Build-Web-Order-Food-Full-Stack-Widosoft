@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_100sdp"
+    android:layout_height="@dimen/_80sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/border_background_itemcart"
     android:layout_margin="@dimen/_5sdp"
@@ -36,8 +36,8 @@
 
             <ImageView
                 android:id="@+id/img_bill"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
                 android:layout_margin="@dimen/_10sdp"
                 android:src="@drawable/ratinga"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bill code:"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_13ssp"
                 android:layout_margin="@dimen/_5sdp"
                 android:textColor="@color/primary"
                 app:layout_constraintTop_toTopOf="parent"
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:text="15"
                 android:textColor="@color/main_color"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_13ssp"
                 android:layout_margin="@dimen/_5sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/a"/>
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:text="3"
                 android:layout_margin="@dimen/_5sdp"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_13ssp"
                 android:textColor="@color/main_color"
                 app:layout_constraintTop_toBottomOf="@+id/a"
                 app:layout_constraintLeft_toRightOf="@+id/img_bill"/>
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:text="Sao"
                 android:textColor="@color/primary"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_13ssp"
                 android:layout_margin="@dimen/_5sdp"
                 app:layout_constraintLeft_toRightOf="@+id/tv_star"
                 app:layout_constraintTop_toBottomOf="@+id/a"/>
@@ -95,12 +95,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chưa thanh toán"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_13ssp"
                 android:textColor="@color/primary"
                 app:layout_constraintLeft_toRightOf="@+id/c"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_bill"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

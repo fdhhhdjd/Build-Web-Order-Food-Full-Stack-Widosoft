@@ -2,42 +2,25 @@ package com.example.oderapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.oderapp.R;
 import com.example.oderapp.adapters.ItemCartAdappter;
-import com.example.oderapp.eventbus.EvenbusAddress;
-import com.example.oderapp.eventbus.EvenbusiSizeListCart;
 import com.example.oderapp.fragment.CartFragment;
 import com.example.oderapp.fragment.HomeFragment;
 import com.example.oderapp.fragment.InfoFragment;
 import com.example.oderapp.fragment.MenuFragment;
 import com.example.oderapp.fragment.BillAndRatingFragment;
-import com.example.oderapp.model.ItemCart;
-import com.example.oderapp.model.response.RefreshTokenRespone;
-import com.example.oderapp.utils.Contants;
-import com.example.oderapp.utils.StoreUtil;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity  {
     private ChipNavigationBar chipNavigationBar;
+    ItemCartAdappter adappter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,13 +33,11 @@ public class MainActivity extends AppCompatActivity{
                 .replace(R.id.fragment_container,
                         new HomeFragment()).commit();
         bottomMenu();
-//        EventBus.getDefault().register(this);
 
 
 
 
     }
-
 
 
     private void bottomMenu() {
@@ -87,17 +68,7 @@ public class MainActivity extends AppCompatActivity{
                                         fragment).commit();
                     }
                 });
-    }
-
-    @Subscribe
-    public void onEvent(EvenbusiSizeListCart event){
-//        if (event.getSize() < 2){
-////            chipNavigationBar.showBadge(R.id.cart,event.getSize());
-//            chipNavigationBar.showBadge(View.INVISIBLE);
-//        }else{
-//            chipNavigationBar.showBadge(R.id.cart,event.getSize());
-//
-//        }
+//        chipNavigationBar.showBadge(R.id.cart,listSize);
 
     }
 

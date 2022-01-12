@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +23,7 @@ import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.DoubleBounce;
 import com.github.ybq.android.spinkit.style.FoldingCube;
 import com.github.ybq.android.spinkit.style.RotatingPlane;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.HashMap;
 
@@ -32,6 +34,7 @@ import retrofit2.Response;
 public class ForgotPassword extends AppCompatActivity {
 
     private EditText edtEmail;
+    private TextInputLayout tilEmail;
     private Button btnSend;
     private ImageView imgBack;
     private ProgressBar progressBar;
@@ -51,10 +54,7 @@ public class ForgotPassword extends AppCompatActivity {
                 HashMap<String, String> hashMap = new HashMap<>();
                 hashMap.put(Contants.contentType, "application/json");
                 hashMap.put(Contants.contentLength, "<calculated when request is sent>");
-                if (TextUtils.isEmpty(edtEmail.getText().toString())) {
-                    String message = "Email or password blank...";
-                    Toast.makeText(ForgotPassword.this, message, Toast.LENGTH_SHORT).show();
-                } else {
+                if (validateEmail()){
                     Call<ResponseForgotPassword> forgotPasswordCall = ApiClient.getService().forgotPassword(hashMap, forgotPassword);
 
                     forgotPasswordCall.enqueue(new Callback<ResponseForgotPassword>() {
@@ -102,8 +102,23 @@ public class ForgotPassword extends AppCompatActivity {
 
     private void initUi() {
         edtEmail = findViewById(R.id.inputEmail);
+        tilEmail = findViewById(R.id.til_email);
         btnSend = findViewById(R.id.btn_send);
         imgBack = findViewById(R.id.back);
         progressBar = (ProgressBar)findViewById(R.id.spin_kit);
+    }
+    private boolean validateEmail() {
+        String email = edtEmail.getText().toString().trim();
+        if (email.isEmpty()){
+            tilEmail.setError("Email can't empty");
+            return false;
+        }else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            tilEmail.setError("Please enter a valid email address");
+            return false;
+        }
+        else {
+            tilEmail.setError(null);
+            return true;
+        }
     }
 }

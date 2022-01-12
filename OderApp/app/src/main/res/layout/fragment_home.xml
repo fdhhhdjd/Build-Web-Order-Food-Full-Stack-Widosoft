@@ -46,7 +46,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:text="Hi"
                 android:textColor="@color/primary_dark"
                 android:textSize="@dimen/_20ssp"
                 android:textStyle="bold"
@@ -77,20 +76,32 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/search"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
-                android:background="@drawable/search"
-                android:drawableEnd="@drawable/ic_baseline_search_24"
-                android:hint="Search..."
-                android:padding="@dimen/_10sdp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_pizza" />
+            <LinearLayout
+                android:id="@+id/aa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/_10sdp"
+                android:weightSum="10"
+                app:layout_constraintTop_toBottomOf="@+id/tv_pizza">
+                <EditText
+                    android:id="@+id/search"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_weight="9"
+                    android:background="@drawable/search"
+                    android:drawableEnd="@drawable/ic_baseline_search_24"
+                    android:hint="Search..."
+                    android:padding="@dimen/_10sdp"
+                     />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_height="@dimen/_25sdp"
+                    android:src="@drawable/ic_bell"/>
+            </LinearLayout>
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -101,7 +112,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/search">
+                app:layout_constraintTop_toBottomOf="@+id/aa">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -153,10 +164,7 @@
                         android:orientation="horizontal"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_promotion">
-
-                    </androidx.recyclerview.widget.RecyclerView>
-
+                        app:layout_constraintTop_toBottomOf="@+id/tv_promotion"/>
                     <TextView
                         android:id="@+id/tv_menu"
                         android:layout_width="wrap_content"
@@ -224,6 +232,45 @@
                             app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/b" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="10"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/all"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="9"
+                            android:text="All product"
+                            android:textColor="@color/primary_dark"
+                            android:textSize="@dimen/_15ssp"
+                            android:textStyle="bold"
+                            />
+
+                        <Spinner
+                            android:id="@+id/spn_sort"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_25sdp"
+                           />
+                    </LinearLayout>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcv_all_product"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_350sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:orientation="horizontal"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_promotion"/>
+
                 </LinearLayout>
             </ScrollView>
         </androidx.constraintlayout.widget.ConstraintLayout>

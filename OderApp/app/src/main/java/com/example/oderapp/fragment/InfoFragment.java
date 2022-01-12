@@ -11,6 +11,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,7 @@ import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -27,6 +30,7 @@ import androidx.fragment.app.Fragment;
 import com.example.oderapp.R;
 import com.example.oderapp.activities.AddAddressActivity;
 import com.example.oderapp.activities.ApiClient;
+import com.example.oderapp.activities.DetailBillActivity;
 import com.example.oderapp.activities.FirstScreenActivity;
 import com.example.oderapp.activities.Login;
 import com.example.oderapp.activities.PaymentActivity;
@@ -36,12 +40,16 @@ import com.example.oderapp.fragmentinfo.Account;
 import com.example.oderapp.fragmentinfo.FAQ;
 import com.example.oderapp.fragmentinfo.Recruiment;
 import com.example.oderapp.fragmentinfo.TermsAndCondition;
+import com.example.oderapp.model.InformationUser;
 import com.example.oderapp.model.response.RefreshTokenRespone;
 import com.example.oderapp.model.response.ResponseBodyAddress;
 import com.example.oderapp.model.response.ResponseBodyCart;
 import com.example.oderapp.model.response.ResponseDTO;
+import com.example.oderapp.model.response.ResponseInformationUser;
 import com.example.oderapp.utils.Contants;
 import com.example.oderapp.utils.StoreUtil;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.FoldingCube;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -84,7 +92,6 @@ public class InfoFragment extends Fragment {
         rate = view.findViewById(R.id.rate);
         sendEmail = view.findViewById(R.id.send_email);
         logout = view.findViewById(R.id.logout);
-
 
 
         // open activity Account
@@ -140,9 +147,9 @@ public class InfoFragment extends Fragment {
                 intent.setType("text/plain");
                 String Body = "Download this App";
                 String Sub = "http://play.google.com";
-                intent.putExtra(Intent.EXTRA_TEXT,Body);
-                intent.putExtra(Intent.EXTRA_TEXT,Sub);
-                startActivity(Intent.createChooser(intent,"Share using"));
+                intent.putExtra(Intent.EXTRA_TEXT, Body);
+                intent.putExtra(Intent.EXTRA_TEXT, Sub);
+                startActivity(Intent.createChooser(intent, "Share using"));
             }
         });
 
@@ -170,25 +177,6 @@ public class InfoFragment extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                HashMap<String, String> hashMap = new HashMap<>();
-//                hashMap.put(Contants.refreshToken, "Bearer " + StoreUtil.get(getContext(), Contants.refreshToken));
-//                hashMap.put(Contants.contentType, "application/json");
-
-//                Call<ResponseDTO> loginResponeCall = ApiClient.getService().deleteUser();
-//                loginResponeCall.enqueue(new Callback<ResponseDTO>() {
-//                    @Override
-//                    public void onResponse(Call<ResponseDTO> call, Response<ResponseDTO> response) {
-//                        Toast.makeText(getContext(), "OK", Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<ResponseDTO> call, Throwable t) {
-//                        Toast.makeText(getContext(), "ERROR", Toast.LENGTH_SHORT).show();
-//
-//                    }
-//                });
-
-
 
                 final Dialog dialog = new Dialog(v.getContext());
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -205,7 +193,7 @@ public class InfoFragment extends Fragment {
                 WindowManager.LayoutParams windowAtribute = window.getAttributes();
                 window.setAttributes(windowAtribute);
 
-
+                 ProgressBar progressBar =dialog.findViewById(R.id.spin_kit);
                 Button btnCancel = dialog.findViewById(R.id.btn_cancel);
                 Button btnLogout = dialog.findViewById(R.id.btn_logout);
 
@@ -220,36 +208,49 @@ public class InfoFragment extends Fragment {
                 btnLogout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        SharedPreferences settings = getContext().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
-                        settings.edit().clear().commit();
-                        getActivity().finish();
+                        Call<ResponseDTO> loginResponeCall = ApiClient.getService().deleteUser(
+                                "refreshToken=" + StoreUtil.get(getContext(), Contants.refreshToken));
+                        loginResponeCall.enqueue(new Callback<ResponseDTO>() {
+                            @Override
+                            public void onResponse(Call<ResponseDTO> call, retrofit2.Response<ResponseDTO> response) {
+                                if (response.isSuccessful()) {
+                                    SharedPreferences preferences = getContext().getSharedPreferences("MySharedPref", 0);
+                                    preferences.edit().remove("refreshToken").commit();
+                                    Sprite foldingCube = new FoldingCube();
+                                    progressBar.setIndeterminateDrawable(foldingCube);
+                                    progressBar.setVisibility(View.VISIBLE);
+
+                                    CountDownTimer countDownTimer = new CountDownTimer(5000, 1000) {
+                                        @Override
+                                        public void onTick(long millisUntilFinished) {
+                                            int current = progressBar.getProgress();
+                                            if (current >= progressBar.getMax()) {
+                                                current = 0;
+                                            }
+                                            progressBar.setProgress(current + 10);
+                                        }
+
+                                        @Override
+                                        public void onFinish() {
+                                            progressBar.setVisibility(View.INVISIBLE);
+                                            getActivity().finish();
+                                        }
+
+                                    };
+                                    countDownTimer.start();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseDTO> call, Throwable t) {
+
+                            }
+                        });
                     }
                 });
             }
         });
 
-
         return view;
     }
-
-
-//    public void deleteInfo() {
-//        HashMap<String, String> hashMap = new HashMap<>();
-//        hashMap.put(Contants.accessToken, "Bearer " + StoreUtil.get(getActivity(), Contants.accessToken));
-//        Call<ResponseDTO> loginResponeCall = ApiClient.getService().deleteUser(
-//                "Bearer " + StoreUtil.get(getActivity(), Contants.accessToken));
-//        loginResponeCall.enqueue(new Callback<ResponseDTO>() {
-//            @Override
-//            public void onResponse(Call<ResponseDTO> call, Response<ResponseDTO> response) {
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseDTO> call, Throwable t) {
-//
-//            }
-//        });
-//    }
-
-
 }

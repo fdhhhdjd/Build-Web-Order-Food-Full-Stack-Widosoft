@@ -10,6 +10,7 @@ public class ItemFood implements Serializable {
     private String url;
     private String chitiet;
     private String size;
+    private int id_dm;
 
     public ItemFood(int id, String tensp, int gia, String url, String chitiet, String size) {
         this.id = id;
@@ -66,5 +67,13 @@ public class ItemFood implements Serializable {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    public int getId_dm() {
+        return id_dm;
+    }
+
+    public void setId_dm(int id_dm) {
+        this.id_dm = id_dm;
     }
 }

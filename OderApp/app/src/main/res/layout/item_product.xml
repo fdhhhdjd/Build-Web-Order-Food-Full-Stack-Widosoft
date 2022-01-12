@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_item"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_180sdp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <FrameLayout
@@ -26,7 +26,7 @@
             <ImageView
                 android:id="@+id/itemImage"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_100sdp"
+                android:layout_height="@dimen/_110sdp"
                 android:layout_margin="@dimen/_5sdp"
                 android:background="@drawable/background_image_product"
                 android:scaleType="fitCenter"
@@ -60,17 +60,6 @@
             app:layout_constraintTop_toBottomOf="@+id/a" />
 
         <TextView
-            android:id="@+id/tv_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_3sdp"
-            android:text="The pizza company"
-            android:textColor="@color/green"
-            android:textSize="@dimen/_12ssp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
-
-        <TextView
             android:id="@+id/tv_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,9 +69,8 @@
             android:text="200000"
             android:textColor="@color/primary_dark"
             android:textSize="@dimen/_15ssp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_category" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -93,9 +81,8 @@
             android:text="đ"
             android:textColor="@color/primary_dark"
             android:textSize="@dimen/_15ssp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/tv_price"
-            app:layout_constraintTop_toBottomOf="@+id/tv_category" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_add_product"

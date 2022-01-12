@@ -1,5 +1,6 @@
 package com.example.oderapp.api;
 
+import com.example.oderapp.activities.LoginRespone;
 import com.example.oderapp.model.Currency;
 import com.example.oderapp.model.GetItemCart;
 import com.example.oderapp.model.GetProfile;
@@ -31,20 +32,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
-    Gson gson = new GsonBuilder()
-            .setDateFormat("yyyy-MM-dd HH:mm:ss")
-            .create();
-
-    ApiService apiservice = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.5:5000/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-            .create(ApiService.class);
-
-
-    @POST("customer/register")
-    Call<UserRegister> sendPost(@Body UserRegister userRegister);
-
-
-
+    // register with google
+    @GET("auth/google")
+    Call<LoginRespone> registerUsingGoogle(@HeaderMap HashMap<String, String> hashMap);
 }

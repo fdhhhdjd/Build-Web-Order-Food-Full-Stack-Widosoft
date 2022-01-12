@@ -138,9 +138,6 @@ const Bills = () => {
     <>
       <ProductStyle />
       <div className="productList">
-        <Link to="/newproduct">
-          <button className="userAddButton">Create</button>
-        </Link>
         <DataGrid
           getRowId={(r) => r.id}
           rows={bill}

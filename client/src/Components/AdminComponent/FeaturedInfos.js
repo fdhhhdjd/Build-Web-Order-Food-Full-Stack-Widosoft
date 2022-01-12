@@ -91,11 +91,9 @@ const FeaturedInfos = () => {
                 />
               </span>
               <span className="featuredMoneyRate">
-                {compareTotal[1].sosanh_thang_truoc ===
-                  "last month does not exist data" ||
-                compareTotal[1].sosanh_thang_truoc < 0 ? (
+                {compareTotal[1].sosanh_thang_truoc < 0 ? (
                   <>
-                    -{compareTotal[1].sosanh_thang_truoc.toFixed(3)}
+                    -{compareTotal[1].sosanh_thang_truoc}
                     <MdArrowDownward className="featuredIcon negative" />
                   </>
                 ) : (
@@ -103,7 +101,7 @@ const FeaturedInfos = () => {
                     +
                     {(compareTotal[1].sosanh_thang_truoc ===
                       "last month does not exist data" &&
-                      0) ||
+                      "0") ||
                       compareTotal[1].sosanh_thang_truoc.toFixed(3)}
                     <AiOutlineArrowUp className="featuredIcon" />
                   </>
@@ -141,11 +139,8 @@ const FeaturedInfos = () => {
                 />
               </span>
               <span className="featuredMoneyRate">
-                {compareTotalCancel[1].sosanh_thang_truoc ===
-                  "last month does not exist data" ||
-                compareTotalCancel[1].sosanh_thang_truoc < 0 ? (
+                {compareTotalCancel[1].sosanh_thang_truoc < 0 ? (
                   <>
-                    -
                     {(compareTotalCancel[1].sosanh_thang_truoc ===
                       "last month does not exist data" &&
                       "0") ||
@@ -191,9 +186,7 @@ const FeaturedInfos = () => {
                 />
               </span>
               <span className="featuredMoneyRate">
-                {compareTotalReceived[1].sosanh_thang_truoc ===
-                  "last month does not exist data" ||
-                compareTotalReceived[1].sosanh_thang_truoc < 0 ? (
+                {compareTotalReceived[1].sosanh_thang_truoc < 0 ? (
                   <>
                     {compareTotalReceived[1].sosanh_thang_truoc.toFixed(3)}
                     <MdArrowDownward className="featuredIcon negative" />

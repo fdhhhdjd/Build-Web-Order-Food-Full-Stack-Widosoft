@@ -15,6 +15,9 @@ const Payments = () => {
   const state = useContext(GlobalState);
   const [callback, setCallback] = state.callback;
   const [loading, setLoading] = useState(false);
+  const img =
+    "https://png.pngtree.com/png-clipart/20190924/original/pngtree-businessman-user-avatar-free-vector-png-image_4827807.jpg";
+
   const handleDelete = async (id) => {
     try {
       setLoading(true);
@@ -50,7 +53,11 @@ const Payments = () => {
       renderCell: (params) => {
         return (
           <div className="productListItem">
-            <img className="productListImg" src={params.row.url} alt="" />
+            <img
+              className="productListImg"
+              src={params.row.url || img}
+              alt=""
+            />
             {params.row.ten_hinhthuc}
           </div>
         );

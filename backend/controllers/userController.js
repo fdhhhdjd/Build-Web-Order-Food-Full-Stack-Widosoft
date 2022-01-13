@@ -1,5 +1,5 @@
-const userModel = require("../models/userModel.js");
-const bcrypt = require("bcrypt");
+const userModel = require('../models/userModel.js');
+const bcrypt = require('bcrypt');
 module.exports = {
   //đăng ký tài khoản với role admin
   registerAsAdmin(req, res) {
@@ -8,17 +8,17 @@ module.exports = {
     if (password.length < 6) {
       return res.status(400).json({
         status: 400,
-        message: "Password is at least 6 characters long.",
+        message: 'Password is at least 6 characters long.',
       });
     }
     let reg = new RegExp(
-      "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$"
+      '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$'
     ).test(password);
     if (!reg) {
       return res.json({
         status: 400,
         message:
-          "Includes 8 characters, uppercase, lowercase and some and special characters.",
+          'Includes 8 characters, uppercase, lowercase and some and special characters.',
       });
     }
     const salt = bcrypt.genSaltSync();
@@ -43,7 +43,7 @@ module.exports = {
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to register",
+          message: 'Failed to register',
           data: err,
         });
       });
@@ -56,16 +56,16 @@ module.exports = {
     if (password.length < 6)
       return res.status(400).json({
         status: 400,
-        message: "Password is at least 6 characters long.",
+        message: 'Password is at least 6 characters long.',
       });
     let reg = new RegExp(
-      "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$"
+      '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$'
     ).test(password);
     if (!reg) {
       return res.status(400).json({
         status: 400,
         message:
-          "Password must contain at least one number and one uppercase and lowercase and special letter, and at least 6 or more characters ",
+          'Password must contain at least one number and one uppercase and lowercase and special letter, and at least 6 or more characters ',
       });
     }
     const salt = bcrypt.genSaltSync();
@@ -90,7 +90,7 @@ module.exports = {
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to register",
+          message: 'Failed to register',
           data: err,
         });
       });
@@ -102,7 +102,7 @@ module.exports = {
     userModel
       .loginAdmin(email, password)
       .then((data) => {
-        res.cookie("refreshToken", data.refreshToken, {
+        res.cookie('refreshToken', data.refreshToken, {
           httpOnly: true,
           // path: "/user/refresh_token",
           maxAge: 24 * 60 * 60 * 1000,
@@ -112,7 +112,7 @@ module.exports = {
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to login",
+          message: 'Failed to login',
           data: err,
         });
       });
@@ -124,7 +124,7 @@ module.exports = {
     userModel
       .loginCustomer(email, password)
       .then((data) => {
-        res.cookie("refreshToken", data.refreshToken, {
+        res.cookie('refreshToken', data.refreshToken, {
           httpOnly: true,
           // path: "/user/refresh_token",
           maxAge: 24 * 60 * 60 * 1000,
@@ -134,7 +134,7 @@ module.exports = {
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to login",
+          message: 'Failed to login',
           data: err,
         });
       });
@@ -152,7 +152,7 @@ module.exports = {
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to refresh token",
+          message: 'Failed to refresh token',
         });
       });
   },
@@ -170,13 +170,14 @@ module.exports = {
     userModel
       .logout(token)
       .then((result) => {
-        res.clearCookie("refreshToken");
+        res.clearCookie('refreshToken');
         return res.status(200).json(result);
       })
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Logout failed",
+          message: 'Logout failed',
+          data: err,
         });
       });
   },
@@ -189,14 +190,14 @@ module.exports = {
       .then((profile) => {
         return res.status(200).json({
           status: 200,
-          message: "Get profile successfully",
+          message: 'Get profile successfully',
           data: profile,
         });
       })
       .catch((error) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to get profile",
+          message: 'Failed to get profile',
           data: error,
         });
       });
@@ -209,14 +210,14 @@ module.exports = {
       .then((users) => {
         return res.status(200).json({
           status: 200,
-          message: "Get all admin accounts successfully",
+          message: 'Get all admin accounts successfully',
           data: users,
         });
       })
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to get all admin accounts",
+          message: 'Failed to get all admin accounts',
           data: err,
         });
       });
@@ -229,14 +230,14 @@ module.exports = {
       .then((users) => {
         return res.status(200).json({
           status: 200,
-          message: "Get all customer accounts successfully",
+          message: 'Get all customer accounts successfully',
           data: users,
         });
       })
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to get all customer accounts",
+          message: 'Failed to get all customer accounts',
           data: err,
         });
       });
@@ -276,7 +277,7 @@ module.exports = {
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to update user",
+          message: 'Failed to update user',
           data: err,
         });
       });
@@ -290,28 +291,28 @@ module.exports = {
     if (!password || !confirmPassword || !oldPassword)
       return res.json({
         status: 400,
-        message: "Password , Confirm Password and Old Password are not empty.",
+        message: 'Password , Confirm Password and Old Password are not empty.',
       });
 
     if (password.length < 6)
       return res.json({
         status: 400,
-        message: "Password is at least 6 characters long.",
+        message: 'Password is at least 6 characters long.',
       });
     let reg = new RegExp(
-      "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$"
+      '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$'
     ).test(password);
     if (!reg) {
       return res.json({
         status: 400,
         message:
-          "Includes 8 characters, uppercase, lowercase and some and special characters.",
+          'Includes 8 characters, uppercase, lowercase and some and special characters.',
       });
     }
     if (confirmPassword !== password) {
       return res.json({
         status: 400,
-        message: "Password and confirm password does not match!",
+        message: 'Password and confirm password does not match!',
       });
     }
 
@@ -331,7 +332,7 @@ module.exports = {
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to change password",
+          message: 'Failed to change password',
         });
       });
   },
@@ -362,7 +363,7 @@ module.exports = {
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to update profile",
+          message: 'Failed to update profile',
         });
       });
   },
@@ -400,7 +401,7 @@ module.exports = {
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to handle forgot password",
+          message: 'Failed to handle forgot password',
           data: err,
         });
       });
@@ -417,7 +418,7 @@ module.exports = {
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to handle forgot password",
+          message: 'Failed to handle forgot password',
           data: err,
         });
       });
@@ -433,7 +434,7 @@ module.exports = {
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to get new user",
+          message: 'Failed to get new user',
           data: err,
         });
       });
@@ -446,7 +447,7 @@ module.exports = {
     const user = {
       hoten: hoten,
       google_id: google_id,
-      kieu_dangnhap: "Google",
+      kieu_dangnhap: 'Google',
       admin: 0,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -459,7 +460,7 @@ module.exports = {
       .catch((err) => {
         return res.json({
           status: 400,
-          message: "Failed login by google",
+          message: 'Failed login by google',
           data: err,
         });
       });

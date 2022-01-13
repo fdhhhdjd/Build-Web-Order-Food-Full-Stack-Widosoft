@@ -1,25 +1,25 @@
-const knex = require("../database/knex_db.js");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const nodemailer = require("nodemailer");
-const hbs = require("nodemailer-express-handlebars");
-const path = require("path");
+const knex = require('../database/knex_db.js');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
+const hbs = require('nodemailer-express-handlebars');
+const path = require('path');
 
 module.exports = {
   //đăng ký tài khoản
   async register(email, user) {
-    let registered = await knex("nguoidung")
-      .where("email", email)
-      .select("email");
+    let registered = await knex('nguoidung')
+      .where('email', email)
+      .select('email');
     var isRegistered = Object.values(JSON.parse(JSON.stringify(registered)));
     console.log(isRegistered.length);
     if (isRegistered.length === 1) {
       return {
         status: 400,
-        message: "This email has already been registered",
+        message: 'This email has already been registered',
       };
     } else {
-      let id = await knex("nguoidung").insert(user).returning("id");
+      let id = await knex('nguoidung').insert(user).returning('id');
       return {
         status: 200,
         message: `Registered account with id : ${id}  successfully`,
@@ -30,7 +30,7 @@ module.exports = {
   //đăng nhập tài khoản admin
   async loginAdmin(email, password) {
     //kiểm tra tài khoản có tồn tại không
-    let admin = await knex("nguoidung").where({
+    let admin = await knex('nguoidung').where({
       email: email,
       admin: 1,
     });
@@ -47,7 +47,7 @@ module.exports = {
           { id, admin },
           process.env.ACCESS_TOKEN_SECRET,
           {
-            expiresIn: "10m",
+            expiresIn: '1h',
           }
         );
 
@@ -55,11 +55,11 @@ module.exports = {
           { id, admin },
           process.env.REFRESH_TOKEN_SECRET,
           {
-            expiresIn: "1d",
+            expiresIn: '1d',
           }
         );
 
-        await knex("nguoidung")
+        await knex('nguoidung')
           .where({
             id: id,
           })
@@ -70,20 +70,20 @@ module.exports = {
 
         return {
           status: 200,
-          message: "Login successful",
+          message: 'Login successful',
           accessToken: accessToken,
           refreshToken: refreshToken,
         };
       } else {
         return {
           status: 401,
-          message: "Wrong password",
+          message: 'Wrong password',
         };
       }
     } else {
       return {
         status: 401,
-        message: "This account does not exists",
+        message: 'This account does not exists',
       };
     }
   },
@@ -91,7 +91,7 @@ module.exports = {
   //đăng nhập tài khoản customer
   async loginCustomer(email, password) {
     //kiểm tra tài khoản có tồn tại không
-    let customer = await knex("nguoidung").where({
+    let customer = await knex('nguoidung').where({
       email: email,
       admin: 0,
     });
@@ -108,7 +108,7 @@ module.exports = {
           { id, admin },
           process.env.ACCESS_TOKEN_SECRET,
           {
-            expiresIn: "10m",
+            expiresIn: '1h',
           }
         );
 
@@ -116,11 +116,11 @@ module.exports = {
           { id, admin },
           process.env.REFRESH_TOKEN_SECRET,
           {
-            expiresIn: "1d",
+            expiresIn: '1d',
           }
         );
 
-        await knex("nguoidung")
+        await knex('nguoidung')
           .where({
             id: id,
           })
@@ -131,20 +131,20 @@ module.exports = {
 
         return {
           status: 200,
-          message: "Login successful",
+          message: 'Login successful',
           accessToken: accessToken,
           refreshToken: refreshToken,
         };
       } else {
         return {
           status: 401,
-          message: "Wrong password",
+          message: 'Wrong password',
         };
       }
     } else {
       return {
         status: 401,
-        message: "This account is not existed",
+        message: 'This account is not existed',
       };
     }
   },
@@ -154,10 +154,10 @@ module.exports = {
     if (!token) {
       return {
         status: 400,
-        message: "Please Login",
+        message: 'Please Login',
       };
     } else {
-      let user = await knex("nguoidung").where("refresh_token", token);
+      let user = await knex('nguoidung').where('refresh_token', token);
       let isUser = Object.values(JSON.parse(JSON.stringify(user)));
       console.log(isUser);
       if (isUser.length === 1) {
@@ -168,7 +168,7 @@ module.exports = {
           { id, admin },
           process.env.ACCESS_TOKEN_SECRET,
           {
-            expiresIn: "10m",
+            expiresIn: '1h',
           }
         );
 
@@ -179,7 +179,7 @@ module.exports = {
       } else {
         return {
           status: 400,
-          message: "Please Login",
+          message: 'Please Login',
         };
       }
     }
@@ -190,27 +190,27 @@ module.exports = {
     if (!token) {
       return {
         status: 400,
-        message: "Token does not exists",
+        message: 'Token does not exists',
       };
     } else {
-      let user = await knex("nguoidung").where("refresh_token", token);
+      let user = await knex('nguoidung').where('refresh_token', token);
       let isUser = Object.values(JSON.parse(JSON.stringify(user)));
       console.log(isUser);
       if (isUser.length === 1) {
         let id = isUser[0].id;
-        await knex("nguoidung").where("id", id).update({
+        await knex('nguoidung').where('id', id).update({
           refresh_token: null,
           thisKeyIsSkipped: undefined,
         });
 
         return {
           status: 200,
-          message: "Logout successfully",
+          message: 'Logout successfully',
         };
       } else {
         return {
           status: 403,
-          message: "Not found data in token",
+          message: 'Not found data in token',
         };
       }
     }
@@ -218,26 +218,26 @@ module.exports = {
 
   //Lấy thông tin tài khoản đang đăng nhập
   async getProfile(id) {
-    let user = await knex("nguoidung")
+    let user = await knex('nguoidung')
       .select(
-        "id",
-        "hoten",
-        "username",
-        "ngaysinh",
-        "gioitinh",
-        "email",
-        "dienthoai",
-        "public_id",
-        "url"
+        'id',
+        'hoten',
+        'username',
+        'ngaysinh',
+        'gioitinh',
+        'email',
+        'dienthoai',
+        'public_id',
+        'url'
       )
-      .where("id", id);
+      .where('id', id);
 
     return user;
   },
 
   //lấy toàn bộ tài khoản admin (admin)
   async getAllAdminAccount() {
-    let users = await knex("nguoidung").select("*").where({
+    let users = await knex('nguoidung').select('*').where({
       admin: 1,
     });
     return users;
@@ -245,7 +245,7 @@ module.exports = {
 
   //lấy toàn bộ tài khoản khách hàng (admin)
   async getAllCustomerAccount() {
-    let users = await knex("nguoidung").select("*").where({
+    let users = await knex('nguoidung').select('*').where({
       admin: 0,
     });
     return users;
@@ -253,7 +253,7 @@ module.exports = {
 
   //chỉnh sửa thông tin cho tất cả tài khoản (admin)
   async updateAllUser(id, user) {
-    await knex("nguoidung").update(user).where("id", id);
+    await knex('nguoidung').update(user).where('id', id);
     return {
       status: 200,
       message: `Update user with id : ${id} successfully`,
@@ -263,51 +263,51 @@ module.exports = {
   //thay đổi mật khẩu
   async changePassword(id, user, oldPassword) {
     //kiểm tra tài khoản có tồn tại không
-    let data = await knex("nguoidung").where({
+    let data = await knex('nguoidung').where({
       id: id,
     });
     let existUser = Object.values(JSON.parse(JSON.stringify(data)));
     if (existUser.length === 1) {
       let match = await bcrypt.compare(oldPassword, existUser[0].password);
       if (match) {
-        await knex("nguoidung").update(user).where("id", id);
+        await knex('nguoidung').update(user).where('id', id);
         return {
           status: 200,
-          message: "Change password successfully",
+          message: 'Change password successfully',
         };
       } else {
         return {
           status: 400,
-          message: "Wrong old password",
+          message: 'Wrong old password',
         };
       }
     } else {
       return {
         status: 400,
-        message: "This account does not exist",
+        message: 'This account does not exist',
       };
     }
   },
 
   //chỉnh sửa tài khoản đang đăng nhập (customer )
   async updateProfile(id, user) {
-    await knex("nguoidung").update(user).where("id", id);
+    await knex('nguoidung').update(user).where('id', id);
     return {
       status: 200,
-      message: "Update successfully",
+      message: 'Update successfully',
     };
   },
 
   //xóa tài khoản (admin)
   async deleteUser(id) {
-    let result = await knex("nguoidung").del().where("id", id);
+    let result = await knex('nguoidung').del().where('id', id);
     return result;
   },
 
   //Quên mật khẩu tài khoản admin
   async forgotPasswordAdmin(email) {
     //kiểm tra email nhập vào có phải là admin và tồn tại trong db
-    let count = await knex("nguoidung").select("id", "hoten").where({
+    let count = await knex('nguoidung').select('id', 'hoten').where({
       email: email,
       admin: 1,
     });
@@ -318,16 +318,16 @@ module.exports = {
       //mật khẩu random 8 kí tự
       var randPassword = Array(8)
         .fill(
-          "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@!#$%^&*()_+=<>?/|"
+          '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@!#$%^&*()_+=<>?/|'
         )
         .map(function (x) {
           return x[Math.floor(Math.random() * x.length)];
         })
-        .join("");
+        .join('');
 
       const salt = bcrypt.genSaltSync();
       const hashPassword = bcrypt.hashSync(randPassword, salt);
-      var updatePassword = await knex("nguoidung")
+      var updatePassword = await knex('nguoidung')
         .update({
           password: hashPassword,
         })
@@ -337,12 +337,12 @@ module.exports = {
 
       //gửi email thông báo mật khẩu mới
       var transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: 'gmail',
         secure: false, // use SSL
         port: 25,
         auth: {
-          user: "nguyentientai10@gmail.com",
-          pass: "qbihxtxocrtqmmpi",
+          user: 'nguyentientai10@gmail.com',
+          pass: 'qbihxtxocrtqmmpi',
         },
         tls: {
           rejectUnauthorized: false,
@@ -351,58 +351,58 @@ module.exports = {
 
       const handlebarOptions = {
         viewEngine: {
-          extName: ".html",
-          partialsDir: path.resolve("../views"),
+          extName: '.html',
+          partialsDir: path.resolve('../views'),
           defaultLayout: false,
         },
-        viewPath: path.resolve("../views"),
-        extName: ".html",
+        viewPath: path.resolve('../views'),
+        extName: '.html',
       };
 
-      transporter.use("compile", hbs(handlebarOptions));
+      transporter.use('compile', hbs(handlebarOptions));
 
       var mailOptions = {
-        from: "slthinhtu2@gmail.com",
+        from: 'slthinhtu2@gmail.com',
         to: email,
-        subject: "Forgot Password",
+        subject: 'Forgot Password',
         attachments: [
           {
-            filename: "animated_header.gif",
-            path: path.join(__dirname, "/images/animated_header.gif"),
-            cid: "animated_header",
+            filename: 'animated_header.gif',
+            path: path.join(__dirname, '/images/animated_header.gif'),
+            cid: 'animated_header',
           },
           {
-            filename: "bee.png",
-            path: path.join(__dirname, "/images/bee.png"),
-            cid: "bee",
+            filename: 'bee.png',
+            path: path.join(__dirname, '/images/bee.png'),
+            cid: 'bee',
           },
           {
-            filename: "body_background_2.png",
-            path: path.join(__dirname, "/images/body_background_2.png"),
-            cid: "body_background",
+            filename: 'body_background_2.png',
+            path: path.join(__dirname, '/images/body_background_2.png'),
+            cid: 'body_background',
           },
           {
-            filename: "bottom_img.png",
-            path: path.join(__dirname, "/images/bottom_img.png"),
-            cid: "bottom",
+            filename: 'bottom_img.png',
+            path: path.join(__dirname, '/images/bottom_img.png'),
+            cid: 'bottom',
           },
           {
-            filename: "instagram2x.png",
-            path: path.join(__dirname, "/images/instagram2x.png"),
-            cid: "instagram2x",
+            filename: 'instagram2x.png',
+            path: path.join(__dirname, '/images/instagram2x.png'),
+            cid: 'instagram2x',
           },
           {
-            filename: "logo.jpg",
-            path: path.join(__dirname, "/images/logo.jpg"),
-            cid: "logo",
+            filename: 'logo.jpg',
+            path: path.join(__dirname, '/images/logo.jpg'),
+            cid: 'logo',
           },
           {
-            filename: "twitter2x.png",
-            path: path.join(__dirname, "/images/twitter2x.png"),
-            cid: "twitter2x",
+            filename: 'twitter2x.png',
+            path: path.join(__dirname, '/images/twitter2x.png'),
+            cid: 'twitter2x',
           },
         ],
-        template: "index",
+        template: 'index',
         context: {
           randPassword: randPassword,
           hoten: count[0].hoten,
@@ -413,19 +413,19 @@ module.exports = {
         if (error) {
           console.log(error);
         } else {
-          console.log("Email sent: " + info.response);
+          console.log('Email sent: ' + info.response);
         }
       });
 
       return {
         status: 200,
-        message: "New password was sent to email, please check your email",
+        message: 'New password was sent to email, please check your email',
         data: updatePassword,
       };
     } else {
       return {
         status: 400,
-        message: "This account does not exist",
+        message: 'This account does not exist',
       };
     }
   },
@@ -433,7 +433,7 @@ module.exports = {
   //Quên mật khẩu tài khoản khách hàng
   async forgotPasswordCustomer(email) {
     //kiểm tra email nhập vào có phải là customer và tồn tại trong db
-    let count = await knex("nguoidung").select("id", "hoten").where({
+    let count = await knex('nguoidung').select('id', 'hoten').where({
       email: email,
       admin: 0,
     });
@@ -444,16 +444,16 @@ module.exports = {
       //mật khẩu random 8 kí tự
       var randPassword = Array(8)
         .fill(
-          "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@!#$%^&*()_+=<>?/|"
+          '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@!#$%^&*()_+=<>?/|'
         )
         .map(function (x) {
           return x[Math.floor(Math.random() * x.length)];
         })
-        .join("");
+        .join('');
 
       const salt = bcrypt.genSaltSync();
       const hashPassword = bcrypt.hashSync(randPassword, salt);
-      var updatePassword = await knex("nguoidung")
+      var updatePassword = await knex('nguoidung')
         .update({
           password: hashPassword,
         })
@@ -463,12 +463,12 @@ module.exports = {
 
       //gửi email thông báo mật khẩu mới
       var transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: 'gmail',
         secure: false, // use SSL
         port: 25,
         auth: {
-          user: "nguyentientai10@gmail.com",
-          pass: "qbihxtxocrtqmmpi",
+          user: 'nguyentientai10@gmail.com',
+          pass: 'qbihxtxocrtqmmpi',
         },
         tls: {
           rejectUnauthorized: false,
@@ -477,58 +477,58 @@ module.exports = {
 
       const handlebarOptions = {
         viewEngine: {
-          extName: ".html",
-          partialsDir: path.resolve("../views"),
+          extName: '.html',
+          partialsDir: path.resolve('../views'),
           defaultLayout: false,
         },
-        viewPath: path.resolve("../views"),
-        extName: ".html",
+        viewPath: path.resolve('../views'),
+        extName: '.html',
       };
 
-      transporter.use("compile", hbs(handlebarOptions));
+      transporter.use('compile', hbs(handlebarOptions));
 
       var mailOptions = {
-        from: "slthinhtu2@gmail.com",
+        from: 'slthinhtu2@gmail.com',
         to: email,
-        subject: "Forgot Password",
+        subject: 'Forgot Password',
         attachments: [
           {
-            filename: "animated_header.gif",
-            path: path.join(__dirname, "/images/animated_header.gif"),
-            cid: "animated_header",
+            filename: 'animated_header.gif',
+            path: path.join(__dirname, '/images/animated_header.gif'),
+            cid: 'animated_header',
           },
           {
-            filename: "bee.png",
-            path: path.join(__dirname, "/images/bee.png"),
-            cid: "bee",
+            filename: 'bee.png',
+            path: path.join(__dirname, '/images/bee.png'),
+            cid: 'bee',
           },
           {
-            filename: "body_background_2.png",
-            path: path.join(__dirname, "/images/body_background_2.png"),
-            cid: "body_background",
+            filename: 'body_background_2.png',
+            path: path.join(__dirname, '/images/body_background_2.png'),
+            cid: 'body_background',
           },
           {
-            filename: "bottom_img.png",
-            path: path.join(__dirname, "/images/bottom_img.png"),
-            cid: "bottom",
+            filename: 'bottom_img.png',
+            path: path.join(__dirname, '/images/bottom_img.png'),
+            cid: 'bottom',
           },
           {
-            filename: "instagram2x.png",
-            path: path.join(__dirname, "/images/instagram2x.png"),
-            cid: "instagram2x",
+            filename: 'instagram2x.png',
+            path: path.join(__dirname, '/images/instagram2x.png'),
+            cid: 'instagram2x',
           },
           {
-            filename: "logo.jpg",
-            path: path.join(__dirname, "/images/logo.jpg"),
-            cid: "logo",
+            filename: 'logo.jpg',
+            path: path.join(__dirname, '/images/logo.jpg'),
+            cid: 'logo',
           },
           {
-            filename: "twitter2x.png",
-            path: path.join(__dirname, "/images/twitter2x.png"),
-            cid: "twitter2x",
+            filename: 'twitter2x.png',
+            path: path.join(__dirname, '/images/twitter2x.png'),
+            cid: 'twitter2x',
           },
         ],
-        template: "index",
+        template: 'index',
         context: {
           randPassword: randPassword,
           hoten: count[0].hoten,
@@ -539,19 +539,19 @@ module.exports = {
         if (error) {
           console.log(error);
         } else {
-          console.log("Email sent: " + info.response);
+          console.log('Email sent: ' + info.response);
         }
       });
 
       return {
         status: 200,
-        message: "New password was sent to email, please check your email",
+        message: 'New password was sent to email, please check your email',
         data: updatePassword,
       };
     } else {
       return {
         status: 400,
-        message: "This account does not exist",
+        message: 'This account does not exist',
       };
     }
   },
@@ -564,7 +564,7 @@ module.exports = {
       return Math.ceil((ms2 - ms1) / (24 * 60 * 60 * 1000));
     };
 
-    let ds_nd = await knex("nguoidung").select("*").where("admin", 0);
+    let ds_nd = await knex('nguoidung').select('*').where('admin', 0);
 
     var today = new Date();
 
@@ -580,13 +580,13 @@ module.exports = {
     if (result.length === 0) {
       return {
         status: 200,
-        message: "No users have recently signed up for an account",
+        message: 'No users have recently signed up for an account',
         data: result,
       };
     } else {
       return {
         status: 200,
-        message: "Get new user successfully",
+        message: 'Get new user successfully',
         data: result,
       };
     }
@@ -594,12 +594,12 @@ module.exports = {
 
   async loginByGoogle(google_id, user) {
     //kiểm tra tài khoản google này đã đăng ký chưa
-    let registered = await knex("nguoidung")
+    let registered = await knex('nguoidung')
       .where({
         google_id: google_id,
-        kieu_dangnhap: "Google",
+        kieu_dangnhap: 'Google',
       })
-      .select("*");
+      .select('*');
     var isRegistered = Object.values(JSON.parse(JSON.stringify(registered)));
     console.log(isRegistered.length);
 
@@ -612,7 +612,7 @@ module.exports = {
         { id, admin },
         process.env.ACCESS_TOKEN_SECRET,
         {
-          expiresIn: "10m",
+          expiresIn: '1h',
         }
       );
 
@@ -620,11 +620,11 @@ module.exports = {
         { id, admin },
         process.env.REFRESH_TOKEN_SECRET,
         {
-          expiresIn: "1d",
+          expiresIn: '1d',
         }
       );
 
-      await knex("nguoidung")
+      await knex('nguoidung')
         .where({
           id: id,
         })
@@ -635,21 +635,21 @@ module.exports = {
 
       return {
         status: 200,
-        message: "Login successful",
+        message: 'Login successful',
         accessToken: accessToken,
         refreshToken: refreshToken,
       };
     }
     //nếu chưa có tài khoản trong database thì tạo tài khoản rồi gửi token
     else {
-      let id = await knex("nguoidung").insert(user).returning("id");
+      let id = await knex('nguoidung').insert(user).returning('id');
       let admin = 0;
 
       let accessToken = jwt.sign(
         { id, admin },
         process.env.ACCESS_TOKEN_SECRET,
         {
-          expiresIn: "10m",
+          expiresIn: '1h',
         }
       );
 
@@ -657,11 +657,11 @@ module.exports = {
         { id, admin },
         process.env.REFRESH_TOKEN_SECRET,
         {
-          expiresIn: "1d",
+          expiresIn: '1d',
         }
       );
 
-      await knex("nguoidung")
+      await knex('nguoidung')
         .where({
           id: id,
         })
@@ -672,7 +672,7 @@ module.exports = {
 
       return {
         status: 200,
-        message: "Login successful",
+        message: 'Login successful',
         accessToken: accessToken,
         refreshToken: refreshToken,
       };

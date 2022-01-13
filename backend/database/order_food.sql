@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2022 at 10:02 AM
+-- Generation Time: Jan 13, 2022 at 11:46 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -248,8 +248,8 @@ CREATE TABLE `nguoidung` (
   `gioitinh` tinyint(1) NOT NULL,
   `email` varchar(255) NOT NULL,
   `dienthoai` varchar(12) NOT NULL,
-  `public_id` text DEFAULT NULL,
-  `url` text DEFAULT NULL,
+  `public_id` text DEFAULT 'users/pngtree-businessman-user-avatar-free-vector-png-image_4827807_prr02b',
+  `url` text DEFAULT 'https://res.cloudinary.com/order-food/image/upload/v1642066718/users/pngtree-businessman-user-avatar-free-vector-png-image_4827807_prr02b.jpg	',
   `google_id` varchar(50) DEFAULT NULL,
   `kieu_dangnhap` varchar(50) NOT NULL DEFAULT 'Bình thường',
   `admin` tinyint(1) NOT NULL,

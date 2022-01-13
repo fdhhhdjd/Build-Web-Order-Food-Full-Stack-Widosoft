@@ -1,4 +1,4 @@
-const voucherModel = require("../models/voucherModel.js");
+const voucherModel = require('../models/voucherModel.js');
 
 module.exports = {
   //kiểm tra phiếu giảm giá có tồn tại trong bảng phieu_giamgia không?
@@ -8,15 +8,15 @@ module.exports = {
     voucherModel
       .checkVoucher(id_voucher)
       .then((existVoucher) => {
-        if (existVoucher === "Invalid voucher") {
+        if (existVoucher === 'Invalid voucher') {
           return res.status(400).json({
             status: 400,
-            message: "Invalid voucher",
+            message: 'Invalid voucher',
           });
         } else {
           return res.status(200).json({
             status: 200,
-            message: "Check voucher successfully",
+            message: 'Check voucher successfully',
             data: existVoucher,
           });
         }
@@ -24,7 +24,7 @@ module.exports = {
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to check voucher ",
+          message: 'Failed to check voucher ',
           data: err,
         });
       });
@@ -37,14 +37,14 @@ module.exports = {
       .then((result) => {
         return res.status(200).json({
           status: 200,
-          message: "Get all voucher successfully",
+          message: 'Get all voucher successfully',
           data: result,
         });
       })
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to get all voucher ",
+          message: 'Failed to get all voucher ',
           data: err,
         });
       });
@@ -64,14 +64,14 @@ module.exports = {
       .then((id_voucher) => {
         return res.status(200).json({
           status: 200,
-          message: "Created voucher successfully",
+          message: 'Created voucher successfully',
           data: id_voucher,
         });
       })
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to get all voucher ",
+          message: 'Failed to get all voucher ',
           data: err,
         });
       });
@@ -92,14 +92,14 @@ module.exports = {
       .then((result) => {
         return res.status(200).json({
           status: 200,
-          message: "Updated voucher successfully",
+          message: 'Updated voucher successfully',
           data: result,
         });
       })
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to update voucher ",
+          message: 'Failed to update voucher ',
           data: err,
         });
       });
@@ -113,14 +113,14 @@ module.exports = {
       .then((result) => {
         return res.status(200).json({
           status: 200,
-          message: "Deleted voucher successfully",
+          message: 'Deleted voucher successfully',
           data: result,
         });
       })
       .catch((err) => {
         return res.status(400).json({
           status: 400,
-          message: "Failed to delete voucher ",
+          message: 'Failed to delete voucher ',
           data: err,
         });
       });

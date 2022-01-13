@@ -114,7 +114,6 @@
    - Xem lịch sử đặt hàng của tài khoản khách hàng đang đăng nhập : get --> http://localhost:5000/bill/history
    - Xem hóa đơn : get --> http://localhost:5000/bill/detail/id_hd -
    - Hủy bill (khi hóa đơn của khách hàng chưa thanh toán ) : patch --> http://localhost:5000/bill/cancel/id_hd
-   - Kiểm tra mã voucher hợp lệ hay không : get --> http://localhost:5000/voucher/check/id_voucher
 
    Bill Detail :
 
@@ -130,6 +129,11 @@
 
    - Upload ảnh người dùng đang đăng nhập (ảnh lưu trong thư mục users) : post --> http://localhost:5000/cloud/uploadUserImage/customer
    - Xóa ảnh trên cloud (xóa bằng public_id) : post --> http://localhost:5000/cloud/destroy/customer
+
+   Voucher :
+
+   - Kiểm tra mã voucher hợp lệ hay không : get --> http://localhost:5000/voucher/check/id_voucher
+   - Xem tất cả phiếu giảm giá : get --> http://localhost:5000/voucher/all/customer
 
 3. API không có phân quyền
    Category :

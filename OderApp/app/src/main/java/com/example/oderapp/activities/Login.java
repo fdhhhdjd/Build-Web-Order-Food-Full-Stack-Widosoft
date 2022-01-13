@@ -82,7 +82,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                loginUsingGoogle();
-                signIn();
+//                signIn();
             }
         });
     }
@@ -132,58 +132,58 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    public void loginUsingGoogle() {
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("Host", "<calculated when request is sent>");
-        hashMap.put("Postman-Token", "<calculated when request is sent>");
-//        hashMap.put("Cookie", "refreshToken=" + StoreUtil.get(Login.this, Contants.refreshToken));
-        hashMap.put(Contants.contentType, "text/html; charset=utf-8");
-        Call<LoginRespone> loginResponeCall = ApiClientLoginUsingGoogle.apiService().registerUsingGoogle(hashMap);
+//    public void loginUsingGoogle() {
+//        HashMap<String, String> hashMap = new HashMap<>();
+//        hashMap.put("Host", "<calculated when request is sent>");
+//        hashMap.put("Postman-Token", "<calculated when request is sent>");
+////        hashMap.put("Cookie", "refreshToken=" + StoreUtil.get(Login.this, Contants.refreshToken));
+//        hashMap.put(Contants.contentType, "text/html; charset=utf-8");
+//        Call<LoginRespone> loginResponeCall = ApiClientLoginUsingGoogle.apiService().registerUsingGoogle(hashMap);
+//
+//        loginResponeCall.enqueue(new Callback<LoginRespone>() {
+//            @Override
+//            public void onResponse(Call<LoginRespone> call, Response<LoginRespone> response) {
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<LoginRespone> call, Throwable t) {
+//                t.printStackTrace();
+//            }
+//        });
+//
+//    }
 
-        loginResponeCall.enqueue(new Callback<LoginRespone>() {
-            @Override
-            public void onResponse(Call<LoginRespone> call, Response<LoginRespone> response) {
 
-            }
+//    private void signIn() {
+//        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+//        startActivityForResult(signInIntent, RC_SIGN_IN);
+//        loginUsingGoogle();
+//    }
 
-            @Override
-            public void onFailure(Call<LoginRespone> call, Throwable t) {
-                t.printStackTrace();
-            }
-        });
-
-    }
-
-
-    private void signIn() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-        loginUsingGoogle();
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
-        }
-    }
-
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
-        try {
-            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
-            // Signed in successfully, show authenticated UI.
-            Intent intent = new Intent(Login.this,SliderActivity.class);
-            startActivity(intent);
-        } catch (ApiException e) {
-        }
-    }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+//        if (requestCode == RC_SIGN_IN) {
+//            // The Task returned from this call is always completed, no need to attach
+//            // a listener.
+//            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+//            handleSignInResult(task);
+//        }
+//    }
+//
+//    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+//        try {
+//            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+//
+//            // Signed in successfully, show authenticated UI.
+//            Intent intent = new Intent(Login.this,SliderActivity.class);
+//            startActivity(intent);
+//        } catch (ApiException e) {
+//        }
+//    }
 
 }
 

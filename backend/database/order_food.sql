@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2022 at 09:19 AM
+-- Generation Time: Jan 13, 2022 at 10:02 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -74,7 +74,6 @@ INSERT INTO `chitiethoadon` (`id`, `id_hd`, `don_gia`, `soluong`, `tong_gia`, `i
 (92, 163, 169000, 1, 169000, 147, 'không bỏ bcx', '2022-01-04 01:23:07', '2022-01-04 01:23:07', 0),
 (93, 163, 49000, 5, 245000, 151, 'cho xin đá ', '2022-01-04 01:23:07', '2022-01-04 01:23:07', 0),
 (94, 164, 49000, 5, 245000, 151, 'cho xin đá ', '2022-01-04 01:23:50', '2022-01-04 01:23:50', 0),
-(95, 166, 169000, 1, 169000, 147, 'không bông cải xanh', '2022-01-07 23:43:00', '2022-01-07 23:43:00', 0),
 (96, 167, 319000, 1, 319000, 34, '', '2022-01-08 10:52:45', '2022-01-08 10:52:45', 0);
 
 -- --------------------------------------------------------
@@ -231,7 +230,6 @@ INSERT INTO `hoadon` (`id`, `id_nd`, `id_thanhtoan`, `id_diachi`, `ngaydathang`,
 (162, 19, 1, 9, '2022-01-04 00:06:34', 1, 169000, 'Coupon0', 169000, 'Đã thanh toán', '2022-01-04 00:06:34', '2022-01-04 00:06:34', 0),
 (163, 41, 1, 9, '2022-01-04 01:23:07', 6, 414000, 'Coupon0', 414000, 'Đã thanh toán', '2022-01-04 01:23:07', '2022-01-04 01:23:07', 0),
 (164, 41, 1, 9, '2022-01-04 01:23:50', 5, 245000, 'Coupon10', 220500, 'Đã nhận hàng', '2022-01-04 01:23:50', '2022-01-04 01:23:50', 0),
-(166, 45, 1, 7, '2022-01-07 23:43:00', 1, 169000, 'Coupon0', 169000, 'Đã thanh toán', '2022-01-07 23:43:00', '2022-01-07 23:43:00', 0),
 (167, 47, 4, 12, '2022-01-08 10:52:44', 1, 319000, 'Coupon0', 319000, 'Chưa thanh toán', '2022-01-08 10:52:44', '2022-01-08 10:52:44', 0);
 
 -- --------------------------------------------------------
@@ -250,8 +248,8 @@ CREATE TABLE `nguoidung` (
   `gioitinh` tinyint(1) NOT NULL,
   `email` varchar(255) NOT NULL,
   `dienthoai` varchar(12) NOT NULL,
-  `public_id` text NOT NULL,
-  `url` text NOT NULL,
+  `public_id` text DEFAULT NULL,
+  `url` text DEFAULT NULL,
   `google_id` varchar(50) DEFAULT NULL,
   `kieu_dangnhap` varchar(50) NOT NULL DEFAULT 'Bình thường',
   `admin` tinyint(1) NOT NULL,
@@ -265,8 +263,8 @@ CREATE TABLE `nguoidung` (
 --
 
 INSERT INTO `nguoidung` (`id`, `hoten`, `username`, `password`, `refresh_token`, `ngaysinh`, `gioitinh`, `email`, `dienthoai`, `public_id`, `url`, `google_id`, `kieu_dangnhap`, `admin`, `createdAt`, `updatedAt`, `deleted_fg`) VALUES
-(14, 'Nguyễn Hoàng Việt', 'meo', '$2b$10$aeFsPyBdMrbH80YVjEYx6.eIgzXoDBX6DFgJn/.h4.pBV7KHrRsWS', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsImFkbWluIjowLCJpYXQiOjE2NDE0NDIwMjIsImV4cCI6MTY0MTUyODQyMn0.zgvFEvvhsOWewQ7y3uNSFfFl51uhsi7ns4IpPNvqDB0', '2000-12-20', 1, 'viet@gmail.com', '0123456789', '', '', NULL, 'Bình thường', 0, '2021-12-07 15:22:20', '2021-12-22 18:42:43', 0),
-(16, 'Nguyễn Duy Thịnh', 'thinh', '$2b$10$ZsuuwnNsNyDG/JZBf8pBoO4l2wnyfcC917yeTapi5/ZeWQvV70ZeS', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsImFkbWluIjoxLCJpYXQiOjE2NDE1NzgzODcsImV4cCI6MTY0MTY2NDc4N30.3dJzIgVbkcm1S8sUrUubVape-eijWqoAeOrlogmi2qs', '2000-10-16', 1, 'thinh@gmail.com', '0123456789', 'users/l0yxyhphzfyw4utjlvj3', 'https://res.cloudinary.com/order-food/image/upload/v1640010340/users/l0yxyhphzfyw4utjlvj3.jpg', NULL, 'Bình thường', 1, '2021-12-07 15:33:10', '2021-12-20 21:27:58', 0),
+(14, 'Nguyễn Hoàng Việt', 'meo', '$2b$10$aeFsPyBdMrbH80YVjEYx6.eIgzXoDBX6DFgJn/.h4.pBV7KHrRsWS', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsImFkbWluIjowLCJpYXQiOjE2NDIwNjIwNTAsImV4cCI6MTY0MjE0ODQ1MH0.DeZrspCek9CINpIuMsYHWPQg84k06AoMJUFBcqrDfaM', '2000-12-20', 1, 'viet@gmail.com', '0123456789', '', '', NULL, 'Bình thường', 0, '2021-12-07 15:22:20', '2021-12-22 18:42:43', 0),
+(16, 'Nguyễn Duy Thịnh', 'thinh', '$2b$10$ZsuuwnNsNyDG/JZBf8pBoO4l2wnyfcC917yeTapi5/ZeWQvV70ZeS', NULL, '2000-10-16', 1, 'thinh@gmail.com', '0123456789', 'users/l0yxyhphzfyw4utjlvj3', 'https://res.cloudinary.com/order-food/image/upload/v1640010340/users/l0yxyhphzfyw4utjlvj3.jpg', NULL, 'Bình thường', 1, '2021-12-07 15:33:10', '2021-12-20 21:27:58', 0),
 (17, 'Nguyễn Tiến Tài', 'tai', '$2b$10$eyhUi.EXtmviKKb6rQ8ADOVUESPjkG9YKCVElaQ3meZo8nrK3uSee', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImFkbWluIjoxLCJpYXQiOjE2Mzg5NTQ5NDgsImV4cCI6MTYzOTA0MTM0OH0.6ML730j9UX1451vEu8JsGKjvkVNDh6pFTZ1TBV76HlM', '2000-10-20', 1, 'tai@gmail.com', '0123456789', '', '', NULL, 'Bình thường', 1, '2021-12-07 15:37:27', '2021-12-08 17:09:29', 0),
 (18, 'Thái Văn Nam', 'nam', '$2b$10$yGb6JgSGxAS5zDxRrdp/tujSEHmuu0d0zYEkiNVsP30dZae1HIzi.', '', '2000-12-09', 1, 'nam@gmail.com', '0123456789', 'users/b72gqzaq9i3j6ty0jp0z', 'https://res.cloudinary.com/order-food/image/upload/v1640062572/users/b72gqzaq9i3j6ty0jp0z.jpg', NULL, 'Bình thường', 1, '2021-12-08 17:10:14', '2021-12-21 11:58:46', 0),
 (19, 'Lê Nguyễn Hoàng Anh', 'hoanganh', '$2b$10$xCL5Jy6xRcYDxJoyLkOcJODxedHgsPm01kW8GlF/mUuhTQkByE4sO', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImFkbWluIjowLCJpYXQiOjE2NDEyMjk1MjQsImV4cCI6MTY0MTMxNTkyNH0._1PkOANGf8-EhymW1fZFnU08W_Axm_jM7mWy1AuW6LI', '2000-01-01', 0, 'hoanganh@gmail.com', '0123456789', 'users/xrucgmehttfidkewd9d4', 'https://res.cloudinary.com/order-food/image/upload/v1640015062/users/xrucgmehttfidkewd9d4.jpg', NULL, 'Bình thường', 0, '2021-12-10 15:43:01', '2021-12-20 22:44:52', 0),
@@ -274,8 +272,8 @@ INSERT INTO `nguoidung` (`id`, `hoten`, `username`, `password`, `refresh_token`,
 (32, 'Phạm Thị Tuyết Hạnh', 'hanh', '$2b$10$sxF1trJNZ3M1CGelKO0Uq.DmTsTAxBQsTLWNWZlAlbJeOQjHx5VnC', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzIsImFkbWluIjowLCJpYXQiOjE2NDAwNzg3NTAsImV4cCI6MTY0MDE2NTE1MH0.H7Yjbg46vhH3Cb-6s6GyxHfLz1xgaPQQanMey-iSfH8', '2000-12-31', 0, 'hanh@gmail.com', '0123456789', 'users/nsw7nwqnshh9rizlysf4', 'https://res.cloudinary.com/order-food/image/upload/v1640062835/users/nsw7nwqnshh9rizlysf4.jpg', NULL, 'Bình thường', 0, '2021-12-20 22:48:38', '2021-12-21 12:03:31', 0),
 (40, 'Thinh3', 'thinh3', '$2b$10$ktAwum/W8E4YeflVKhQ2o.SaRUAgKvb2DYwYrq0X/E8tCsUBj7rNW', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDAsImFkbWluIjoxLCJpYXQiOjE2NDEyODg1ODQsImV4cCI6MTY0MTM3NDk4NH0.vtX7whlLh1Ela1pwXhqmGCXxyI6dfnSd5dDW8jbMr4I', '2000-06-06', 0, 'slthinhtu3@gmail.com', '0123456789', '', '', NULL, 'Bình thường', 1, '2021-12-24 19:42:59', '2021-12-24 19:42:59', 0),
 (41, 'Thinh2', 'thinh2', '$2b$10$WkN2QbHUEcfUw0gW6hnMHenQwFGzY79EzIEAxVe8s5ZCqynoOHZa2', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImFkbWluIjowLCJpYXQiOjE2NDEyMzQwODAsImV4cCI6MTY0MTMyMDQ4MH0.29otLrB_9gyOXqf4j9dbfMPd8eMFz4RbZKKoWxRLNvY', '2000-12-30', 1, 'thinh.nd.60cntt@ntu.edu.vn', '0123456789', '', '', NULL, 'Bình thường', 0, '2021-12-24 19:46:49', '2021-12-24 19:46:49', 0),
-(45, 'Thinh04 Duy', '', '', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDUsImFkbWluIjowLCJpYXQiOjE2NDE1NzM4MjcsImV4cCI6MTY0MTY2MDIyN30.GyvEJHPwI1wX6iQ9HkpWpAoPkfsuVyoQjjRKZHdzC1s', '0000-00-00', 0, 'slthinhtu2@gmail.com', '', '', '', '110446265606205091243', 'Google', 0, '2022-01-07 23:41:25', '2022-01-07 23:41:25', 0),
-(47, 'thái văn nam', 'thainam', '$2b$10$q08vJQYEA0dDtW97P25xp..BYKuNMQIEiTPifZhSqWUxCxzrWXkOq', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDcsImFkbWluIjowLCJpYXQiOjE2NDE2MTQ0NjMsImV4cCI6MTY0MTcwMDg2M30.FJxAWwlBTi2kWpg3UUOjzaLGKt5panT-lq6zBDK31Sg', '2000-09-12', 1, 'thaivannamc4@gmail.com', '0911495728', '', '', NULL, 'Bình thường', 0, '2022-01-08 07:51:09', '2022-01-08 07:51:09', 0);
+(47, 'thái văn nam', 'thainam', '$2b$10$q08vJQYEA0dDtW97P25xp..BYKuNMQIEiTPifZhSqWUxCxzrWXkOq', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDcsImFkbWluIjowLCJpYXQiOjE2NDE2MTQ0NjMsImV4cCI6MTY0MTcwMDg2M30.FJxAWwlBTi2kWpg3UUOjzaLGKt5panT-lq6zBDK31Sg', '2000-09-12', 1, 'thaivannamc4@gmail.com', '0911495728', '', '', NULL, 'Bình thường', 0, '2022-01-08 07:51:09', '2022-01-08 07:51:09', 0),
+(50, 'Bé Dũng', 'dung', '$2b$10$ZLUzAmsgbmAdLCHkoVOGEOfrIrfxh5i5.aLR4R3L0NWu863wVDJOy', NULL, '2000-06-06', 0, 'quocdung@gmail.com', '0123456789', '', '', NULL, 'Bình thường', 1, '2022-01-13 15:21:17', '2022-01-13 15:21:17', 0);
 
 -- --------------------------------------------------------
 
@@ -519,7 +517,7 @@ ALTER TABLE `hoadon`
 -- AUTO_INCREMENT for table `nguoidung`
 --
 ALTER TABLE `nguoidung`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `sanpham`

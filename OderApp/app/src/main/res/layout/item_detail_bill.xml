@@ -22,9 +22,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_5sdp"
         android:text="Pizza Double Cheese"
+        android:maxLength="20"
         android:textColor="@color/primary_dark"
         android:textSize="@dimen/_13ssp"
-        app:layout_constraintRight_toLeftOf="@+id/tv_donGia"
         app:layout_constraintStart_toEndOf="@+id/img_product"
         app:layout_constraintTop_toTopOf="parent" />
 

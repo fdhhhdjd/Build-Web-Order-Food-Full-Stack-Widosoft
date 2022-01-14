@@ -24,7 +24,14 @@ const cors = require("cors");
 const path = require("path");
 
 require("dotenv").config();
+//cors middleware
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
 
+  next();
+});
 app.use(
   fileUpload({
     useTempFiles: true,

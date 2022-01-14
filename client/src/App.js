@@ -46,7 +46,7 @@ function App() {
             path="/"
             element={
               <UserRoute>
-                <Home />
+                <Admin />
               </UserRoute>
             }
           />
@@ -66,10 +66,10 @@ function App() {
               </UserRoutes>
             }
           />
-          <Route path="/feedback" element={<FeedBack />} />
-          <Route path="/product" element={<ProductDetails />} />
+          {/* <Route path="/feedback" element={<FeedBack />} /> */}
+          {/* <Route path="/product" element={<ProductDetails />} /> */}
           {/* <Route path="/payment" element={<Payment />} /> */}
-          <Route path="/checkout" element={<Checkout />} />
+          {/* <Route path="/checkout" element={<Checkout />} /> */}
           {/* <Route path="/rating" element={<Rating />} /> */}
           <Route
             path="/admin"

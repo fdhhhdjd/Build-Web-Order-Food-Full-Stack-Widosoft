@@ -102,7 +102,7 @@ const FeaturedInfos = () => {
                     {(compareTotal[1].sosanh_thang_truoc ===
                       "last month does not exist data" &&
                       "0") ||
-                      compareTotal[1].sosanh_thang_truoc.toFixed(3)}
+                      compareTotal[1].sosanh_thang_truoc}
                     <AiOutlineArrowUp className="featuredIcon" />
                   </>
                 )}
@@ -141,15 +141,15 @@ const FeaturedInfos = () => {
               <span className="featuredMoneyRate">
                 {compareTotalCancel[1].sosanh_thang_truoc < 0 ? (
                   <>
-                    {(compareTotalCancel[1].sosanh_thang_truoc ===
-                      "last month does not exist data" &&
-                      "0") ||
-                      compareTotalCancel[1].sosanh_thang_truoc.toFixed(3)}
+                    +{compareTotalCancel[1].sosanh_thang_truoc}
                     <MdArrowDownward className="featuredIcon negative" />
                   </>
                 ) : (
                   <>
-                    +{compareTotalCancel[1].sosanh_thang_truoc.toFixed(3)}
+                    {(compareTotalCancel[1].sosanh_thang_truoc ===
+                      "last month does not exist data" &&
+                      "0") ||
+                      compareTotalCancel[1].sosanh_thang_truoc}
                     <AiOutlineArrowUp className="featuredIcon" />
                   </>
                 )}
@@ -188,12 +188,12 @@ const FeaturedInfos = () => {
               <span className="featuredMoneyRate">
                 {compareTotalReceived[1].sosanh_thang_truoc < 0 ? (
                   <>
-                    {compareTotalReceived[1].sosanh_thang_truoc.toFixed(3)}
+                    {compareTotalReceived[1].sosanh_thang_truoc}
                     <MdArrowDownward className="featuredIcon negative" />
                   </>
                 ) : (
                   <>
-                    {compareTotalReceived[1].sosanh_thang_truoc.toFixed(3)}
+                    {compareTotalReceived[1].sosanh_thang_truoc}
                     <AiOutlineArrowUp className="featuredIcon" />
                   </>
                 )}

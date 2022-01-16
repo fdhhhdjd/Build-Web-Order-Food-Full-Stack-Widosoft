@@ -4,7 +4,10 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import swal from "sweetalert";
-import { ChangeAdminInitiate } from "../../redux/Action/ActionAdmin";
+import {
+  ChangeAdminInitiate,
+  clearErrors,
+} from "../../redux/Action/ActionAdmin";
 const initialState = {
   email: "",
   oldPassword: "",
@@ -32,10 +35,12 @@ const ChangePassword = () => {
   useEffect(() => {
     if (changePassword.status === 200) {
       setState({ oldPassword: "", password: "", confirmPassword: "" });
+      dispatch(clearErrors());
     } else if (changePassword.status === 400) {
       swal(`${changePassword.message} 🤨`, {
         icon: "error",
       });
+      dispatch(clearErrors());
     }
   }, [changePassword]);
   useEffect(() => {

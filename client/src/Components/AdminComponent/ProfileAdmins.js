@@ -226,6 +226,7 @@ const ProfileAdmins = () => {
                     placeholder="annabeck99@gmail.com"
                     className="userUpdateInput"
                     onChange={handleChangeInput}
+                    disabled
                   />
                 </div>
                 <div className="userUpdateItem">

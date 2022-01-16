@@ -83,77 +83,77 @@
    - Đăng ký tài khoản khách hàng : post --> http://18.138.235.4:5000/customer/register
    - Đăng nhập tài khoản khách hàng : post --> http://18.138.235.4:5000/customer/login
    - Refresh token khách hàng : get --> http://18.138.235.4:5000/customer/refreshToken
-   - Đăng xuất tài khoản khách hàng : get --> http://localhost:5000/customer/logout
-   - Xem thông tin tài khoản khách hàng đang đăng nhập : get --> http://localhost:5000/customer/profile
-   - Chỉnh sửa thông tin tài khoản khách hàng : patch --> http://localhost:5000/customer/updateProfile
-   - Đổi mật khẩu tài khoản khách hàng : patch --> http://localhost:5000/customer/changePassword
-   - quên mật khẩu tài khoản khách hàng : post --> http://localhost:5000/customer/forgotPassword
-   - đăng nhập bằng google : get --> http://localhost:5000/auth/google
+   - Đăng xuất tài khoản khách hàng : get --> http://18.138.235.4:5000/customer/logout
+   - Xem thông tin tài khoản khách hàng đang đăng nhập : get --> http://18.138.235.4:5000/customer/profile
+   - Chỉnh sửa thông tin tài khoản khách hàng : patch --> http://18.138.235.4:5000/customer/updateProfile
+   - Đổi mật khẩu tài khoản khách hàng : patch --> http://18.138.235.4:5000/customer/changePassword
+   - quên mật khẩu tài khoản khách hàng : post --> http://18.138.235.4:5000/customer/forgotPassword
+   - đăng nhập bằng google : get --> http://18.138.235.4:5000/auth/google
 
    Cart :
 
-   - Thêm sản phẩm vào giỏ hàng : post --> http://localhost:5000/cart/addCartItem/id_sp
-   - Xem giỏ hàng của tài khoản khách hàng đang đăng nhập : get --> http://localhost:5000/cart
-   - Xem chi tiết giỏ hàng : get --> http://localhost:5000/cart/item/id_cart
-   - Chỉnh sửa số lượng sản phẩm trong giỏ hàng : patch --> http://localhost:5000/cart/updateQuantityProduct/id_cart
-   - Xóa chi tiết giỏ hàng : delete --> http://localhost:5000/cart/delete/id_cart
-   - Xóa toàn bộ chi tiết giỏ hàng : delete --> http://localhost:5000/cart/deleteAll
-   - Hiển thị tổng số lượng sản phẩm và tổng tiền của giỏ hàng : get --> http://localhost:5000/cart/getAllQuantityAndPriceOfCart
+   - Thêm sản phẩm vào giỏ hàng : post --> http://18.138.235.4:5000/cart/addCartItem/id_sp
+   - Xem giỏ hàng của tài khoản khách hàng đang đăng nhập : get --> http://18.138.235.4:5000/cart
+   - Xem chi tiết giỏ hàng : get --> http://18.138.235.4:5000/cart/item/id_cart
+   - Chỉnh sửa số lượng sản phẩm trong giỏ hàng : patch --> http://18.138.235.4:5000/cart/updateQuantityProduct/id_cart
+   - Xóa chi tiết giỏ hàng : delete --> http://18.138.235.4:5000/cart/delete/id_cart
+   - Xóa toàn bộ chi tiết giỏ hàng : delete --> http://18.138.235.4:5000/cart/deleteAll
+   - Hiển thị tổng số lượng sản phẩm và tổng tiền của giỏ hàng : get --> http://18.138.235.4:5000/cart/getAllQuantityAndPriceOfCart
 
    Address :
 
-   - lấy ra chi tiết địa chỉ: get --> http://localhost:5000/address/id_diachi
-   - thêm mới địa chỉ: post --> http://localhost:5000/address/add
-   - lấy ra danh sách địa chỉ : get --> http://localhost:5000/address/
-   - chỉnh sửa địa chỉ : patch --> http://localhost:5000/address/id_diachi
-   - xóa địa chỉ : delete --> http://localhost:5000/address/id_diachi
+   - lấy ra chi tiết địa chỉ: get --> http://18.138.235.4:5000/address/id_diachi
+   - thêm mới địa chỉ: post --> http://18.138.235.4:5000/address/add
+   - lấy ra danh sách địa chỉ : get --> http://18.138.235.4:5000/address/
+   - chỉnh sửa địa chỉ : patch --> http://18.138.235.4:5000/address/id_diachi
+   - xóa địa chỉ : delete --> http://18.138.235.4:5000/address/id_diachi
 
    Bill :
 
-   - Tạo hóa đơn sau khi thêm sản phẩm vào giỏ hàng (-> lấy chi tiết giỏ hàng để tạo chi tiết hóa đơn, tạo hóa đơn xong thì xóa giỏ hàng) : post --> http://localhost:5000/bill/create
-   - Xem lịch sử đặt hàng của tài khoản khách hàng đang đăng nhập : get --> http://localhost:5000/bill/history
-   - Xem hóa đơn : get --> http://localhost:5000/bill/detail/id_hd -
-   - Hủy bill (khi hóa đơn của khách hàng chưa thanh toán ) : patch --> http://localhost:5000/bill/cancel/id_hd
+   - Tạo hóa đơn sau khi thêm sản phẩm vào giỏ hàng (-> lấy chi tiết giỏ hàng để tạo chi tiết hóa đơn, tạo hóa đơn xong thì xóa giỏ hàng) : post --> http://18.138.235.4:5000/bill/create
+   - Xem lịch sử đặt hàng của tài khoản khách hàng đang đăng nhập : get --> http://18.138.235.4:5000/bill/history
+   - Xem hóa đơn : get --> http://18.138.235.4:5000/bill/detail/id_hd -
+   - Hủy bill (khi hóa đơn của khách hàng chưa thanh toán ) : patch --> http://18.138.235.4:5000/bill/cancel/id_hd
 
    Bill Detail :
 
-   - Xem từng chi tiết hóa đơn : get --> http://localhost:5000/billDetail/id_cthd
+   - Xem từng chi tiết hóa đơn : get --> http://18.138.235.4:5000/billDetail/id_cthd
 
    Rating :
 
-   - Đánh giá hóa đơn : post --> http://localhost:5000/rating/add/id_hd
-   - Lịch sử đánh giá của tài khoản đang đăng nhập : get --> http://localhost:5000/rating/history
-   - Chỉnh sửa đánh giá : patch --> http://localhost:5000/rating/update/id_danhgia
+   - Đánh giá hóa đơn : post --> http://18.138.235.4:5000/rating/add/id_hd
+   - Lịch sử đánh giá của tài khoản đang đăng nhập : get --> http://18.138.235.4:5000/rating/history
+   - Chỉnh sửa đánh giá : patch --> http://18.138.235.4:5000/rating/update/id_danhgia
 
    Upload :
 
-   - Upload ảnh người dùng đang đăng nhập (ảnh lưu trong thư mục users) : post --> http://localhost:5000/cloud/uploadUserImage/customer
-   - Xóa ảnh trên cloud (xóa bằng public_id) : post --> http://localhost:5000/cloud/destroy/customer
+   - Upload ảnh người dùng đang đăng nhập (ảnh lưu trong thư mục users) : post --> http://18.138.235.4:5000/cloud/uploadUserImage/customer
+   - Xóa ảnh trên cloud (xóa bằng public_id) : post --> http://18.138.235.4:5000/cloud/destroy/customer
 
    Voucher :
 
-   - Kiểm tra mã voucher hợp lệ hay không : get --> http://localhost:5000/voucher/check/id_voucher
-   - Xem tất cả phiếu giảm giá : get --> http://localhost:5000/voucher/all/customer
+   - Kiểm tra mã voucher hợp lệ hay không : get --> http://18.138.235.4:5000/voucher/check/id_voucher
+   - Xem tất cả phiếu giảm giá : get --> http://18.138.235.4:5000/voucher/all/customer
 
 3. API không có phân quyền
    Category :
 
-   - Xem toàn bộ danh mục : get --> http://localhost:5000/category/
-   - Lấy ra sản phẩm phân loại theo id danh mục: get --> http://localhost:5000/category/id_dm
+   - Xem toàn bộ danh mục : get --> http://18.138.235.4:5000/category/
+   - Lấy ra sản phẩm phân loại theo id danh mục: get --> http://18.138.235.4:5000/category/id_dm
 
    Product:
 
-   - Xem toàn bộ sản phẩm : get --> http://localhost:5000/product
-   - Xem chi tiết sản phẩm : get --> http://localhost:5000/product/id_sp
-   - sắp xếp sản phẩm tăng dần theo giá --> http://localhost:5000/product/sort/asc
-   - sắp xếp sản phẩm giảm dần theo giá --> http://localhost:5000/product/sort/desc
+   - Xem toàn bộ sản phẩm : get --> http://18.138.235.4:5000/product
+   - Xem chi tiết sản phẩm : get --> http://18.138.235.4:5000/product/id_sp
+   - sắp xếp sản phẩm tăng dần theo giá --> http://18.138.235.4:5000/product/sort/asc
+   - sắp xếp sản phẩm giảm dần theo giá --> http://18.138.235.4:5000/product/sort/desc
 
    App info:
 
-   - Xem toàn bộ thông tin ứng dụng : get --> http://localhost:5000/appInfo/
-   - Xem chi tiết thông tin ứng dụng : get --> http://localhost:5000/appInfo/id
+   - Xem toàn bộ thông tin ứng dụng : get --> http://18.138.235.4:5000/appInfo/
+   - Xem chi tiết thông tin ứng dụng : get --> http://18.138.235.4:5000/appInfo/id
 
    Payment :
 
-   - Xem toàn bộ hình thức thanh toán : get --> http://localhost:5000/payment/
-   - Xem chi tiết hình thức thanh toán : get --> http://localhost:5000/payment/id
+   - Xem toàn bộ hình thức thanh toán : get --> http://18.138.235.4:5000/payment/
+   - Xem chi tiết hình thức thanh toán : get --> http://18.138.235.4:5000/payment/id

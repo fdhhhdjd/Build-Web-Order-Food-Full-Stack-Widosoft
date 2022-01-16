@@ -57,7 +57,7 @@ const Products = () => {
         );
       },
     },
-    { field: "chitiet", headerName: "Stock", width: 550 },
+    { field: "chitiet", headerName: "Description", width: 550 },
     {
       field: "size",
       headerName: "Size",

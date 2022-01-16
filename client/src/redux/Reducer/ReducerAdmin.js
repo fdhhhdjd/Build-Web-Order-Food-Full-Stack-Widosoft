@@ -98,13 +98,14 @@ const AuthReducer = (state = initialState, action) => {
       return {
         ...state,
         error: null,
+        changePassword: [],
       };
     case types.LOGIN_API_FAIL:
     case types.REGISTER_API_FAIL:
     case types.LOGIN_API_FAIL:
+    case types.CHANGE_ADMIN_PASSWORD_FAIL:
     case types.REFRESH_TOKEN_ADMIN_FAIL:
     case types.ACCEPT_TOKEN_GET_ADMIN_FAIL:
-    case types.CHANGE_ADMIN_PASSWORD_FAIL:
     case types.GET_ALL_USER_FAIL:
     case types.GET_ALL_ADMIN_FAIL:
     case types.FORGET_ADMIN_FAIL:

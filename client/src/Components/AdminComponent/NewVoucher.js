@@ -85,7 +85,7 @@ const NewVoucher = () => {
         <div className="create_product">
           <form onSubmit={handleSubmit}>
             <div className="row">
-              <label htmlFor="product_id">Tên Phiếu</label>
+              <label htmlFor="product_id">Mã Phiếu</label>
               <input
                 type="text"
                 name="id"

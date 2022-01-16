@@ -51,10 +51,10 @@ const Voucher = () => {
     }
   };
   const columns = [
-    { field: "id", headerName: "ID", width: 150 },
-    { field: "ten_phieu", headerName: "ID", width: 170 },
-    { field: "giatri", headerName: "ID", width: 170 },
-    { field: "mota", headerName: "ID", width: 300 },
+    { field: "id", headerName: "ID Voucher", width: 150 },
+    { field: "ten_phieu", headerName: "Name Voucher", width: 170 },
+    { field: "giatri", headerName: "DeCount Value", width: 180 },
+    { field: "mota", headerName: "Description", width: 300 },
     {
       field: "action",
       headerName: "Action",

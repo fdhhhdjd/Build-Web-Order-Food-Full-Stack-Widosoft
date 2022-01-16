@@ -1,5 +1,13 @@
-Node: Đã hoàn thành link backend Online (Mong các bạn sài đàng hoàng không phá dưới mọi hình thức vì server vẫn đang chạy cảm ơn ).
-Team Word: 1.Nguyễn Tiến Tài(Fe,Be)  2.Thái Văn Nam (App,Ios)  3.Nguyễn Duy Thinh (Fe) 
+Node: Đã hoàn thành Backend Online (Mong các bạn sài đàng hoàng không phá dưới mọi hình thức vì server vẫn đang chạy cảm ơn ).
+
+Team Word: Liên hệ công việc https://profile-forme.surge.sh/
+
+1. Nguyễn Tiến Tài (Fe,Be) .
+
+2. Thái Văn Nam (App,Ios) . 
+
+3. Nguyễn Duy Thinh (Be) .
+
 1. API dành cho admin
    User :
 

@@ -8,12 +8,6 @@
 
 ## 3. Nguyễn Duy Thinh (Be) .
 
-## Tài Khoản thanh toán tiền chuyển khoản
-
-## Tk: nguyentientai@gmail.com
-
-## Mk: Taideptrai123
-
 ## Api Online thay localhost: https://shopshoetaiheo.herokuapp.com/
 
 ## Tài Khoản Donate ly Cf để có động lực code cho anh em tham khảo 😄😄

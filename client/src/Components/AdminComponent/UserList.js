@@ -1,16 +1,16 @@
-import React, { useState, useContext } from "react";
-import { userRows } from "../../utils/DataChart";
-import { AiFillDelete } from "../../Imports/Icons";
 import { DataGrid } from "@material-ui/data-grid";
-import { Link } from "react-router-dom";
-import { UserLists } from "../../Styles/StylePages/Admin/UserLists";
-import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 import moment from "moment";
 import "moment/locale/vi";
-import { GlobalState } from "../../Contexts/GlobalState";
-import axios from "axios";
-import swal from "sweetalert";
+import React, { useContext, useState } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import swal from "sweetalert";
+import { GlobalState } from "../../Contexts/GlobalState";
+import { AiFillDelete } from "../../Imports/Icons";
+import { UserLists } from "../../Styles/StylePages/Admin/UserLists";
+import { API_URL } from "../../utils/Config";
 
 const UserList = () => {
   const state = useContext(GlobalState);
@@ -28,7 +28,7 @@ const UserList = () => {
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
-          axios.delete(`/admin/users/delete/${id}`, {
+          axios.delete(`${API_URL}/admin/users/delete/${id}`, {
             headers: { Authorization: `Bearer ${token.accessToken}` },
           });
 

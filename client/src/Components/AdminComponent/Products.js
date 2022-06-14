@@ -1,14 +1,14 @@
-import React, { useState, useContext } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-
-import { Link } from "react-router-dom";
-import { ProductStyle } from "../../Styles/StylePages/ProductsAdminStyle";
-import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import React, { useContext, useState } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import swal from "sweetalert";
-import { toast } from "react-toastify";
 import { GlobalState } from "../../Contexts/GlobalState";
+import { ProductStyle } from "../../Styles/StylePages/ProductsAdminStyle";
+import { API_URL } from "../../utils/Config";
+
 const Products = () => {
   const { product } = useSelector((state) => state.products);
   const { token } = useSelector((state) => state.authAdmin);
@@ -25,7 +25,7 @@ const Products = () => {
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
-          axios.delete(`/product/delete/${id}`, {
+          axios.delete(`${API_URL}/product/delete/${id}`, {
             headers: { Authorization: `Bearer ${token.accessToken}` },
           });
           setCallback(!callback);

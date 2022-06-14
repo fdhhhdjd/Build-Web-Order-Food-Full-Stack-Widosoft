@@ -10,6 +10,7 @@ import moment from "moment";
 import "moment/locale/vi";
 import { GlobalState } from "../../Contexts/GlobalState";
 import { GetAllRatingInitiate } from "../../redux/Action/ActionInfoAllUser";
+import { API_URL } from "../../utils/Config";
 const Rating = () => {
   const { rating } = useSelector((state) => state.info);
   const { token } = useSelector((state) => state.authAdmin);
@@ -35,7 +36,7 @@ const Rating = () => {
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
-          axios.delete(`/rating/delete/${id}`, {
+          axios.delete(`${API_URL}/rating/delete/${id}`, {
             headers: { Authorization: `Bearer ${token.accessToken}` },
           });
           setCallback(!callback);

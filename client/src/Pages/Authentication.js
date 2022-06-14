@@ -10,7 +10,6 @@ const Authentication = () => {
     setFlag(!flag);
   };
   const { AdminRegister } = useSelector((state) => state.authAdmin);
-  console.log(AdminRegister, "AdminRegister");
   useEffect(() => {
     if (AdminRegister.status === 200) {
       setFlag(false);

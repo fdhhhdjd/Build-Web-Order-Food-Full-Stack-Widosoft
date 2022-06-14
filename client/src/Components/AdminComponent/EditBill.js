@@ -1,12 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import swal from "sweetalert";
 import { GlobalState } from "../../Contexts/GlobalState";
 import { NewProductStyle } from "../../Styles/StylePages/Admin/NewProduct";
-import { useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { LoadingImage } from "../../Imports/Index";
-import axios from "axios";
-import swal from "sweetalert";
-import { toast } from "react-toastify";
+import { API_URL } from "../../utils/Config";
 const initialState = {
   tinhtrangHD: "",
 };
@@ -50,7 +49,7 @@ const EditBill = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios.patch(
-      `/bill/update/${products.id}`,
+      `${API_URL}/bill/update/${products.id}`,
       { ...products },
       {
         headers: {

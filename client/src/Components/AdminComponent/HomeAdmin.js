@@ -1,8 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { FeaturedInfos, Chart, WidgetSm, WidgetLg } from "../../Imports/Index";
+import { Chart, FeaturedInfos, WidgetLg, WidgetSm } from "../../Imports/Index";
 import { HomeAdmins } from "../../Styles/StylePages/Admin/HomeAdmin";
-import { userData } from "../../utils/DataChart";
 const HomeAdmin = () => {
   const { moth } = useSelector((state) => state.products);
   return (

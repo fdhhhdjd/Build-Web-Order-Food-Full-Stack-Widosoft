@@ -8,6 +8,7 @@ import { GlobalState } from "../../Contexts/GlobalState";
 import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
 import { toast } from "react-toastify";
+import { API_URL } from "../../utils/Config";
 const initialState = {
   id: "",
   hoten: "",
@@ -75,12 +76,16 @@ const AdminNew = () => {
 
       formData.append("file", file);
       setLoading(true);
-      const res = await axios.post("/cloud/uploadUserImage/admin", formData, {
-        headers: {
-          "content-type": "multipart/form-data",
-          Authorization: `Bearer ${token.accessToken}`,
-        },
-      });
+      const res = await axios.post(
+        `${API_URL}/cloud/uploadUserImage/admin`,
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: `Bearer ${token.accessToken}`,
+          },
+        }
+      );
 
       setLoading(false);
       setImages(res.data);
@@ -97,7 +102,7 @@ const AdminNew = () => {
       });
     try {
       await axios.patch(
-        `/admin/users/${user.id}`,
+        `${API_URL}/admin/users/${user.id}`,
         { ...user, public_id: images.public_id, url: images.url },
         {
           headers: {
@@ -119,7 +124,7 @@ const AdminNew = () => {
     try {
       setLoading(true);
       await axios.post(
-        "/cloud/destroy/admin",
+        `${API_URL}/cloud/destroy/admin`,
         { public_id: images.public_id },
         {
           headers: {

@@ -1,13 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
-import { ProductIdStyle } from "../../Styles/StylePages/Admin/ProductIdStyle";
-import { GlobalState } from "../../Contexts/GlobalState";
-import { NewProductStyle } from "../../Styles/StylePages/Admin/NewProduct";
-import { useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { LoadingImage } from "../../Imports/Index";
 import axios from "axios";
+import React, { useContext, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
-import { toast } from "react-toastify";
+import { GlobalState } from "../../Contexts/GlobalState";
+import { ProductIdStyle } from "../../Styles/StylePages/Admin/ProductIdStyle";
+import { API_URL } from "../../utils/Config";
 const Category = () => {
   const { categories } = useSelector((state) => state.products);
   const { token } = useSelector((state) => state.authAdmin);
@@ -22,7 +20,7 @@ const Category = () => {
     try {
       if (onEdit) {
         const res = await axios.patch(
-          `/category/${id}`,
+          `${API_URL}/category/${id}`,
           { tendm: category },
           {
             headers: {
@@ -37,7 +35,7 @@ const Category = () => {
         });
       } else {
         const res = await axios.post(
-          "/category",
+          `${API_URL}/category`,
           { tendm: category },
           {
             headers: {
@@ -65,7 +63,7 @@ const Category = () => {
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
-          axios.delete(`/category/delete/${id}`, {
+          axios.delete(`${API_URL}/category/delete/${id}`, {
             headers: {
               Authorization: `Bearer ${token.accessToken}`,
             },

@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Metadata } from "../../Imports/Index";
 import { RegisterInitiate } from "../../redux/Action/ActionAdmin";
-import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-import "react-phone-number-input/style.css";
 const Register = () => {
   const {
     register,

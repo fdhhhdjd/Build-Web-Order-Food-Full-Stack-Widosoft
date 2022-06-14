@@ -1,15 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline } from "@material-ui/icons";
-import { Link } from "react-router-dom";
-import { ProductStyle } from "../../Styles/StylePages/ProductsAdminStyle";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import swal from "sweetalert";
 import moment from "moment";
 import "moment/locale/vi";
-import { GlobalState } from "../../Contexts/GlobalState";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { GetAllBillDetailInitiate } from "../../redux/Action/ActionInfoAllUser";
+import { ProductStyle } from "../../Styles/StylePages/ProductsAdminStyle";
 const BillDetail = () => {
   const { billDetail } = useSelector((state) => state.info);
   const { token } = useSelector((state) => state.authAdmin);

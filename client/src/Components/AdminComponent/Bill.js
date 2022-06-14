@@ -10,6 +10,7 @@ import moment from "moment";
 import "moment/locale/vi";
 import { GlobalState } from "../../Contexts/GlobalState";
 import { GetAllBillInitiate } from "../../redux/Action/ActionInfoAllUser";
+import { API_URL } from "../../utils/Config";
 const Bills = () => {
   const { bill } = useSelector((state) => state.info);
   const { token } = useSelector((state) => state.authAdmin);
@@ -34,7 +35,7 @@ const Bills = () => {
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
-          axios.delete(`/bill/delete/${id}`, {
+          axios.delete(`${API_URL}/bill/delete/${id}`, {
             headers: { Authorization: `Bearer ${token.accessToken}` },
           });
           setCallback(!callback);

@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
-import Lottie from "react-lottie";
-import { ForgetStyle } from "../../Styles/StylePages/ForgetStyle";
-import { Link } from "react-router-dom";
-import { defaultOptions3 } from "../../Imports/Lottie";
-import { Metadata } from "../../Imports/Index";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import Lottie from "react-lottie";
 import { useDispatch, useSelector } from "react-redux";
-import { ForgetAdminInitiate } from "../../redux/Action/ActionAdmin";
+import { Link } from "react-router-dom";
 import swal from "sweetalert";
+import { Metadata } from "../../Imports/Index";
+import { defaultOptions3 } from "../../Imports/Lottie";
+import { ForgetAdminInitiate } from "../../redux/Action/ActionAdmin";
+import { ForgetStyle } from "../../Styles/StylePages/ForgetStyle";
 const Forget = () => {
   const { forget } = useSelector((state) => state.authAdmin);
   const {

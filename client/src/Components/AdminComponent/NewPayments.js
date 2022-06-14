@@ -1,6 +1,6 @@
 import React from "react";
 import { GlobalStyleAmin } from "../../GlobalStyleAmin";
-import { TopBar, SidebarAdmins, NewPayment } from "../../Imports/Index";
+import { NewPayment, SidebarAdmins, TopBar } from "../../Imports/Index";
 
 const NewPayments = () => {
   return (

@@ -2,6 +2,7 @@ import axios from "axios";
 import * as types from "../ActionTypes";
 import { toast } from "react-toastify";
 import swal from "sweetalert";
+import { API_URL } from "../../utils/Config";
 //?Register
 export const RegisterStart = () => ({
   type: types.REGISTER_API_START,
@@ -144,7 +145,7 @@ export const RegisterInitiate = (
   return async function (dispatch) {
     dispatch(RegisterStart());
     await axios
-      .post("/admin/register", {
+      .post(`${API_URL}/admin/register`, {
         email,
         hoten,
         username,
@@ -166,7 +167,7 @@ export const loginInitiate = (email, password) => {
   return async function (dispatch) {
     dispatch(LoginStart());
     await axios
-      .post("/admin/login", { email, password })
+      .post(`${API_URL}/admin/login`, { email, password })
       .then((user) => {
         dispatch(LoginSuccess(user.data));
       })
@@ -180,7 +181,7 @@ export const LogoutInitiate = () => {
   return async function (dispatch) {
     dispatch(LogoutStart());
     await axios
-      .get("/admin/logout")
+      .get(`${API_URL}/admin/logout`)
       .then((user) => {
         dispatch(
           LogoutSuccess(
@@ -202,7 +203,7 @@ export const ForgetAdminInitiate = (email) => {
   return async function (dispatch) {
     dispatch(ForgetStart());
     await axios
-      .post("/admin/forgotPassword", { email })
+      .post(`${API_URL}/admin/forgotPassword`, { email })
       .then((user) => {
         dispatch(ForgetSuccess(user.data));
       })
@@ -217,7 +218,7 @@ export const RefreshTokenInitiate = (token) => {
   return async function (dispatch) {
     dispatch(RefreshTokenStart());
     await axios
-      .get("/admin/refreshToken", {
+      .get(`${API_URL}/admin/refreshToken`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((user) => {
@@ -233,7 +234,7 @@ export const InfoAdminInitiate = (token) => {
   return async function (dispatch) {
     dispatch(InfoAdminStart());
     await axios
-      .get("/admin/profile", {
+      .get(`${API_URL}/admin/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((user) => {
@@ -250,7 +251,7 @@ export const ChangeAdminInitiate = (token, { ...state }) => {
     dispatch(ChangePasswordAdminStart());
     await axios
       .patch(
-        "/admin/changePassword",
+        `${API_URL}/admin/changePassword`,
         { ...state },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -274,7 +275,7 @@ export const GetAllUserInitiate = (token) => {
   return async function (dispatch) {
     dispatch(GetAllUserStart());
     await axios
-      .get("/admin/customerAccount", {
+      .get(`${API_URL}/admin/customerAccount`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((user) => {
@@ -290,7 +291,7 @@ export const GetAllAdminInitiate = (token) => {
   return async function (dispatch) {
     dispatch(GetAllAdminStart());
     await axios
-      .get("/admin/adminAccount", {
+      .get(`${API_URL}/admin/adminAccount`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((user) => {
@@ -306,7 +307,7 @@ export const GetAccountNewInitiate = (token) => {
   return async function (dispatch) {
     dispatch(GetAccountNewStart());
     await axios
-      .get("/admin/newUser", {
+      .get(`${API_URL}/admin/newUser`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((user) => {

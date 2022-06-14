@@ -1,12 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import swal from "sweetalert";
 import { GlobalState } from "../../Contexts/GlobalState";
 import { NewProductStyle } from "../../Styles/StylePages/Admin/NewProduct";
-import { useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { LoadingImage } from "../../Imports/Index";
-import axios from "axios";
-import swal from "sweetalert";
-import { toast } from "react-toastify";
+import { API_URL } from "../../utils/Config";
 const initialState = {
   value: "",
 };
@@ -44,7 +43,7 @@ const Info = () => {
     e.preventDefault();
     if (onEdit) {
       await axios.patch(
-        `/appInfo/${products.slug}`,
+        `${API_URL}/appInfo/${products.slug}`,
         { ...products },
         {
           headers: {
@@ -57,7 +56,7 @@ const Info = () => {
       });
     } else {
       await axios.post(
-        `/appInfo/add`,
+        `${API_URL}/appInfo/add`,
         { ...products },
         {
           headers: {

@@ -1,8 +1,8 @@
 import React from "react";
-import { FeaturedInfo } from "../../Styles/StylePages/Admin/FeaturedInfo";
-import { MdArrowDownward, AiOutlineArrowUp } from "../../Imports/Icons";
-import { useDispatch, useSelector } from "react-redux";
 import CountUp from "react-countup";
+import { useSelector } from "react-redux";
+import { AiOutlineArrowUp, MdArrowDownward } from "../../Imports/Icons";
+import { FeaturedInfo } from "../../Styles/StylePages/Admin/FeaturedInfo";
 const FeaturedInfos = () => {
   const {
     total,

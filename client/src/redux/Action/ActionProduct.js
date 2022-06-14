@@ -2,6 +2,7 @@ import axios from "axios";
 import * as types from "../ActionTypes";
 import { toast } from "react-toastify";
 import swal from "sweetalert";
+import { API_URL } from "../../utils/Config";
 //?get All Product
 export const GetAllProductStart = () => ({
   type: types.GET_ALL_PRODUCT_START,
@@ -128,7 +129,7 @@ export const GetAllProductInitiate = () => {
   return async function (dispatch) {
     dispatch(GetAllProductStart());
     await axios
-      .get("/product")
+      .get(`${API_URL}/product`)
       .then((product) => {
         dispatch(GetAllProductSuccess(product.data));
       })
@@ -143,7 +144,7 @@ export const GetAllCategoryInitiate = () => {
   return async function (dispatch) {
     dispatch(GetAllCategoryStart());
     await axios
-      .get("/category")
+      .get(`${API_URL}/category`)
       .then((category) => {
         dispatch(GetAllCategorySuccess(category.data));
       })
@@ -157,7 +158,7 @@ export const ProductTotalInitiate = (token) => {
   return async function (dispatch) {
     dispatch(ProductTotalStart());
     await axios
-      .get("/admin/totalRevenue", {
+      .get(`${API_URL}/admin/totalRevenue`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((category) => {
@@ -173,7 +174,7 @@ export const ProductTotalCancelInitiate = (token) => {
   return async function (dispatch) {
     dispatch(ProductTotalCancelStart());
     await axios
-      .get("/admin/totalBillCancelled", {
+      .get(`${API_URL}/admin/totalBillCancelled`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((category) => {
@@ -189,7 +190,7 @@ export const ProductTotalNotReceivedInitiate = (token) => {
   return async function (dispatch) {
     dispatch(ProductTotalNotReceivedStart());
     await axios
-      .get("/admin/totalBillCustomerNotReceived", {
+      .get(`${API_URL}/admin/totalBillCustomerNotReceived`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((category) => {
@@ -205,7 +206,7 @@ export const ProductTotalMothInitiate = (token) => {
   return async function (dispatch) {
     dispatch(ProductTotalMothStart());
     await axios
-      .get("/admin/revenueByMonth", {
+      .get(`${API_URL}/admin/revenueByMonth`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((category) => {
@@ -221,7 +222,7 @@ export const VoucherAllInitiate = (token) => {
   return async function (dispatch) {
     dispatch(VoucherAllStart());
     await axios
-      .get("/voucher/all", {
+      .get(`${API_URL}/voucher/all`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((category) => {
@@ -237,7 +238,7 @@ export const CompareMothBeforeInitiate = (token) => {
   return async function (dispatch) {
     dispatch(CompareTotalStart());
     await axios
-      .get("/admin/getRevenueThisAndLastMonth", {
+      .get(`${API_URL}/admin/getRevenueThisAndLastMonth`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((category) => {
@@ -253,7 +254,7 @@ export const CompareMothTotalCancelBeforeInitiate = (token) => {
   return async function (dispatch) {
     dispatch(CompareTotalCancelStart());
     await axios
-      .get("/admin/getTotalBillCustomerCancelledThisAndLastMonth", {
+      .get(`${API_URL}/admin/getTotalBillCustomerCancelledThisAndLastMonth`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((category) => {
@@ -269,7 +270,7 @@ export const CompareMothTotalNotReceivedBeforeInitiate = (token) => {
   return async function (dispatch) {
     dispatch(CompareTotalNotReceiveStart());
     await axios
-      .get("/admin/getTotalBillCustomerNotReceivedThisAndLastMonth", {
+      .get(`${API_URL}/admin/getTotalBillCustomerNotReceivedThisAndLastMonth`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((category) => {

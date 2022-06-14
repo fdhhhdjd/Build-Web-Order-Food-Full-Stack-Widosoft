@@ -2,6 +2,7 @@ import axios from "axios";
 import * as types from "../ActionTypes";
 import { toast } from "react-toastify";
 import swal from "sweetalert";
+import { API_URL } from "../../utils/Config";
 //?get All Payment
 export const GetAllPaymentStart = () => ({
   type: types.GET_ALL_PAYMENT_START,
@@ -80,7 +81,7 @@ export const GetAllPaymentInitiate = (token) => {
   return async function (dispatch) {
     dispatch(GetAllPaymentStart());
     await axios
-      .get("/payment")
+      .get(`${API_URL}/payment`)
       .then((product) => {
         dispatch(GetAllPaymentSuccess(product.data));
       })
@@ -95,7 +96,7 @@ export const GetAllBillInitiate = (token) => {
   return async function (dispatch) {
     dispatch(GetAllBillStart());
     await axios
-      .get("/bill/all", {
+      .get(`${API_URL}/bill/all`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((category) => {
@@ -111,7 +112,7 @@ export const GetAllRatingInitiate = (token) => {
   return async function (dispatch) {
     dispatch(GetAllRatingStart());
     await axios
-      .get("/rating/all", {
+      .get(`${API_URL}/rating/all`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((category) => {
@@ -127,7 +128,7 @@ export const GetAllInfoAppInitiate = (token) => {
   return async function (dispatch) {
     dispatch(GetAllInfoStart());
     await axios
-      .get("/appInfo")
+      .get(`${API_URL}/appInfo`)
       .then((category) => {
         dispatch(GetAllInfoSuccess(category.data));
       })
@@ -141,7 +142,7 @@ export const GetAllBillDetailInitiate = (token) => {
   return async function (dispatch) {
     dispatch(GetAllBillDetailStart());
     await axios
-      .get("/billDetail/all", {
+      .get(`${API_URL}/billDetail/all`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((category) => {
@@ -157,7 +158,7 @@ export const GetAccountMuchInitiate = (token) => {
   return async function (dispatch) {
     dispatch(GetAccountMuchStart());
     await axios
-      .get("/bill/sortTransaction", {
+      .get(`${API_URL}/bill/sortTransaction`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((category) => {

@@ -7,6 +7,8 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { DataProvider } from "./Contexts/GlobalState";
+import axios from "axios";
+axios.defaults.baseURL = "http://18.138.235.4:5000";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

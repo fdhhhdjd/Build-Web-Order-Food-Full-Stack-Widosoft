@@ -1,12 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
-import { GlobalState } from "../../Contexts/GlobalState";
-import { NewProductStyle } from "../../Styles/StylePages/Admin/NewProduct";
-import { useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { LoadingImage } from "../../Imports/Index";
 import axios from "axios";
-import swal from "sweetalert";
+import React, { useContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import swal from "sweetalert";
+import { GlobalState } from "../../Contexts/GlobalState";
+import { LoadingImage } from "../../Imports/Index";
+import { NewProductStyle } from "../../Styles/StylePages/Admin/NewProduct";
+import { API_URL } from "../../utils/Config";
 const initialState = {
   ten_hinhthuc: "",
 };
@@ -69,12 +70,16 @@ const NewProduct = () => {
 
       formData.append("file", file);
       setLoading(true);
-      const res = await axios.post("/cloud/uploadUserImage/admin", formData, {
-        headers: {
-          "content-type": "multipart/form-data",
-          Authorization: `Bearer ${token.accessToken}`,
-        },
-      });
+      const res = await axios.post(
+        `${API_URL}/cloud/uploadUserImage/admin`,
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: `Bearer ${token.accessToken}`,
+          },
+        }
+      );
 
       setLoading(false);
       setImages(res.data);
@@ -91,7 +96,7 @@ const NewProduct = () => {
     try {
       if (onEdit) {
         await axios.patch(
-          `/payment/${products.id}`,
+          `${API_URL}/payment/${products.id}`,
           { ...products, public_id: images.public_id, url: images.url },
           {
             headers: {
@@ -104,7 +109,7 @@ const NewProduct = () => {
         });
       } else {
         await axios.post(
-          "/payment/add",
+          `${API_URL}/payment/add`,
           { ...products, public_id: images.public_id, url: images.url },
           {
             headers: {
@@ -127,7 +132,7 @@ const NewProduct = () => {
     try {
       setLoading(true);
       await axios.post(
-        "/cloud/destroy/admin",
+        `${API_URL}/cloud/destroy/admin`,
         { public_id: images.public_id },
         {
           headers: {

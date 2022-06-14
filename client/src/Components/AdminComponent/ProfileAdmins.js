@@ -1,24 +1,23 @@
-import React, { useState, useContext, useEffect, useRef } from "react";
-import { UserStyle } from "../../Styles/StylePages/Admin/UserStyle";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import {
   CalendarToday,
   LocationSearching,
   MailOutline,
   PermIdentity,
   PhoneAndroid,
-  Publish,
 } from "@material-ui/icons";
 import WcIcon from "@material-ui/icons/Wc";
-import CloseIcon from "@material-ui/icons/Close";
+import axios from "axios";
 import moment from "moment";
 import "moment/locale/vi";
-import { GlobalState } from "../../Contexts/GlobalState";
-import LoadingImage from "../Loading/LoadingImage";
-import swal from "sweetalert";
-import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import swal from "sweetalert";
+import { GlobalState } from "../../Contexts/GlobalState";
+import { UserStyle } from "../../Styles/StylePages/Admin/UserStyle";
+import { API_URL } from "../../utils/Config";
+import LoadingImage from "../Loading/LoadingImage";
 const initialState = {
   id: "",
   hoten: "",
@@ -80,12 +79,16 @@ const ProfileAdmins = () => {
 
       formData.append("file", file);
       setLoading(true);
-      const res = await axios.post("/cloud/uploadUserImage/admin", formData, {
-        headers: {
-          "content-type": "multipart/form-data",
-          Authorization: `Bearer ${token.accessToken}`,
-        },
-      });
+      const res = await axios.post(
+        `${API_URL}/cloud/uploadUserImage/admin`,
+        formData,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: `Bearer ${token.accessToken}`,
+          },
+        }
+      );
 
       setLoading(false);
       setImages(res.data);
@@ -101,7 +104,7 @@ const ProfileAdmins = () => {
       });
     try {
       await axios.patch(
-        `/admin/users/${user.id}`,
+        `${API_URL}/admin/users/${user.id}`,
         { ...user, public_id: images.public_id, url: images.url },
         {
           headers: {
@@ -119,7 +122,7 @@ const ProfileAdmins = () => {
     try {
       setLoading(true);
       await axios.post(
-        "/cloud/destroy/admin",
+        `${API_URL}/cloud/destroy/admin`,
         { public_id: images.public_id },
         {
           headers: {

@@ -8,7 +8,7 @@
 
 ## 3. Nguyễn Duy Thinh (Be) .
 
-## Api Online Hosting: https://orderfood.cf
+## Api Online Hosting: https://orderfood.cf/api
 
 ## Tài Khoản Donate ly Cf để có động lực code cho anh em tham khảo 😄😄
 
